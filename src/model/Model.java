@@ -10,7 +10,9 @@ public interface Model extends UnnamedPropertySubject {
 
     int getLibraryBooksSize();
     Book getLibraryBookByIndex(int index);
+    LibraryInventory getLibraryInventory();
 
     int getUserBooksSize();
     Book getUserBookByIndex(int index);
+    UserInventory getUserInventory();
 }

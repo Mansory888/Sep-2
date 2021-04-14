@@ -31,4 +31,13 @@ public class Book {
     }
 
     public String getDescription(){return description;}
+
+    @Override public boolean equals(Object obj){
+        if(!(obj instanceof Book)){
+            return false;
+        }
+        Book other =(Book) obj;
+        return id.equals(other.id) && title.equals(other.title) && author.equals(other.author) &&
+                description.equals(other.description) && year == other.year && rating == other.rating;
+    }
 }

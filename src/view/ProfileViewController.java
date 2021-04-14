@@ -46,5 +46,5 @@ public class ProfileViewController {
         viewHandler.openView("main");
     }
 
-    @FXML public void AddBookButton(){viewHandler.openView("addBook");}
+    @FXML public void ManageButton(){viewHandler.openView("managePage");}
 }

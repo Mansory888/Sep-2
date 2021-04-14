@@ -31,9 +31,14 @@ public class ModelManager implements Model{
 
     public Book getLibraryBookByIndex(int index) {return libraryInventory.getBook(index);}
 
+    public LibraryInventory getLibraryInventory(){return libraryInventory;}
+
+
     public int getUserBooksSize() {return userInventory.getSize();}
 
     public Book getUserBookByIndex(int index) {return userInventory.getBook(index);}
+
+    public UserInventory getUserInventory(){return userInventory;}
 
 
 

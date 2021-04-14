@@ -39,10 +39,10 @@ public class AddBookViewController {
         addBookViewModel.clear();
     }
 
-    @FXML public void CancelButton(){viewHandler.openView("profile");}
+    @FXML public void CancelButton(){viewHandler.openView("managePage");}
 
     @FXML public void AddButton(){
         addBookViewModel.addBook();
-        viewHandler.openView("profile");
+        viewHandler.openView("managePage");
     }
 }

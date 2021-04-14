@@ -3,11 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManagePageViewController">
    <children>
       <HBox prefHeight="67.0" prefWidth="443.0" spacing="165.0">
          <children>
@@ -33,9 +34,9 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <HBox prefHeight="55.0" prefWidth="382.0">
+      <HBox prefHeight="67.0" prefWidth="382.0">
          <children>
-            <Label fx:id="UsernameLabel" prefHeight="39.0" prefWidth="335.0" text="Username: ">
+            <Label fx:id="NrOfBooksLabel" prefHeight="39.0" prefWidth="229.0" text="Add book:">
                <HBox.margin>
                   <Insets left="20.0" top="10.0" />
                </HBox.margin>
@@ -43,48 +44,69 @@
                   <Font size="24.0" />
                </font>
             </Label>
-         </children>
-         <VBox.margin>
-            <Insets top="50.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox prefHeight="55.0" prefWidth="382.0">
-         <children>
-            <Label fx:id="RegisterLabel" prefHeight="39.0" prefWidth="335.0" text="Register: ">
+            <Button mnemonicParsing="false" onAction="#AddBookButton" prefHeight="42.0" prefWidth="102.0" text="Add">
                <HBox.margin>
-                  <Insets left="20.0" top="10.0" />
+                  <Insets top="12.0" />
                </HBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <HBox prefHeight="55.0" prefWidth="382.0">
-         <children>
-            <Label fx:id="NrOfBooksLabel" prefHeight="39.0" prefWidth="335.0" text="Number of books:">
-               <HBox.margin>
-                  <Insets left="20.0" top="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <HBox prefHeight="72.0" prefWidth="382.0" spacing="100.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#ManageButton" prefHeight="42.0" prefWidth="356.0" text="Manage Library">
-               <HBox.margin>
-                  <Insets left="20.0" right="20.0" top="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
             </Button>
          </children>
          <VBox.margin>
-            <Insets bottom="10.0" top="50.0" />
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="56.0" prefWidth="382.0">
+         <children>
+            <Label fx:id="NrOfBooksLabel1" prefHeight="39.0" prefWidth="354.0" text="Remove Book:">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="59.0" prefWidth="382.0" spacing="15.0">
+         <children>
+            <TextField fx:id="IDTextFiled" prefHeight="42.0" prefWidth="226.0" promptText="Book ID">
+               <HBox.margin>
+                  <Insets left="20.0" top="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#RemoveSubmitButton" prefHeight="43.0" prefWidth="85.0" text="Sumbit">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="56.0" prefWidth="382.0">
+         <children>
+            <Label fx:id="NrOfBooksLabel11" prefHeight="39.0" prefWidth="354.0" text="Give admin privileges:">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="59.0" prefWidth="382.0" spacing="15.0">
+         <children>
+            <TextField fx:id="UsernameTextFiled" prefHeight="42.0" prefWidth="226.0" promptText="Username">
+               <HBox.margin>
+                  <Insets left="20.0" top="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#AdminSubmitButton" prefHeight="43.0" prefWidth="85.0" text="Sumbit">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
    </children>

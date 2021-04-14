@@ -35,7 +35,17 @@ public class AddBookViewModel {
         Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
                 BookIDTextField.get(), DescriptionTextArea.get());
 
-        model.addBookToLibrary(book);
+        try {
+            if(model.getUserInventory().getBooks().contains(book)){
+
+            } else {
+                model.addBookToLibrary(book);
+            }
+
+        } catch (Exception e){
+
+        }
+
 
     }
 
