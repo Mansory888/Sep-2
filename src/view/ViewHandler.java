@@ -4,6 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import viewmodel.LoginViewModel;
+import viewmodel.RegisterViewModel;
 import viewmodel.ViewModelFactory;
 
 public class ViewHandler {
@@ -15,6 +17,8 @@ public class ViewHandler {
     private ProfileViewController profileViewController;
     private AddBookViewController addBookViewController;
     private ManagePageViewController managePageViewController;
+    private LoginViewController loginViewController;
+    private RegisterViewController registerViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory){
         this.viewModelFactory = viewModelFactory;
@@ -23,7 +27,7 @@ public class ViewHandler {
 
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
-        openView("main");
+        openView("login");
 
     }
 
@@ -45,6 +49,12 @@ public class ViewHandler {
                 break;
             case "managePage":
                 root = loadManagePageView("ManagePage.fxml");
+                break;
+            case "login":
+                root = loadLoginView("Login.fxml");
+                break;
+            case "register":
+                root = loadRegisterView("Register.fxml");
                 break;
 
 
@@ -163,6 +173,48 @@ public class ViewHandler {
             managePageViewController.reset();
         }
         return managePageViewController.getRoot();
+
+    }
+
+
+    private Region loadLoginView(String fxmFile){
+        Region root = null;
+        if(loginViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmFile));
+                root = loader.load();
+                loginViewController = loader.getController();
+                loginViewController.init(this, viewModelFactory.getLoginViewModel(), root);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+        } else {
+            loginViewController.reset();
+        }
+        return loginViewController.getRoot();
+
+    }
+
+
+    private Region loadRegisterView(String fxmFile){
+        Region root = null;
+        if(registerViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmFile));
+                root = loader.load();
+                registerViewController = loader.getController();
+                registerViewController.init(this, viewModelFactory.getRegisterViewModel(), root);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+        } else {
+            registerViewController.reset();
+        }
+        return registerViewController.getRoot();
 
     }
 }
