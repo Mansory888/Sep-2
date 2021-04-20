@@ -6,7 +6,7 @@ public class Book {
     private String author;
     private String description;
     private int year;
-    private int rating;
+    private double rating;
     private int ratingCount;
 
 
@@ -16,14 +16,20 @@ public class Book {
         this.author = author;
         this.id = id;
         this.year = year;
-        rating = 0;
+        ratingCount = 0;
+        rating = 0.0;
     }
 
     public String getTitle(){return title;}
 
     public String getAuthor(){return author;}
 
-    public int getRating(){return rating/ratingCount;}
+    public double getRating(){
+        if(ratingCount == 0){
+            return 0;
+        }
+        return rating/ratingCount;
+    }
 
     public void setRating(int i){
         rating =+ i;
