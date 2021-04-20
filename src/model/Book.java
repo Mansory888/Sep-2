@@ -7,6 +7,7 @@ public class Book {
     private String description;
     private int year;
     private int rating;
+    private int ratingCount;
 
 
     public Book(String title, String author, int year, String id, String description){
@@ -22,7 +23,12 @@ public class Book {
 
     public String getAuthor(){return author;}
 
-    public int getRating(){return rating;}
+    public int getRating(){return rating/ratingCount;}
+
+    public void setRating(int i){
+        rating =+ i;
+        ratingCount++;
+    }
 
     public String getId(){return id;}
 
