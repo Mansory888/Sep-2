@@ -1,11 +1,10 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import model.Book;
 import viewmodel.BookModel;
 import viewmodel.MainViewModel;
@@ -47,6 +46,19 @@ public class MainViewController {
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
 
         main_table.setItems(mainViewModel.getList());
+
+        main_table.setRowFactory( tv -> {
+            TableRow<BookModel> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if(event.getClickCount() == 2 && (! row.isEmpty())){
+                    BookModel rowData = row.getItem();
+
+                    System.out.println(rowData.getBookID());
+                    viewHandler.openView("inspect");
+                }
+            });
+            return row;
+        });
 
 
 

@@ -11,6 +11,7 @@ public class ViewModelFactory {
     private ManagePageViewModel managePageViewModel;
     private LoginViewModel loginViewModel;
     private RegisterViewModel registerViewModel;
+    private InspectBookViewModel inspectBookViewModel;
 
     public ViewModelFactory(Model model){
         this.model = model;
@@ -21,6 +22,7 @@ public class ViewModelFactory {
         managePageViewModel = new ManagePageViewModel(model);
         loginViewModel = new LoginViewModel(model);
         registerViewModel = new RegisterViewModel(model);
+        inspectBookViewModel = new InspectBookViewModel(model);
     }
 
     public MainViewModel getMainViewModel(){return mainViewModel;}
@@ -30,4 +32,5 @@ public class ViewModelFactory {
     public AddBookViewModel getAddBookViewModel(){return addBookViewModel;}
     public LoginViewModel getLoginViewModel(){return loginViewModel;}
     public RegisterViewModel getRegisterViewModel(){return registerViewModel;}
+    public InspectBookViewModel getInspectBookViewModel(){return inspectBookViewModel;}
 }

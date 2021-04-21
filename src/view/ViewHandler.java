@@ -19,6 +19,7 @@ public class ViewHandler {
     private ManagePageViewController managePageViewController;
     private LoginViewController loginViewController;
     private RegisterViewController registerViewController;
+    private InspectBookViewController inspectBookViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory){
         this.viewModelFactory = viewModelFactory;
@@ -55,6 +56,9 @@ public class ViewHandler {
                 break;
             case "register":
                 root = loadRegisterView("Register.fxml");
+                break;
+            case "inspect":
+                root = loadInspectBookView("InspectBook.fxml");
                 break;
 
 
@@ -215,6 +219,26 @@ public class ViewHandler {
             registerViewController.reset();
         }
         return registerViewController.getRoot();
+
+    }
+
+    private Region loadInspectBookView(String fxmFile){
+        Region root = null;
+        if(inspectBookViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmFile));
+                root = loader.load();
+                inspectBookViewController = loader.getController();
+                inspectBookViewController.init(this, viewModelFactory.getInspectBookViewModel(), root);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+        } else {
+            inspectBookViewController.reset();
+        }
+        return inspectBookViewController.getRoot();
 
     }
 }
