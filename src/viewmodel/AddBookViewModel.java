@@ -15,7 +15,7 @@ public class AddBookViewModel {
     private Model model;
 
 
-    public AddBookViewModel(Model model){
+    public AddBookViewModel(Model model) {
         this.model = model;
         BookIDTextField = new SimpleStringProperty();
         TitleTextField = new SimpleStringProperty();
@@ -23,9 +23,10 @@ public class AddBookViewModel {
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
         errorLabelProperty = new SimpleStringProperty();
+        errorLabelProperty.set("");
     }
 
-    public void clear(){
+    public void clear() {
         BookIDTextField.set("");
         TitleTextField.set("");
         AuthorTextField.set("");
@@ -34,33 +35,51 @@ public class AddBookViewModel {
         errorLabelProperty.set("");
     }
 
-    public void addBook(){
-        Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
-                BookIDTextField.get(), DescriptionTextArea.get());
-
+    public void addBook() {
         try {
-            if(model.getUserInventory().getBooks().contains(book)){
+            Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
+                    BookIDTextField.get(), DescriptionTextArea.get());
+            try {
+                if (model.getUserInventory().getBooks().contains(book)) {
 
-            } else {
-                model.addBookToLibrary(book);
+                } else {
+                    model.addBookToLibrary(book);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        }
-        catch (IllegalArgumentException illegalArgumentException) {
+            errorLabelProperty.set("");
+        } catch (IllegalArgumentException illegalArgumentException) {
             errorLabelProperty.set(illegalArgumentException.getMessage());
-        }catch (Exception e){
-            e.printStackTrace();
         }
+
+
 
 
     }
 
-    public StringProperty getBookIDTextField(){return BookIDTextField;}
-    public StringProperty getTitleTextField(){return TitleTextField;}
-    public StringProperty getAuthorTextField(){return AuthorTextField;}
-    public StringProperty getYearTextField (){ return YearTextField;}
-    public StringProperty getDescriptionTextArea (){return DescriptionTextArea;}
-    public StringProperty getErrorLabelProperty(){
+    public StringProperty getBookIDTextField() {
+        return BookIDTextField;
+    }
+
+    public StringProperty getTitleTextField() {
+        return TitleTextField;
+    }
+
+    public StringProperty getAuthorTextField() {
+        return AuthorTextField;
+    }
+
+    public StringProperty getYearTextField() {
+        return YearTextField;
+    }
+
+    public StringProperty getDescriptionTextArea() {
+        return DescriptionTextArea;
+    }
+
+    public StringProperty getErrorLabelProperty() {
         return errorLabelProperty;
     }
 }

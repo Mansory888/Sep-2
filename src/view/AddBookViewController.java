@@ -46,6 +46,7 @@ public class AddBookViewController {
 
     @FXML public void AddButton(){
         addBookViewModel.addBook();
+        if(errorLabel.textProperty().get().equals("")){
         viewHandler.openView("managePage");
-    }
+    }}
 }
