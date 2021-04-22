@@ -57,9 +57,6 @@ public class ViewHandler {
             case "register":
                 root = loadRegisterView("Register.fxml");
                 break;
-            case "inspect":
-                root = loadInspectBookView("InspectBook.fxml");
-                break;
 
 
         }
@@ -74,6 +71,30 @@ public class ViewHandler {
         primaryStage.setHeight(root.getPrefHeight());
         primaryStage.show();
     }
+
+    public void openView(String id, String bookId){
+        Region root = null;
+
+        switch (id){
+            case "inspect":
+                root = loadInspectBookView("InspectBook.fxml", bookId);
+                break;
+
+
+        }
+        currentScene.setRoot(root);
+        String title ="";
+        if(root.getUserData() != null){
+            title += root.getUserData();
+        }
+        primaryStage.setTitle(title);
+        primaryStage.setScene(currentScene);
+        primaryStage.setWidth(root.getPrefWidth());
+        primaryStage.setHeight(root.getPrefHeight());
+        primaryStage.show();
+
+    }
+
 
     public void closeView(){primaryStage.close();}
 
@@ -222,7 +243,7 @@ public class ViewHandler {
 
     }
 
-    private Region loadInspectBookView(String fxmFile){
+    private Region loadInspectBookView(String fxmFile, String bookId){
         Region root = null;
         if(inspectBookViewController == null){
             try {
@@ -230,7 +251,7 @@ public class ViewHandler {
                 loader.setLocation(getClass().getResource(fxmFile));
                 root = loader.load();
                 inspectBookViewController = loader.getController();
-                inspectBookViewController.init(this, viewModelFactory.getInspectBookViewModel(), root);
+                inspectBookViewController.init(this, viewModelFactory.getInspectBookViewModel(), root, bookId);
             } catch (Exception e){
                 e.printStackTrace();
             }

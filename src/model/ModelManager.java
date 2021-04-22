@@ -33,12 +33,16 @@ public class ModelManager implements Model{
 
     public LibraryInventory getLibraryInventory(){return libraryInventory;}
 
+    public Book getLibraryBookByID(String id){return libraryInventory.getBookById(id);}
+
 
     public int getUserBooksSize() {return userInventory.getSize();}
 
     public Book getUserBookByIndex(int index) {return userInventory.getBook(index);}
 
     public UserInventory getUserInventory(){return userInventory;}
+
+    public Book getUserBookByID(String id) {return userInventory.getBookById(id);}
 
 
 

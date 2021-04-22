@@ -20,16 +20,16 @@ public class InspectBookViewModel {
         AuthorTextField = new SimpleStringProperty();
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
+
     }
 
-    public void clear(){
-        BookIDTextField.set("");
-        TitleLabel.set("");
-        AuthorTextField.set("");
-        YearTextField.set("");
-        DescriptionTextArea.set("");
+    public void clear(String bookID){
+        BookIDTextField.set(model.getLibraryBookByID(bookID).getId());
+        TitleLabel.set(model.getLibraryBookByID(bookID).getTitle());
+        AuthorTextField.set(model.getLibraryBookByID(bookID).getAuthor());
+        YearTextField.set(model.getLibraryBookByID(bookID).getYearOfPublication()+"");
+        DescriptionTextArea.set(model.getLibraryBookByID(bookID).getDescription());
     }
-
 
 
     public StringProperty getBookIDTextField(){return BookIDTextField;}

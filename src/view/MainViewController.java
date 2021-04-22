@@ -54,7 +54,7 @@ public class MainViewController {
                     BookModel rowData = row.getItem();
 
                     System.out.println(rowData.getBookID());
-                    viewHandler.openView("inspect");
+                    viewHandler.openView("inspect", rowData.getBookID().get());
                 }
             });
             return row;

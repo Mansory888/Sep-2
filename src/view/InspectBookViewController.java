@@ -18,6 +18,7 @@ public class InspectBookViewController {
     @FXML private TextArea DescriptionTextArea;
     @FXML private ComboBox<Integer> RatingBox;
     private ObservableList<Integer> choiceList;
+    private String bookId;
 
 
     private Region root;
@@ -25,10 +26,11 @@ public class InspectBookViewController {
     private ViewHandler viewHandler;
 
 
-    public void init(ViewHandler viewHandler, InspectBookViewModel inspectBookViewModel, Region root) {
+    public void init(ViewHandler viewHandler, InspectBookViewModel inspectBookViewModel, Region root, String bookId) {
         this.viewHandler = viewHandler;
         this.inspectBookViewModel = inspectBookViewModel;
         this.root = root;
+        this.bookId = bookId;
 
         BookIDTextField.textProperty().bindBidirectional(inspectBookViewModel.getBookIDTextField());
         BookTitle.textProperty().bindBidirectional(inspectBookViewModel.getTitleLabel());
@@ -49,13 +51,15 @@ public class InspectBookViewController {
         //When u try to initialize the ComboBox, it doesn't work, but if u don't then it works. Strange shit
         RatingBox.getItems().addAll(choiceList);
 
-
+        reset();
 
     }
+
+
     public Region getRoot(){return root;}
 
     public void reset(){
-        inspectBookViewModel.clear();
+        inspectBookViewModel.clear(bookId);
     }
 
     @FXML public void CancelButton(){
