@@ -17,6 +17,7 @@ public class UserInventoryViewModel {
         search_textfield =  new SimpleStringProperty();
         username_spot = new SimpleStringProperty();
         Userlist = FXCollections.observableArrayList();
+
     }
 
     public void update(){
@@ -26,10 +27,13 @@ public class UserInventoryViewModel {
         }
     }
 
+    public void setName(){
+        username_spot.set(model.getUsername());
+    }
+
     public void clear(){
         update();
         search_textfield.set("");
-        username_spot.set("");
     }
 
 

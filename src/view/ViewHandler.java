@@ -107,6 +107,7 @@ public class ViewHandler {
                 root = loader.load();
                 mainViewController = loader.getController();
                 mainViewController.init(this, viewModelFactory.getMainViewModel(), root);
+                mainViewController.setName();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -127,6 +128,7 @@ public class ViewHandler {
                 root = loader.load();
                 profileViewController = loader.getController();
                 profileViewController.init(this, viewModelFactory.getProfileViewModel(), root);
+                profileViewController.setName();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -148,6 +150,7 @@ public class ViewHandler {
                 root = loader.load();
                 userInventoryViewController = loader.getController();
                 userInventoryViewController.init(this, viewModelFactory.getUserInventoryViewModel(), root);
+                userInventoryViewController.setName();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -190,6 +193,7 @@ public class ViewHandler {
                 root = loader.load();
                 managePageViewController = loader.getController();
                 managePageViewController.init(this, viewModelFactory.getManagePageViewModel(), root);
+                managePageViewController.setName();
             } catch (Exception e){
                 e.printStackTrace();
             }

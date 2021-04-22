@@ -37,7 +37,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#Profile_button" prefHeight="48.0" prefWidth="125.0">
+            <Button mnemonicParsing="false" onAction="#Profile_button" prefHeight="48.0" prefWidth="125.0" text="Home">
                <graphic>
                   <Label fx:id="username_spot" alignment="CENTER" prefHeight="36.0" prefWidth="110.0">
                      <font>

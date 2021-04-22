@@ -11,12 +11,14 @@ public class ModelManager implements Model{
     private UserInventory userInventory;
     private PropertyChangeSupport property;
     private ArrayList<UserType> userTypes;
+    private String username;
 
     public ModelManager(){
         property =  new PropertyChangeSupport(this);
         libraryInventory = new LibraryInventory();
         userInventory = new UserInventory();
         userTypes = new ArrayList<>();
+        username = "";
     }
 
     @Override public void addBookToLibrary(Book book){
@@ -28,6 +30,10 @@ public class ModelManager implements Model{
     }
 
     @Override public void addUser(UserType user){userTypes.add(user);}
+
+    @Override public String getUsername(){return username;}
+
+    @Override public void setUsername(String username){this.username = username;}
 
 
 

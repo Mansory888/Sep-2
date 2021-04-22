@@ -38,6 +38,10 @@ public class ManagePageViewController {
         managePageViewModel.clear();
     }
 
+    public void setName(){
+        managePageViewModel.setName();
+    }
+
     @FXML public void AddBookButton(){viewHandler.openView("addBook");}
 
     @FXML public void Profile_button(){viewHandler.openView("profile");}

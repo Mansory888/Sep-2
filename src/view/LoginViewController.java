@@ -48,6 +48,7 @@ public class LoginViewController {
 //
 //        }
         // for now
+        loginViewModel.validateLogin();
         viewHandler.openView("main");
 
     }

@@ -8,7 +8,9 @@ public interface Model extends UnnamedPropertySubject {
     void addBookToLibrary(Book book);
     void BorrowBook(String id);
 
-    public void addUser(UserType user);
+    void addUser(UserType user);
+    String getUsername();
+    void setUsername(String username);
 
     int getLibraryBooksSize();
     Book getLibraryBookByIndex(int index);

@@ -19,13 +19,16 @@ public class ManagePageViewModel {
     }
 
     public void clear(){
-        username_spot.set("");
         IDTextFiled.set("");
         UsernameTextFiled.set("");
     }
 
     public void RemoveBook(){
         model.getLibraryInventory().removeBookById(IDTextFiled.get());
+    }
+
+    public void setName(){
+        username_spot.set(model.getUsername());
     }
 
     public void giveAdmin(){

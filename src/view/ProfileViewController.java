@@ -40,6 +40,10 @@ public class ProfileViewController {
         profileViewModel.clear();
     }
 
+    public void setName(){
+        profileViewModel.setName();
+    }
+
     @FXML public void Profile_button(){viewHandler.openView("profile");}
 
     @FXML public void home_button(){

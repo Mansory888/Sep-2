@@ -23,6 +23,7 @@ public class MainViewModel {
         search_textfield =  new SimpleStringProperty();
         username_spot = new SimpleStringProperty();
         list = FXCollections.observableArrayList();
+        setName();
 
     }
 
@@ -33,10 +34,13 @@ public class MainViewModel {
         }
     }
 
+    public void setName(){
+        username_spot.set(model.getUsername());
+    }
+
     public void clear(){
         update();
         search_textfield.set("");
-        username_spot.set("");
     }
 
     public void BorrowBook(String id){
@@ -49,7 +53,5 @@ public class MainViewModel {
 
     public StringProperty getSearch_textfield(){return search_textfield;}
     public StringProperty getUsername_spot(){return username_spot;}
-
-
 
 }

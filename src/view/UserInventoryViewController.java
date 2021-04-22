@@ -54,6 +54,10 @@ public class UserInventoryViewController {
 
     public void reset(){userInventoryViewModel.clear();}
 
+    public void setName(){
+        userInventoryViewModel.setName();
+    }
+
     @FXML public void home_button(){
         viewHandler.openView("main");
     }

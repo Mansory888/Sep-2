@@ -26,6 +26,7 @@ public class LoginViewModel {
 
     public boolean validateLogin(){
         // validates the login from the database
+        model.setUsername(LoginUsername.get());
         return false;
     }
 

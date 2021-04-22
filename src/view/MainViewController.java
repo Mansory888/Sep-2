@@ -61,10 +61,13 @@ public class MainViewController {
         });
 
 
-
     }
 
     public Region getRoot(){return root;}
+
+    public void setName(){
+        mainViewModel.setName();
+    }
 
     public void reset(){mainViewModel.clear();}
 
