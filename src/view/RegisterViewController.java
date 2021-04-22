@@ -10,6 +10,7 @@ import viewmodel.RegisterViewModel;
 public class RegisterViewController {
     @FXML private TextField RegisterUsername;
     @FXML private TextField RegisterPassword;
+    @FXML private TextField RegisterEmail;
     @FXML private Label ErrorLabel;
 
     private Region root;
@@ -27,6 +28,7 @@ public class RegisterViewController {
 
         RegisterUsername.textProperty().bindBidirectional(registerViewModel.getRegisterUsername());
         RegisterPassword.textProperty().bindBidirectional(registerViewModel.getRegisterPassword());
+        RegisterEmail.textProperty().bindBidirectional(registerViewModel.getRegisterEmail());
         ErrorLabel.textProperty().bind(registerViewModel.getErrorLabel());
     }
 
