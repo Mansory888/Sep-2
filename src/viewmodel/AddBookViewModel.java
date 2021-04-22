@@ -11,6 +11,7 @@ public class AddBookViewModel {
     private StringProperty AuthorTextField;
     private StringProperty YearTextField;
     private StringProperty DescriptionTextArea;
+    private StringProperty errorLabelProperty;
     private Model model;
 
 
@@ -21,6 +22,7 @@ public class AddBookViewModel {
         AuthorTextField = new SimpleStringProperty();
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
+        errorLabelProperty = new SimpleStringProperty();
     }
 
     public void clear(){
@@ -29,6 +31,7 @@ public class AddBookViewModel {
         AuthorTextField.set("");
         YearTextField.set("");
         DescriptionTextArea.set("");
+        errorLabelProperty.set("");
     }
 
     public void addBook(){
@@ -42,8 +45,11 @@ public class AddBookViewModel {
                 model.addBookToLibrary(book);
             }
 
-        } catch (Exception e){
-
+        }
+        catch (IllegalArgumentException illegalArgumentException) {
+            errorLabelProperty.set(illegalArgumentException.getMessage());
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
 
@@ -54,4 +60,7 @@ public class AddBookViewModel {
     public StringProperty getAuthorTextField(){return AuthorTextField;}
     public StringProperty getYearTextField (){ return YearTextField;}
     public StringProperty getDescriptionTextArea (){return DescriptionTextArea;}
+    public StringProperty getErrorLabelProperty(){
+        return errorLabelProperty;
+    }
 }
