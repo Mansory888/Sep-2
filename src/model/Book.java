@@ -15,9 +15,13 @@ public class Book {
 
     public Book(String title, String author, int year, String id, String description){
         if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("") ){
-            Pattern pattern = Pattern.compile("[^a-z ]");
-            if(pattern.matcher(author).find()){
+            Pattern patternAuthor = Pattern.compile("[^a-z ]");
+            if(patternAuthor.matcher(author).find()){
                 throw  new IllegalArgumentException("Author name contains numbers or symbols.");
+            }
+            Pattern patternId= Pattern.compile("[^0-9 ]");
+            if(patternId.matcher(id).find()){
+                throw  new IllegalArgumentException("Book ID contains characters or symbols.");
             }
             this.description = description;
             this.title = title;
