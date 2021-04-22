@@ -17,6 +17,15 @@
       </Label>
       <HBox prefHeight="53.0" prefWidth="298.0">
          <children>
+            <TextField fx:id="RegisterEmail" prefHeight="34.0" prefWidth="264.0" promptText="Email">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="53.0" prefWidth="298.0">
+         <children>
             <TextField fx:id="RegisterUsername" prefHeight="34.0" prefWidth="264.0" promptText="username">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" top="10.0" />
@@ -26,7 +35,7 @@
       </HBox>
       <HBox prefHeight="53.0" prefWidth="298.0">
          <children>
-            <TextField fx:id="RegisterPassword" prefHeight="34.0" prefWidth="264.0" promptText="passowrd">
+            <TextField fx:id="RegisterPassword" prefHeight="34.0" prefWidth="264.0" promptText="password">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" top="10.0" />
                </HBox.margin>
