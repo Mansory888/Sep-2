@@ -1,5 +1,7 @@
 package model;
 
+import java.util.regex.Pattern;
+
 public abstract class UserType {
     private String email;
     private String username;
@@ -9,9 +11,17 @@ public abstract class UserType {
 
 
     public UserType (String email, String username, String password){
-        this.email = email;
-        this.username = username;
-        this.password = password;
+        if(email !=null && username!=null && password!=null && !email.equals("") && !username.equals("") && !password.equals("")){
+            Pattern p = Pattern.compile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
+            if( !p.matcher(email).find()){
+                throw new IllegalArgumentException("Entered email address is not valid");
+            }
+            this.email = email;
+            this.username = username;
+            this.password = password;
+        }else{
+            throw  new IllegalArgumentException("One or more fields are left empty.");
+        }
 
     }
 

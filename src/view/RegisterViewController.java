@@ -40,6 +40,7 @@ public class RegisterViewController {
 
     @FXML public void RegisterButton(){
         registerViewModel.Register();
-        viewHandler.openView("login");
+        if(ErrorLabel.textProperty().get().equals("")){
+        viewHandler.openView("login");}
     }
 }

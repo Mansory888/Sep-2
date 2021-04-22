@@ -30,9 +30,15 @@ public class RegisterViewModel {
     }
 
    public void Register(){
-       UserType user = new Customer(RegisterEmail.get(), RegisterUsername.get(), RegisterPassword.get());
-       model.addUser(user);
-       System.out.println("Email: "+user.getEmail()+ " Username: " +user.getUsername() +" Password: "+ user.getPassword());
+       try{
+           UserType user = new Customer(RegisterEmail.get(), RegisterUsername.get(), RegisterPassword.get());
+           model.addUser(user);
+           System.out.println("Email: "+user.getEmail()+ " Username: " +user.getUsername() +" Password: "+ user.getPassword());
+           ErrorLabel.set("");
+       }catch (IllegalArgumentException e){
+           ErrorLabel.set(e.getMessage());
+       }
+       //System.out.println("Email: "+user.getEmail()+ " Username: " +user.getUsername() +" Password: "+ user.getPassword());
    }
 
     public StringProperty getRegisterUsername(){return RegisterUsername;}
