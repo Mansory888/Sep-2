@@ -50,6 +50,8 @@ public class AddBookViewModel {
                 e.printStackTrace();
             }
             errorLabelProperty.set("");
+        }catch (NumberFormatException numberFormatException){
+                errorLabelProperty.set("Wrong year entered.");
         } catch (IllegalArgumentException illegalArgumentException) {
             errorLabelProperty.set(illegalArgumentException.getMessage());
         }
