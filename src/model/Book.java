@@ -15,7 +15,7 @@ public class Book {
 
     public Book(String title, String author, int year, String id, String description){
         if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("") ){
-            Pattern patternAuthor = Pattern.compile("[^a-z ]");
+            Pattern patternAuthor = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
             if(patternAuthor.matcher(author).find()){
                 throw  new IllegalArgumentException("Author name contains numbers or symbols.");
             }

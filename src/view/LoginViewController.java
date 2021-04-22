@@ -2,6 +2,7 @@ package view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import viewmodel.LoginViewModel;
@@ -10,7 +11,7 @@ import viewmodel.ProfileViewModel;
 
 public class LoginViewController {
     @FXML private TextField LoginUsername;
-    @FXML private TextField LoginPassword;
+    @FXML private PasswordField LoginPassword;
     @FXML private Label ErrorLabel;
 
     private Region root;
