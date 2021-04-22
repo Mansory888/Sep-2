@@ -1,6 +1,7 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
@@ -15,6 +16,7 @@ public class AddBookViewController {
     @FXML private TextField AuthorTextField;
     @FXML private TextField YearTextField;
     @FXML private TextArea DescriptionTextArea;
+    @FXML private Label errorLabel;
 
     private Region root;
     private AddBookViewModel addBookViewModel;
@@ -31,6 +33,7 @@ public class AddBookViewController {
         AuthorTextField.textProperty().bindBidirectional(addBookViewModel.getAuthorTextField());
         YearTextField.textProperty().bindBidirectional(addBookViewModel.getYearTextField());
         DescriptionTextArea.textProperty().bindBidirectional(addBookViewModel.getDescriptionTextArea());
+        errorLabel.textProperty().bind(addBookViewModel.getErrorLabelProperty());
     }
 
     public Region getRoot(){return root;}
@@ -43,6 +46,7 @@ public class AddBookViewController {
 
     @FXML public void AddButton(){
         addBookViewModel.addBook();
+        if(errorLabel.textProperty().get().equals("")){
         viewHandler.openView("managePage");
-    }
+    }}
 }

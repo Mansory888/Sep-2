@@ -11,13 +11,17 @@ public class Book {
 
 
     public Book(String title, String author, int year, String id, String description){
-        this.description = description;
-        this.title = title;
-        this.author = author;
-        this.id = id;
-        this.year = year;
-        ratingCount = 0;
-        rating = 0.0;
+        if(!title.equals("") && title!=null && !author.equals("") && author!=null && !id.equals("") && id!=null && !description.equals("") && description!=null){
+            this.description = description;
+            this.title = title;
+            this.author = author;
+            this.id = id;
+            this.year = year;
+            ratingCount = 0;
+            rating = 0.0;
+        }else{
+            throw new IllegalArgumentException("There are empty fields.");
+        }
     }
 
     public String getTitle(){return title;}
