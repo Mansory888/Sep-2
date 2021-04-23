@@ -1,10 +1,7 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import viewmodel.BookModel;
 import viewmodel.UserInventoryViewModel;
@@ -44,6 +41,20 @@ public class UserInventoryViewController {
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
 
         main_table.setItems(userInventoryViewModel.getList());
+
+
+        main_table.setRowFactory( tv -> {
+            TableRow<BookModel> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if(event.getClickCount() == 2 && (! row.isEmpty())){
+                    BookModel rowData = row.getItem();
+
+
+                    viewHandler.openView("inspect", rowData.getBookID().get());
+                }
+            });
+            return row;
+        });
 
 
 

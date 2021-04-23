@@ -48,8 +48,7 @@ public class MainViewController {
                 if(event.getClickCount() == 2 && (! row.isEmpty())){
                     BookModel rowData = row.getItem();
 
-                    System.out.println(rowData.getBookID());
-                    viewHandler.openView("inspect", rowData.getBookID().get());
+                    viewHandler.openView("editBook", rowData.getBookID().get());
                 }
             });
             return row;

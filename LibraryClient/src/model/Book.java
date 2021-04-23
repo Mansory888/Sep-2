@@ -66,4 +66,10 @@ public class Book {
         return id.equals(other.id) && title.equals(other.title) && author.equals(other.author) &&
                 description.equals(other.description) && year == other.year && rating == other.rating;
     }
+
+    public void setId(String id){ this.id = id;}
+    public void setTitle(String title) {this.title = title;}
+    public void setAuthor(String author) {this.author = author;}
+    public void setDescription(String description) {this.description = description;}
+    public void setYear(int year){this.year = year;}
 }

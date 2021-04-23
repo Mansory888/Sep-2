@@ -18,6 +18,7 @@ public class ViewHandler {
     private LoginViewController loginViewController;
     private RegisterViewController registerViewController;
     private InspectBookViewController inspectBookViewController;
+    private EditBookViewController editBookViewController;
 
     public ViewHandler(ViewModelFactory viewModelFactory){
         this.viewModelFactory = viewModelFactory;
@@ -77,6 +78,8 @@ public class ViewHandler {
             case "inspect":
                 root = loadInspectBookView("InspectBook.fxml", bookId);
                 break;
+            case "editBook":
+                root = loadEditBookView("EditBook.fxml",bookId);
 
 
         }
@@ -262,6 +265,26 @@ public class ViewHandler {
             inspectBookViewController.reset();
         }
         return inspectBookViewController.getRoot();
+
+    }
+
+    private Region loadEditBookView(String fxmFile, String bookId){
+        Region root = null;
+        if(editBookViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmFile));
+                root = loader.load();
+                editBookViewController = loader.getController();
+                editBookViewController.init(this, viewModelFactory.getEditBookViewModel(), root, bookId);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+        } else {
+            editBookViewController.reset();
+        }
+        return editBookViewController.getRoot();
 
     }
 }
