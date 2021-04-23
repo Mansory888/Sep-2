@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileViewController">
+   <children>
+      <HBox prefHeight="67.0" prefWidth="443.0" spacing="165.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#home_button" prefHeight="48.0" prefWidth="79.0" text="Home">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#Profile_button" prefHeight="48.0" prefWidth="125.0">
+               <HBox.margin>
+                  <Insets right="20.0" top="10.0" />
+               </HBox.margin>
+               <graphic>
+                  <Label fx:id="username_spot" alignment="CENTER" prefHeight="36.0" prefWidth="110.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </graphic>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="382.0">
+         <children>
+            <Label fx:id="UsernameLabel" prefHeight="39.0" prefWidth="335.0" text="Username: ">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="382.0">
+         <children>
+            <Label fx:id="RegisterLabel" prefHeight="39.0" prefWidth="335.0" text="Register: ">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="382.0">
+         <children>
+            <Label fx:id="NrOfBooksLabel" prefHeight="39.0" prefWidth="335.0" text="Number of books:">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="72.0" prefWidth="382.0" spacing="100.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#ManageButton" prefHeight="42.0" prefWidth="356.0" text="Manage Library">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" top="50.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

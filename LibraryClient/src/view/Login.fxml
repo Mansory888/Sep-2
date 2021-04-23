@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginViewController">
+   <children>
+      <Label alignment="CENTER" prefHeight="65.0" prefWidth="298.0" text="Login ">
+         <font>
+            <Font name="Agency FB" size="41.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="53.0" prefWidth="298.0">
+         <children>
+            <TextField fx:id="LoginUsername" prefHeight="34.0" prefWidth="264.0" promptText="username">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="53.0" prefWidth="298.0">
+         <children>
+            <PasswordField fx:id="LoginPassword" prefHeight="34.0" prefWidth="264.0" promptText="password">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+            </PasswordField>
+         </children>
+      </HBox>
+      <HBox prefHeight="53.0" prefWidth="298.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#LoginButton" prefHeight="42.0" prefWidth="258.0" text="Login">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="53.0" prefWidth="298.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#RegisterButton" prefHeight="42.0" prefWidth="258.0" text="Register">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="ErrorLabel" alignment="CENTER" prefHeight="30.0" prefWidth="298.0" textFill="#e21616" />
+   </children>
+</VBox>

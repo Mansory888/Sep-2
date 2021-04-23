@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainViewController">
+   <children>
+      <HBox prefHeight="66.0" prefWidth="739.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#home_button" prefHeight="48.0" prefWidth="50.0" text="Home">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#borrow_button" prefHeight="48.0" prefWidth="70.0" text="Borrow">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#inventory_button" prefHeight="48.0" prefWidth="70.0" text="Inventory">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Button>
+            <TextField fx:id="search_textfield" prefHeight="47.0" prefWidth="213.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#search_button" prefHeight="48.0" prefWidth="70.0" text="Search">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#Profile_button" prefHeight="48.0" prefWidth="125.0" text="Home">
+               <graphic>
+                  <Label fx:id="username_spot" alignment="CENTER" prefHeight="36.0" prefWidth="110.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin></HBox>
+      <HBox prefHeight="350.0" prefWidth="699.0">
+         <children>
+            <TableView fx:id="main_table" prefHeight="360.0" prefWidth="700.0">
+              <columns>
+                <TableColumn fx:id="BookIDCollum" prefWidth="140.0" text="BookId" />
+                  <TableColumn fx:id="BookNameCollum" prefWidth="140.0" text="Book Name" />
+                  <TableColumn fx:id="BookAuthorCollum" prefWidth="140.0" text="Author" />
+                  <TableColumn fx:id="YearPublishedCollum" prefWidth="140.0" text="Year Pusblished" />
+                  <TableColumn fx:id="RatingCollum" prefWidth="140.0" text="Rating" />
+              </columns>
+            </TableView>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
