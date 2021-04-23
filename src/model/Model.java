@@ -11,6 +11,8 @@ public interface Model extends UnnamedPropertySubject {
     void addUser(UserType user);
     String getUsername();
     void setUsername(String username);
+    public String getUserRegistrationDate();
+
 
     int getLibraryBooksSize();
     Book getLibraryBookByIndex(int index);

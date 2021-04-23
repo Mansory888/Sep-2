@@ -4,13 +4,19 @@ import com.sun.management.VMOption;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ModelManager implements Model{
     private LibraryInventory libraryInventory;
     private UserInventory userInventory;
     private PropertyChangeSupport property;
     private ArrayList<UserType> userTypes;
+    private LocalDateTime userRegistrationDate;
     private String username;
 
     public ModelManager(){
@@ -19,6 +25,7 @@ public class ModelManager implements Model{
         userInventory = new UserInventory();
         userTypes = new ArrayList<>();
         username = "";
+        userRegistrationDate = LocalDateTime.now();
     }
 
     @Override public void addBookToLibrary(Book book){
@@ -34,6 +41,12 @@ public class ModelManager implements Model{
     @Override public String getUsername(){return username;}
 
     @Override public void setUsername(String username){this.username = username;}
+
+    @Override public String getUserRegistrationDate(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return userRegistrationDate.format(formatter);
+    }
+
 
 
 

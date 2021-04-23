@@ -19,19 +19,17 @@ public class ProfileViewModel {
         NrOfBooksLabel = new SimpleStringProperty();
 
         // should be model.get size and username and for register idk
-        username_spot.set(model.getUsername());
-        usernameLabel.set("Username: ");
         RegisterLabel.set("Register: ");
-        NrOfBooksLabel.set("Number of Books: ");
     }
 
     public void clear(){
-        usernameLabel.set("Username: ");
-        RegisterLabel.set("Register: ");
-        NrOfBooksLabel.set("Number of Books: ");
+        NrOfBooksLabel.set("Number of Books: "+ model.getUserInventory().getSize());
     }
 
     public void setName(){
+        RegisterLabel.set("Registered On: "+ model.getUserRegistrationDate());
+        usernameLabel.set("Username: "+ model.getUsername());
+        NrOfBooksLabel.set("Number of Books: "+ model.getUserInventory().getSize());
         username_spot.set(model.getUsername());
     }
 
