@@ -152,6 +152,7 @@ public class ViewHandler {
                 userInventoryViewController = loader.getController();
                 userInventoryViewController.init(this, viewModelFactory.getUserInventoryViewModel(), root);
                 userInventoryViewController.setName();
+                userInventoryViewController.load();
             } catch (Exception e){
                 e.printStackTrace();
             }
