@@ -1,5 +1,7 @@
 package model;
 
+import javafx.fxml.FXML;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.time.LocalDateTime;
@@ -40,6 +42,10 @@ public class ModelManager implements Model{
     @Override public String getUserRegistrationDate(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return userRegistrationDate.format(formatter);
+    }
+
+    @Override public void setBookReturned(String id){
+        userInventory.returnedBookById(id);
     }
 
 

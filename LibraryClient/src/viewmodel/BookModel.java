@@ -11,6 +11,8 @@ public class BookModel {
     private StringProperty YearPublished;
     private StringProperty Rating;
     private StringProperty description;
+    private StringProperty BorrowDate;
+    private StringProperty ReturnDate;
 
     public BookModel(Book book){
         BookID = new SimpleStringProperty(book.getId());
@@ -19,6 +21,8 @@ public class BookModel {
         YearPublished = new SimpleStringProperty(book.getYearOfPublication()+"");
         Rating = new SimpleStringProperty(book.getRating()+"");
         description = new SimpleStringProperty(book.getDescription());
+        BorrowDate = new SimpleStringProperty(book.getBorrowDate());
+        ReturnDate = new SimpleStringProperty(book.getReturnDate());
     }
 
     public StringProperty getBookID(){return BookID;}
@@ -27,5 +31,7 @@ public class BookModel {
     public StringProperty getYearPublished(){return YearPublished;}
     public StringProperty getRating(){return Rating;}
     public StringProperty getDescription(){return description;}
+    public StringProperty getBorrowDate(){return BorrowDate;}
+    public StringProperty getReturnDate(){return ReturnDate;}
 
 }

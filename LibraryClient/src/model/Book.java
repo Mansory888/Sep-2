@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 public class Book {
@@ -10,6 +12,12 @@ public class Book {
     private int year;
     private double rating;
     private int ratingCount;
+
+    private LocalDateTime borrowDate;
+    private LocalDateTime returnDate;
+    private boolean borrowed;
+    private boolean returned;
+
 
 
     public Book(String title, String author, int year, String id, String description){
@@ -29,6 +37,10 @@ public class Book {
             this.year = year;
             ratingCount = 0;
             rating = 0.0;
+            borrowDate = LocalDateTime.now();
+            returnDate = LocalDateTime.now();
+            borrowed = false;
+            returned = false;
         }else{
             throw new IllegalArgumentException("There are empty fields.");
         }
@@ -72,4 +84,23 @@ public class Book {
     public void setAuthor(String author) {this.author = author;}
     public void setDescription(String description) {this.description = description;}
     public void setYear(int year){this.year = year;}
+
+    public String getBorrowDate(){
+        if(borrowed){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            return borrowDate.format(formatter);
+        }
+        return "";
+    }
+
+    public String getReturnDate(){
+        if(returned){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            return returnDate.format(formatter);
+        }
+       return "";
+    }
+
+    public void setBorrowed(){borrowed = true;}
+    public void setReturned(){returned = true;}
 }

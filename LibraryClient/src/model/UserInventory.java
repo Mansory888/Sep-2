@@ -11,6 +11,7 @@ public class UserInventory {
 
     public void addBook(Book book){
         books.add(book);
+        book.setBorrowed();
     }
 
     public Book getBook(int index){
@@ -39,4 +40,14 @@ public class UserInventory {
             }
         }
     }
+
+    public void returnedBookById(String id){
+        for (int i = 0; i < books.size(); i++){
+            if (books.get(i).getId().equals(id)){
+                books.get(i).setReturned();
+            }
+        }
+    }
+
+
 }

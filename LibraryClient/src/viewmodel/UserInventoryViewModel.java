@@ -36,7 +36,10 @@ public class UserInventoryViewModel {
         search_textfield.set("");
     }
 
-
+    public void ReturnBook(String id){
+        model.getUserInventory().returnedBookById(id);
+        update();
+    }
 
     public ObservableList<BookModel> getList(){
         return Userlist;

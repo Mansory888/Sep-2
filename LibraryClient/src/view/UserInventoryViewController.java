@@ -3,6 +3,7 @@ package view;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
+import model.Book;
 import viewmodel.BookModel;
 import viewmodel.UserInventoryViewModel;
 
@@ -15,6 +16,8 @@ public class UserInventoryViewController {
     @FXML private TableColumn<BookModel, String> BookAuthorCollum;
     @FXML private TableColumn<BookModel, String> YearPublishedCollum;
     @FXML private TableColumn<BookModel, String> RatingCollum;
+    @FXML private TableColumn<BookModel, String> BorrowDateCollum;
+    @FXML private TableColumn<BookModel, String> ReturnDateCollum;
 
 
     private Region root;
@@ -39,6 +42,8 @@ public class UserInventoryViewController {
         BookAuthorCollum.setCellValueFactory(celldata -> celldata.getValue().getBookAuthor());
         YearPublishedCollum.setCellValueFactory(celldata -> celldata.getValue().getYearPublished());
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
+        BorrowDateCollum.setCellValueFactory(celldata -> celldata.getValue().getBorrowDate());
+        ReturnDateCollum.setCellValueFactory(celldata -> celldata.getValue().getReturnDate());
 
         main_table.setItems(userInventoryViewModel.getList());
 
@@ -74,6 +79,11 @@ public class UserInventoryViewController {
     }
 
     @FXML public void Profile_button(){viewHandler.openView("profile");}
+
+    @FXML public void ReturnButton(){
+        BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
+        userInventoryViewModel.ReturnBook(selectedItem.getBookID().get());
+    }
 
     @FXML public void search_button(){
 
