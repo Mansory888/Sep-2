@@ -21,16 +21,16 @@ public class MainViewController {
     private Region root;
     private MainViewModel mainViewModel;
     private ViewHandler viewHandler;
-
+    private ViewState viewState;
     public MainViewController (){
 
     }
 
-    public void init(ViewHandler viewHandler, MainViewModel mainViewModel, Region root){
+    public void init(ViewHandler viewHandler, MainViewModel mainViewModel, Region root,ViewState viewState){
         this.viewHandler = viewHandler;
         this.mainViewModel = mainViewModel;
         this.root = root;
-
+        this.viewState=viewState;
         search_textfield.textProperty().bindBidirectional(mainViewModel.getSearch_textfield());
         username_spot.textProperty().bind(mainViewModel.getUsername_spot());
 
@@ -47,8 +47,8 @@ public class MainViewController {
             row.setOnMouseClicked(event -> {
                 if(event.getClickCount() == 2 && (! row.isEmpty())){
                     BookModel rowData = row.getItem();
-
-                    viewHandler.openView("editBook", rowData.getBookID().get());
+                    viewState.setSelectedBook(rowData.getBookID().get());
+                    viewHandler.openView("inspect");
                 }
             });
             return row;

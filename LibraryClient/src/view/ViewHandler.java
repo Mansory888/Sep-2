@@ -18,11 +18,12 @@ public class ViewHandler {
     private LoginViewController loginViewController;
     private RegisterViewController registerViewController;
     private InspectBookViewController inspectBookViewController;
-    private EditBookViewController editBookViewController;
+    private ViewState viewState;
 
     public ViewHandler(ViewModelFactory viewModelFactory){
         this.viewModelFactory = viewModelFactory;
         this.currentScene = new Scene(new Region());
+        viewState=new ViewState();
     }
 
     public void start(Stage primaryStage){
@@ -56,30 +57,9 @@ public class ViewHandler {
             case "register":
                 root = loadRegisterView("Register.fxml");
                 break;
-
-
-        }
-        currentScene.setRoot(root);
-        String title ="";
-        if(root.getUserData() != null){
-            title += root.getUserData();
-        }
-        primaryStage.setTitle(title);
-        primaryStage.setScene(currentScene);
-        primaryStage.setWidth(root.getPrefWidth());
-        primaryStage.setHeight(root.getPrefHeight());
-        primaryStage.show();
-    }
-
-    public void openView(String id, String bookId){
-        Region root = null;
-
-        switch (id){
             case "inspect":
-                root = loadInspectBookView("InspectBook.fxml", bookId);
+                root = loadInspectBookView("InspectBook.fxml");
                 break;
-            case "editBook":
-                root = loadEditBookView("EditBook.fxml",bookId);
 
 
         }
@@ -93,8 +73,30 @@ public class ViewHandler {
         primaryStage.setWidth(root.getPrefWidth());
         primaryStage.setHeight(root.getPrefHeight());
         primaryStage.show();
-
     }
+
+//    public void openView(String id, String bookId){
+//        Region root = null;
+//
+//        switch (id){
+//            case "inspect":
+//                root = loadInspectBookView("InspectBook.fxml", bookId);
+//                break;
+//
+//
+//        }
+//        currentScene.setRoot(root);
+//        String title ="";
+//        if(root.getUserData() != null){
+//            title += root.getUserData();
+//        }
+//        primaryStage.setTitle(title);
+//        primaryStage.setScene(currentScene);
+//        primaryStage.setWidth(root.getPrefWidth());
+//        primaryStage.setHeight(root.getPrefHeight());
+//        primaryStage.show();
+//
+//    }
 
 
     public void closeView(){primaryStage.close();}
@@ -107,7 +109,7 @@ public class ViewHandler {
                 loader.setLocation(getClass().getResource(fxmFile));
                 root = loader.load();
                 mainViewController = loader.getController();
-                mainViewController.init(this, viewModelFactory.getMainViewModel(), root);
+                mainViewController.init(this, viewModelFactory.getMainViewModel(), root,viewState);
                 mainViewController.setName();
             } catch (Exception e){
                 e.printStackTrace();
@@ -249,7 +251,7 @@ public class ViewHandler {
 
     }
 
-    private Region loadInspectBookView(String fxmFile, String bookId){
+    private Region loadInspectBookView(String fxmFile){
         Region root = null;
         if(inspectBookViewController == null){
             try {
@@ -257,7 +259,7 @@ public class ViewHandler {
                 loader.setLocation(getClass().getResource(fxmFile));
                 root = loader.load();
                 inspectBookViewController = loader.getController();
-                inspectBookViewController.init(this, viewModelFactory.getInspectBookViewModel(), root, bookId);
+                inspectBookViewController.init(this, viewModelFactory.getInspectBookViewModel(), root, viewState);
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -266,26 +268,6 @@ public class ViewHandler {
             inspectBookViewController.reset();
         }
         return inspectBookViewController.getRoot();
-
-    }
-
-    private Region loadEditBookView(String fxmFile, String bookId){
-        Region root = null;
-        if(editBookViewController == null){
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
-                root = loader.load();
-                editBookViewController = loader.getController();
-                editBookViewController.init(this, viewModelFactory.getEditBookViewModel(), root, bookId);
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-
-        } else {
-            editBookViewController.reset();
-        }
-        return editBookViewController.getRoot();
 
     }
 }

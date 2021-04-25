@@ -18,19 +18,19 @@ public class InspectBookViewController {
     @FXML private TextArea DescriptionTextArea;
     @FXML private ComboBox<Integer> RatingBox;
     private ObservableList<Integer> choiceList;
-    private String bookId;
 
 
     private Region root;
     private InspectBookViewModel inspectBookViewModel;
     private ViewHandler viewHandler;
+    private ViewState viewState;
 
 
-    public void init(ViewHandler viewHandler, InspectBookViewModel inspectBookViewModel, Region root, String bookId) {
+    public void init(ViewHandler viewHandler, InspectBookViewModel inspectBookViewModel, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.inspectBookViewModel = inspectBookViewModel;
         this.root = root;
-        this.bookId = bookId;
+        this.viewState=viewState;
 
         BookIDTextField.textProperty().bindBidirectional(inspectBookViewModel.getBookIDTextField());
         BookTitle.textProperty().bindBidirectional(inspectBookViewModel.getTitleLabel());
@@ -59,11 +59,11 @@ public class InspectBookViewController {
     public Region getRoot(){return root;}
 
     public void reset(){
-        inspectBookViewModel.clear(bookId);
+        inspectBookViewModel.clear(viewState.getSelectedBook());
     }
 
     @FXML public void CancelButton(){
         viewHandler.openView("main");
-        System.out.println(RatingBox.getValue());
+        viewState.setSelectedBook("");
     }
 }
