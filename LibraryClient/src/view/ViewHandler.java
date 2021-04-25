@@ -152,7 +152,7 @@ public class ViewHandler {
                 loader.setLocation(getClass().getResource(fxmFile));
                 root = loader.load();
                 userInventoryViewController = loader.getController();
-                userInventoryViewController.init(this, viewModelFactory.getUserInventoryViewModel(), root);
+                userInventoryViewController.init(this, viewModelFactory.getUserInventoryViewModel(), root,viewState);
                 userInventoryViewController.setName();
                 userInventoryViewController.load();
             } catch (Exception e){

@@ -20,17 +20,17 @@ public class UserInventoryViewController {
     private Region root;
     private UserInventoryViewModel userInventoryViewModel;
     private ViewHandler viewHandler;
-
+    private ViewState viewState;
 
     public UserInventoryViewController (){
 
     }
 
-    public void init(ViewHandler viewHandler, UserInventoryViewModel userInventoryViewModel, Region root){
+    public void init(ViewHandler viewHandler, UserInventoryViewModel userInventoryViewModel, Region root, ViewState viewState){
         this.viewHandler = viewHandler;
         this.userInventoryViewModel = userInventoryViewModel;
         this.root = root;
-
+        this.viewState=viewState;
         search_textfield.textProperty().bindBidirectional(userInventoryViewModel.getSearch_textfield());
         username_spot.textProperty().bind(userInventoryViewModel.getUsername_spot());
 
@@ -48,9 +48,9 @@ public class UserInventoryViewController {
             row.setOnMouseClicked(event -> {
                 if(event.getClickCount() == 2 && (! row.isEmpty())){
                     BookModel rowData = row.getItem();
+                    viewState.setSelectedBook(rowData.getBookID().get());
 
-
-                    viewHandler.openView("inspect", rowData.getBookID().get());
+                    viewHandler.openView("inspect");
                 }
             });
             return row;
