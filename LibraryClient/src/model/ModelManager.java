@@ -1,6 +1,8 @@
 package model;
 
 import javafx.fxml.FXML;
+import mediator.LibraryClient;
+import mediator.ServerModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -15,6 +17,7 @@ public class ModelManager implements Model{
     private ArrayList<UserType> userTypes;
     private LocalDateTime userRegistrationDate;
     private String username;
+    private ServerModel serverModel;
 
     public ModelManager(){
         property =  new PropertyChangeSupport(this);
@@ -23,6 +26,7 @@ public class ModelManager implements Model{
         userTypes = new ArrayList<>();
         username = "";
         userRegistrationDate = LocalDateTime.now();
+        serverModel = new LibraryClient("localhost", 6789, this);
     }
 
     @Override public void addBookToLibrary(Book book){
