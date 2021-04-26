@@ -1,5 +1,7 @@
 package view;
 
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
@@ -45,7 +47,38 @@ public class UserInventoryViewController {
         BorrowDateCollum.setCellValueFactory(celldata -> celldata.getValue().getBorrowDate());
         ReturnDateCollum.setCellValueFactory(celldata -> celldata.getValue().getReturnDate());
 
-        main_table.setItems(userInventoryViewModel.getList());
+        //main_table.setItems(userInventoryViewModel.getList());
+
+        //CAUTION super code that does real time searching for everything form an indian guy on YT
+        FilteredList<BookModel> filteredData = new FilteredList<>(userInventoryViewModel.getList(), b -> true);
+
+        search_textfield.textProperty().addListener(((observable, oldValue, newValue) ->{
+            filteredData.setPredicate(book -> {
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(book.getBookName().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getBookID().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getBookAuthor().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getYearPublished().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        } ));
+
+        SortedList<BookModel> sortedList = new SortedList<>(filteredData);
+
+        sortedList.comparatorProperty().bind(main_table.comparatorProperty());
+
+        main_table.setItems(sortedList);
 
 
         main_table.setRowFactory( tv -> {
@@ -85,7 +118,5 @@ public class UserInventoryViewController {
         userInventoryViewModel.ReturnBook(selectedItem.getBookID().get());
     }
 
-    @FXML public void search_button(){
 
-    }
 }

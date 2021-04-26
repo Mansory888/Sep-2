@@ -1,5 +1,11 @@
 package view;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
@@ -40,8 +46,42 @@ public class MainViewController {
         YearPublishedCollum.setCellValueFactory(celldata -> celldata.getValue().getYearPublished());
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
 
-        main_table.setItems(mainViewModel.getList());
+        //main_table.setItems(mainViewModel.getList());
 
+        //CAUTION super code that does real time searching for everything form an indian guy on YT
+        FilteredList<BookModel> filteredData = new FilteredList<>(mainViewModel.getList(), b -> true);
+
+        search_textfield.textProperty().addListener(((observable, oldValue, newValue) ->{
+            filteredData.setPredicate(book -> {
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(book.getBookName().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getBookID().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getBookAuthor().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else if (book.getYearPublished().get().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        } ));
+
+        SortedList<BookModel> sortedList = new SortedList<>(filteredData);
+
+        sortedList.comparatorProperty().bind(main_table.comparatorProperty());
+
+        main_table.setItems(sortedList);
+
+
+
+        //Double click to open book
         main_table.setRowFactory( tv -> {
             TableRow<BookModel> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -80,10 +120,6 @@ public class MainViewController {
     }
 
     @FXML public void Profile_button(){viewHandler.openView("profile");}
-
-    @FXML public void search_button(){
-
-    }
 
 
 }

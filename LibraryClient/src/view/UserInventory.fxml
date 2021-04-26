@@ -41,7 +41,7 @@
                   </Label>
                </children>
             </VBox>
-            <TextField fx:id="search_textfield" prefHeight="47.0" prefWidth="213.0">
+            <TextField fx:id="search_textfield" prefHeight="47.0" prefWidth="213.0" promptText="Search Box">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
@@ -49,14 +49,9 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#search_button" prefHeight="48.0" prefWidth="70.0" text="Search">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#Profile_button" prefHeight="48.0" prefWidth="125.0" text="Home">
+            <Button mnemonicParsing="false" onAction="#Profile_button" prefHeight="48.0" prefWidth="215.0">
                <graphic>
-                  <Label fx:id="username_spot" alignment="CENTER" prefHeight="36.0" prefWidth="110.0">
+                  <Label fx:id="username_spot" alignment="CENTER" prefHeight="36.0" prefWidth="187.0">
                      <font>
                         <Font size="18.0" />
                      </font>
