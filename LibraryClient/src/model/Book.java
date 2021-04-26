@@ -103,4 +103,5 @@ public class Book {
 
     public void setBorrowed(){borrowed = true;}
     public void setReturned(){returned = true;}
+    public boolean getIsReturned(){return  returned;}
 }

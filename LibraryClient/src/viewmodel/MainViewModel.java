@@ -40,7 +40,20 @@ public class MainViewModel {
     }
 
     public void BorrowBook(String id){
-        model.BorrowBook(id);
+        boolean isInInventory=false;
+        for(int i=0;i<model.getUserInventory().getSize();i++){
+            if(model.getUserInventory().getBook(i).getId().equals(id)){
+                isInInventory = true;
+            }
+        }
+        if (isInInventory){
+            if (model.getUserInventory().getBookById(id).getIsReturned()){
+                model.BorrowBook(id);
+            }
+        } else {
+            model.BorrowBook(id);
+        }
+
     }
 
     public ObservableList<BookModel> getList(){

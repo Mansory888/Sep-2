@@ -48,6 +48,8 @@ public class ModelManager implements Model{
         userInventory.returnedBookById(id);
     }
 
+    @Override public boolean getIsReturned(String id){return userInventory.getBookById(id).getIsReturned();}
+
 
 
 

@@ -10,6 +10,7 @@ public interface Model {
     void setUsername(String username);
     String getUserRegistrationDate();
     public void setBookReturned(String id);
+    public boolean getIsReturned(String id);
 
 
     int getLibraryBooksSize();

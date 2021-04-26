@@ -10,8 +10,9 @@ public class UserInventory {
     }
 
     public void addBook(Book book){
-        books.add(book);
-        book.setBorrowed();
+        Book book1 = new Book(book.getTitle(), book.getAuthor(), book.getYearOfPublication(), book.getId(), book.getDescription());
+        books.add(book1);
+        book1.setBorrowed();
     }
 
     public Book getBook(int index){
