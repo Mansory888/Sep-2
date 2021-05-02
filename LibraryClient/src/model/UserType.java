@@ -2,14 +2,23 @@ package model;
 
 import java.util.regex.Pattern;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public abstract class UserType {
     private String email;
     private String username;
     private String password;
 
 
-
-
+    /**
+     * Creates a user type
+     * @param email email
+     * @param username username
+     * @param password password
+     */
     public UserType (String email, String username, String password){
         if(email !=null && username!=null && password!=null && !email.equals("") && !username.equals("") && !password.equals("")){
             Pattern emailPattern = Pattern.compile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
@@ -41,9 +50,28 @@ public abstract class UserType {
 
     }
 
+    /**
+     * returns the email
+     * @return email
+     */
     public String getEmail(){return email;}
+
+    /**
+     * returns username
+     * @return username
+     */
     public String getUsername(){return username;}
+
+    /**
+     * returns password
+     * @return password
+     */
     public String getPassword(){return password;}
+
+    /**
+     * abstract method is admin
+     * @return is admin
+     */
     public abstract boolean isAdmin();
 
 }
