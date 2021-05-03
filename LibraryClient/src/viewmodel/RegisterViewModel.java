@@ -6,6 +6,10 @@ import model.Customer;
 import model.Model;
 import model.UserType;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
 public class RegisterViewModel {
     private StringProperty RegisterUsername;
     private StringProperty RegisterPassword;
@@ -14,6 +18,10 @@ public class RegisterViewModel {
     private Model model;
 
 
+    /**
+     * Creates a view model for Register window
+     * @param model model
+     */
     public RegisterViewModel(Model model){
         this.model = model;
         RegisterUsername = new SimpleStringProperty();
@@ -22,6 +30,9 @@ public class RegisterViewModel {
         RegisterEmail = new SimpleStringProperty();
     }
 
+    /**
+     * method to clear the fields
+     */
     public void clear(){
         RegisterPassword.set("");
         RegisterUsername.set("");
@@ -29,6 +40,9 @@ public class RegisterViewModel {
         RegisterEmail.set("");
     }
 
+    /**
+     * method to create a user when he registers
+     */
    public void Register(){
        try{
            UserType user = new Customer(RegisterEmail.get(), RegisterUsername.get(), RegisterPassword.get());
@@ -38,11 +52,29 @@ public class RegisterViewModel {
        }catch (IllegalArgumentException e){
            ErrorLabel.set(e.getMessage());
        }
-       //System.out.println("Email: "+user.getEmail()+ " Username: " +user.getUsername() +" Password: "+ user.getPassword());
    }
 
+    /**
+     * returns RegisterUsername
+     * @return RegisterUsername
+     */
     public StringProperty getRegisterUsername(){return RegisterUsername;}
+
+    /**
+     * returns RegisterPassword
+     * @return RegisterPassword
+     */
     public StringProperty getRegisterPassword(){return RegisterPassword;}
+
+    /**
+     * returns ErrorLabel
+     * @return ErrorLabel
+     */
     public StringProperty getErrorLabel(){return ErrorLabel;}
+
+    /**
+     * returns RegisterEmail
+     * @return RegisterEmail
+     */
     public StringProperty getRegisterEmail(){return RegisterEmail;}
 }

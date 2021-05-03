@@ -1,5 +1,5 @@
 package mediator;
 
 public interface ServerModel {
-    void Login(String s);
+    void Login(String username, String password);
 }

@@ -5,6 +5,10 @@ import javafx.beans.property.StringProperty;
 import model.Book;
 import model.Model;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
 public class AddBookViewModel {
     private StringProperty BookIDTextField;
     private StringProperty TitleTextField;
@@ -15,6 +19,10 @@ public class AddBookViewModel {
     private Model model;
 
 
+    /**
+     * Creates a view model for add book window
+     * @param model model
+     */
     public AddBookViewModel(Model model) {
         this.model = model;
         BookIDTextField = new SimpleStringProperty();
@@ -26,6 +34,9 @@ public class AddBookViewModel {
         errorLabelProperty.set("");
     }
 
+    /**
+     * method to clear the fields
+     */
     public void clear() {
         BookIDTextField.set("");
         TitleTextField.set("");
@@ -35,6 +46,9 @@ public class AddBookViewModel {
         errorLabelProperty.set("");
     }
 
+    /**
+     * method to add a book to the library
+     */
     public void addBook() {
         try {
             Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
@@ -68,26 +82,50 @@ public class AddBookViewModel {
 
     }
 
+    /**
+     * returns Book ID TextField
+     * @return BookIDTextField
+     */
     public StringProperty getBookIDTextField() {
         return BookIDTextField;
     }
 
+    /**
+     * returns TitleText Field
+     * @return TitleText Field
+     */
     public StringProperty getTitleTextField() {
         return TitleTextField;
     }
 
+    /**
+     * returns Author TextField
+     * @return Author TextField
+     */
     public StringProperty getAuthorTextField() {
         return AuthorTextField;
     }
 
+    /**
+     * returns Year TextField
+     * @return Year TextField
+     */
     public StringProperty getYearTextField() {
         return YearTextField;
     }
 
+    /**
+     * returns Description TextArea
+     * @return Description TextArea
+     */
     public StringProperty getDescriptionTextArea() {
         return DescriptionTextArea;
     }
 
+    /**
+     * returns Error Label Property
+     * @return Error Label Property
+     */
     public StringProperty getErrorLabelProperty() {
         return errorLabelProperty;
     }

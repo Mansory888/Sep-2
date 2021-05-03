@@ -88,7 +88,7 @@ public class MainViewController {
                 if(event.getClickCount() == 2 && (! row.isEmpty())){
                     BookModel rowData = row.getItem();
                     viewState.setSelectedBook(rowData.getBookID().get());
-                    viewHandler.openView("inspect");
+                    viewHandler.openView("edit");
                 }
             });
             return row;

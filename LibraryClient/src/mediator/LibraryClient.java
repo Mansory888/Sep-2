@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class LibraryClient implements ServerModel{
     private Socket socket;
     private BufferedReader in;
@@ -18,6 +23,12 @@ public class LibraryClient implements ServerModel{
     private Gson gson;
 
 
+    /**
+     * Creates a library client that starts the connection and creates a client receiver
+     * @param host host
+     * @param port port
+     * @param model model
+     */
     public LibraryClient(String host, int port, Model model){
         try {
             socket = new Socket(host, port);
@@ -37,14 +48,23 @@ public class LibraryClient implements ServerModel{
         }
     }
 
+    /**
+     *  Method to receive strings from the server
+     * @param s string
+     * @throws IOException connection exception
+     */
     public void receive(String s) throws IOException {
 
     }
 
 
-
-    @Override public void Login(String s){
+    /**
+     *  Method that logins the client
+     * @param username the username
+     * @param password the password
+     */
+    @Override public void Login(String username, String password){
         out.println("Login");
-        out.println(s);
+        out.println();
     }
 }

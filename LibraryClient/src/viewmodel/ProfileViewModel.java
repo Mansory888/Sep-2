@@ -4,6 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Model;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
 public class ProfileViewModel {
     private StringProperty usernameLabel;
     private StringProperty RegisterLabel;
@@ -11,6 +15,10 @@ public class ProfileViewModel {
     private StringProperty username_spot;
     private Model model;
 
+    /**
+     * Creates a view model for profile view window
+     * @param model model
+     */
     public ProfileViewModel(Model model){
         this.model = model;
         username_spot = new SimpleStringProperty();
@@ -22,10 +30,16 @@ public class ProfileViewModel {
         RegisterLabel.set("Register: ");
     }
 
+    /**
+     * method to clear the fields
+     */
     public void clear(){
         NrOfBooksLabel.set("Number of Books: "+ model.getUserInventory().getSize());
     }
 
+    /**
+     * method to set the name and other information about the user
+     */
     public void setName(){
         RegisterLabel.set("Registered On: "+ model.getUserRegistrationDate());
         usernameLabel.set("Username: "+ model.getUsername());
@@ -33,8 +47,27 @@ public class ProfileViewModel {
         username_spot.set(model.getUsername());
     }
 
+    /**
+     * returns username label
+     * @return username label
+     */
     public StringProperty getUsernameLabel(){return usernameLabel;}
+
+    /**
+     * returns register label
+     * @return register label
+     */
     public StringProperty getRegisterLabel(){return RegisterLabel;}
+
+    /**
+     * returns the number of book label
+     * @return the number of book label
+     */
     public StringProperty getNrOfBooksLabel(){return NrOfBooksLabel;}
+
+    /**
+     * returns the username spot
+     * @return username spot
+     */
     public StringProperty getUsername_spot(){return username_spot;}
 }

@@ -2,6 +2,10 @@ package viewmodel;
 
 import model.Model;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
 public class ViewModelFactory {
     private Model model;
     private MainViewModel mainViewModel;
@@ -14,6 +18,10 @@ public class ViewModelFactory {
     private InspectBookViewModel inspectBookViewModel;
     private EditBookViewModel editBookViewModel;
 
+    /**
+     * Creates a view model factory that creates all view models
+     * @param model model
+     */
     public ViewModelFactory(Model model){
         this.model = model;
         mainViewModel = new MainViewModel(model);
@@ -27,13 +35,57 @@ public class ViewModelFactory {
         editBookViewModel = new EditBookViewModel(model);
     }
 
+    /**
+     * returns MainViewModel
+     * @return MainViewModel
+     */
     public MainViewModel getMainViewModel(){return mainViewModel;}
+
+    /**
+     * returns ManagePageViewModel
+     * @return ManagePageViewModel
+     */
     public ManagePageViewModel getManagePageViewModel(){return managePageViewModel;}
+
+    /**
+     * returns UserInventoryViewModel
+     * @return UserInventoryViewModel
+     */
     public UserInventoryViewModel getUserInventoryViewModel(){return userInventoryViewModel;}
+
+    /**
+     * returns ProfileViewModel
+     * @return ProfileViewModel
+     */
     public ProfileViewModel getProfileViewModel(){return profileViewModel;}
+
+    /**
+     * returns AddBookViewModel
+     * @return AddBookViewModel
+     */
     public AddBookViewModel getAddBookViewModel(){return addBookViewModel;}
+
+    /**
+     * returns LoginViewModel
+     * @return LoginViewModel
+     */
     public LoginViewModel getLoginViewModel(){return loginViewModel;}
+
+    /**
+     * returns RegisterViewModel
+     * @return RegisterViewModel
+     */
     public RegisterViewModel getRegisterViewModel(){return registerViewModel;}
+
+    /**
+     * returns InspectBookViewModel
+     * @return InspectBookViewModel
+     */
     public InspectBookViewModel getInspectBookViewModel(){return inspectBookViewModel;}
+
+    /**
+     * returns EditBookViewModel
+     * @return EditBookViewModel
+     */
     public EditBookViewModel getEditBookViewModel(){return editBookViewModel;}
 }
