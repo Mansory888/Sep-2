@@ -26,13 +26,14 @@ public class EditBookViewController {
     private Region root;
     private EditBookViewModel editBookViewModel;
     private ViewHandler viewHandler;
+    private ViewState viewState;
 
 
-    public void init(ViewHandler viewHandler, EditBookViewModel editBookViewModel, Region root, String bookId) {
+    public void init(ViewHandler viewHandler, EditBookViewModel editBookViewModel, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.editBookViewModel = editBookViewModel;
         this.root = root;
-        this.bookId = bookId;
+        this.viewState=viewState;
 
         BookIDTextField.textProperty().bindBidirectional(editBookViewModel.getBookIDTextField());
         BookTitleTextField.textProperty().bindBidirectional(editBookViewModel.getTitleField());
@@ -53,15 +54,16 @@ public class EditBookViewController {
     public Region getRoot(){return root;}
 
     public void reset(){
-        editBookViewModel.clear(bookId);
+        editBookViewModel.clear(viewState.getSelectedBook());
     }
 
     @FXML public void CancelButton(){
         viewHandler.openView("main");
+        viewState.setSelectedBook("");
     }
 
     @FXML public void EditButton(){
-        editBookViewModel.editBook(bookId);
+        editBookViewModel.editBook(viewState.getSelectedBook());
         viewHandler.openView("main");
     }
 }

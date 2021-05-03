@@ -18,6 +18,7 @@ public class ViewHandler {
     private LoginViewController loginViewController;
     private RegisterViewController registerViewController;
     private InspectBookViewController inspectBookViewController;
+    private EditBookViewController editBookViewController;
     private ViewState viewState;
 
     public ViewHandler(ViewModelFactory viewModelFactory){
@@ -60,6 +61,9 @@ public class ViewHandler {
             case "inspect":
                 root = loadInspectBookView("InspectBook.fxml");
                 break;
+            case "edit":
+                root = loadEditBookView("EditBook.fxml");
+                break;
 
 
         }
@@ -75,28 +79,6 @@ public class ViewHandler {
         primaryStage.show();
     }
 
-//    public void openView(String id, String bookId){
-//        Region root = null;
-//
-//        switch (id){
-//            case "inspect":
-//                root = loadInspectBookView("InspectBook.fxml", bookId);
-//                break;
-//
-//
-//        }
-//        currentScene.setRoot(root);
-//        String title ="";
-//        if(root.getUserData() != null){
-//            title += root.getUserData();
-//        }
-//        primaryStage.setTitle(title);
-//        primaryStage.setScene(currentScene);
-//        primaryStage.setWidth(root.getPrefWidth());
-//        primaryStage.setHeight(root.getPrefHeight());
-//        primaryStage.show();
-//
-//    }
 
 
     public void closeView(){primaryStage.close();}
@@ -268,6 +250,26 @@ public class ViewHandler {
             inspectBookViewController.reset();
         }
         return inspectBookViewController.getRoot();
+
+    }
+
+    private Region loadEditBookView(String fxmFile){
+        Region root = null;
+        if(editBookViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmFile));
+                root = loader.load();
+                editBookViewController = loader.getController();
+                editBookViewController.init(this, viewModelFactory.getEditBookViewModel(), root, viewState);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+        } else {
+            editBookViewController.reset();
+        }
+        return editBookViewController.getRoot();
 
     }
 }

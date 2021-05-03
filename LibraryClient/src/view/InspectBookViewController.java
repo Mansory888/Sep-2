@@ -47,8 +47,7 @@ public class InspectBookViewController {
         DescriptionTextArea.setEditable(false);
 
 
-        //RatingBox = new ComboBox<>(choiceList);
-        //When u try to initialize the ComboBox, it doesn't work, but if u don't then it works. Strange shit
+
         RatingBox.getItems().addAll(choiceList);
 
         reset();
