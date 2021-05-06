@@ -11,6 +11,8 @@ public interface Model {
     String getUserRegistrationDate();
     public void setBookReturned(String id);
     public boolean getIsReturned(String id);
+    public void Login(String username, String password);
+    void Register(UserType User);
 
 
     int getLibraryBooksSize();

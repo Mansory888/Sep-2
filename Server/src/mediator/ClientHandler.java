@@ -1,9 +1,11 @@
 package mediator;
 
 import com.google.gson.Gson;
+import com.google.gson.internal.$Gson$Preconditions;
 import javafx.application.Platform;
 import model.Message;
 import model.Model;
+import model.UserType;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -51,31 +53,37 @@ public class ClientHandler implements Runnable, PropertyChangeListener
         model.addLog("Client> " + request);
 
         switch (request){
-          case "!commands":
-            Message m1 = new Message("Server> !Number = users connected, !Exit = exit", "Normal");
-            String reply1 = gson.toJson(m1);
-            out.println(reply1);
-            model.addLog("Server> !Number = users connected, !Exit = exit");
+          case "Register":
+            UserType userType = gson.fromJson(in.readLine(), UserType.class);
+            model.addUser(userType);
             break;
-          case "!Number":
-            Message m2 = new Message("Server> "+ model.getNrOfUsers() + "","Normal");
-            String reply2 = gson.toJson(m2);
-            out.println(reply2);
-            model.addLog("Server> " + model.getNrOfUsers() + "");
-            break;
-          case "!Exit":
-            String reply3 = gson.toJson(new Message("Exit","Normal"));
-            out.println(reply3);
-            model.addLog(clientName + " disconnected ");
-            model.countUser(-1);
-            break;
+
           case "Login":
-            clientName = in.readLine();
-            model.addLog("ClientName: " + clientName);
+            String username = in.readLine();
+            String password = in.readLine();
+            boolean usernameVerification = false;
+            boolean passwordVerification = false;
+
+            for (int i = 0; i<model.getAllUsers().size(); i++){
+              if (model.getAllUsers().get(i).getUsername().equals(username)){
+                usernameVerification = true;
+                if (model.getAllUsers().get(i).getPassword().equals(password)){
+                  passwordVerification = true;
+                  String LoginVerified = gson.toJson(new Message("Wrong Username", "Message"));
+                  out.println(LoginVerified);
+                }
+              }
+            }
+
+            if (usernameVerification = false){
+              String wrongUsername = gson.toJson(new Message("Wrong Username", "Message"));
+              out.println(wrongUsername);
+            } else if (passwordVerification = false){
+              String wrongPassword = gson.toJson(new Message("Wrong Password", "Message"));
+              out.println(wrongPassword);
+            }
             break;
-          default:
-            model.addMessage(clientName + ": " + request);
-            break;
+
         }
 
       }
@@ -108,8 +116,8 @@ public class ClientHandler implements Runnable, PropertyChangeListener
   {
     Platform.runLater(() -> {
       if(evt.getPropertyName().equals("message")){
-        String reply = gson.toJson(new Message(evt.getNewValue()+ "", "BROADCAST"));
-        out.println(reply);
+        //String reply = gson.toJson(new Message(evt.getNewValue()+ "", "BROADCAST"));
+        //out.println(reply);
       }
     });
   }

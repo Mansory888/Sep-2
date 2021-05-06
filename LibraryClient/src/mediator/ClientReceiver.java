@@ -29,6 +29,7 @@ public class ClientReceiver implements Runnable {
         while (true){
             try {
                 String serverReply = in.readLine();
+                client.receive(serverReply);
 
             } catch (Exception e){
 

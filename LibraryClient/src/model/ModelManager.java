@@ -93,6 +93,15 @@ public class ModelManager implements Model{
      */
     @Override public boolean getIsReturned(String id){return userInventory.getBookById(id).getIsReturned();}
 
+    @Override public void Login(String username, String password){
+        serverModel.Login(username, password);
+    }
+
+    @Override public void Register(UserType user){
+        serverModel.Register(user);
+    }
+
+
 
     /**
      * gets library books size

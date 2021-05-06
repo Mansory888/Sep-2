@@ -2,7 +2,9 @@ package mediator;
 
 
 import com.google.gson.Gson;
+import model.Message;
 import model.Model;
+import model.UserType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,6 +56,11 @@ public class LibraryClient implements ServerModel{
      * @throws IOException connection exception
      */
     public void receive(String s) throws IOException {
+        Message m = gson.fromJson(s, Message.class);
+
+        if(m.getType().equals("Message")){
+            if()
+        }
 
     }
 
@@ -65,6 +72,13 @@ public class LibraryClient implements ServerModel{
      */
     @Override public void Login(String username, String password){
         out.println("Login");
-        out.println();
+        out.println(username);
+        out.println(password);
+    }
+
+    @Override public void Register (UserType User){
+        out.println("Register");
+        String RegisterUser = gson.toJson(User);
+        out.println(RegisterUser);
     }
 }

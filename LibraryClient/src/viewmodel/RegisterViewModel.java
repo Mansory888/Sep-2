@@ -46,8 +46,7 @@ public class RegisterViewModel {
    public void Register(){
        try{
            UserType user = new Customer(RegisterEmail.get(), RegisterUsername.get(), RegisterPassword.get());
-           model.addUser(user);
-           System.out.println("Email: "+user.getEmail()+ " Username: " +user.getUsername() +" Password: "+ user.getPassword());
+           model.Register(user);
            ErrorLabel.set("");
        }catch (IllegalArgumentException e){
            ErrorLabel.set(e.getMessage());

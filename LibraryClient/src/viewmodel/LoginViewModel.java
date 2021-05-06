@@ -39,7 +39,8 @@ public class LoginViewModel {
      * method to validate the login
      */
     public boolean validateLogin(){
-        // validates the login from the database
+        model.Login(LoginUsername.get(), LoginPassword.get());
+        if()
         model.setUsername(LoginUsername.get());
         return false;
     }

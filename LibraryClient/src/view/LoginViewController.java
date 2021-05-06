@@ -38,15 +38,14 @@ public class LoginViewController {
     }
 
     @FXML public void LoginButton(){
-        //The login protocol:
-//        try {
-//            if (loginViewModel.validateLogin()){
-//                viewHandler.openView("main");
-//            }
-//
-//        } catch (Exception e){
-//
-//        }
+        try {
+            if (loginViewModel.validateLogin()){
+                viewHandler.openView("main");
+            }
+
+        } catch (Exception e){
+            //
+        }
         // for now
         loginViewModel.validateLogin();
         viewHandler.openView("main");

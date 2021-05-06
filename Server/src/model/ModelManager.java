@@ -2,16 +2,23 @@ package model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class ModelManager implements Model {
 
     private Loglist loglist;
     private PropertyChangeSupport property;
     private int nrOfUsers;
+    private LibraryInventory libraryInventory;
+    private UserInventory userInventory;
+    private ArrayList<UserType> users;
 
     public ModelManager(){
         loglist = Loglist.getInstance();
         this.property = new PropertyChangeSupport(this);
+        libraryInventory = new LibraryInventory();
+        userInventory = new UserInventory();
+        users = new ArrayList<>();
     }
 
     @Override
@@ -34,6 +41,37 @@ public class ModelManager implements Model {
     @Override public int getNrOfUsers(){
         return nrOfUsers;
     }
+
+
+    /**
+     * adds a book to library inventory
+     *
+     * @param book book
+     */
+    @Override
+    public void addBookToLibrary(Book book) { libraryInventory.addBook(book); }
+
+    /**
+     * adds a user to the user list
+     *
+     * @param user user
+     */
+    @Override
+    public void addUser(UserType user) { users.add(user); }
+
+    /**
+     * Borrows a book from library by id
+     *
+     * @param id id
+     */
+    @Override
+    public void BorrowBook(String id) { userInventory.addBook(libraryInventory.getBookById(id)); }
+
+    @Override public ArrayList<UserType> getAllUsers(){return users;}
+
+
+
+
 
     @Override public void addListener(PropertyChangeListener listener)
     {
