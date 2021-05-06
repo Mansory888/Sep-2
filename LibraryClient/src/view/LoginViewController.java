@@ -46,10 +46,6 @@ public class LoginViewController {
         } catch (Exception e){
             //
         }
-        // for now
-        loginViewModel.validateLogin();
-        viewHandler.openView("main");
-
     }
 
     @FXML public void RegisterButton(){

@@ -14,6 +14,13 @@ public interface Model {
     public void Login(String username, String password);
     void Register(UserType User);
 
+    boolean getVerifyLogin();
+    void setVerifyLogin(boolean value);
+
+    String getErrorLabel();
+    void setErrorLabel(String label);
+
+
 
     int getLibraryBooksSize();
     Book getLibraryBookByIndex(int index);

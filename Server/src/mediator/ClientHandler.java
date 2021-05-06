@@ -3,6 +3,7 @@ package mediator;
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Preconditions;
 import javafx.application.Platform;
+import model.Customer;
 import model.Message;
 import model.Model;
 import model.UserType;
@@ -54,8 +55,10 @@ public class ClientHandler implements Runnable, PropertyChangeListener
 
         switch (request){
           case "Register":
-            UserType userType = gson.fromJson(in.readLine(), UserType.class);
+            String user = in.readLine();
+            UserType userType = gson.fromJson(user, Customer.class);
             model.addUser(userType);
+            model.addLog("User Registered: "+ userType.toString());
             break;
 
           case "Login":
@@ -69,7 +72,7 @@ public class ClientHandler implements Runnable, PropertyChangeListener
                 usernameVerification = true;
                 if (model.getAllUsers().get(i).getPassword().equals(password)){
                   passwordVerification = true;
-                  String LoginVerified = gson.toJson(new Message("Wrong Username", "Message"));
+                  String LoginVerified = gson.toJson(new Message("Login verified", "Message"));
                   out.println(LoginVerified);
                 }
               }
@@ -90,6 +93,7 @@ public class ClientHandler implements Runnable, PropertyChangeListener
       catch (Exception e)
       {
         model.addLog("Client error");
+        e.printStackTrace();
         close();
       }
     }

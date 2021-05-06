@@ -40,8 +40,12 @@ public class LoginViewModel {
      */
     public boolean validateLogin(){
         model.Login(LoginUsername.get(), LoginPassword.get());
-        if()
-        model.setUsername(LoginUsername.get());
+        if(model.getVerifyLogin()){
+            model.setUsername(LoginUsername.get());
+            return true;
+        }
+        ErrorLabel.set(model.getErrorLabel());
+        System.out.println(ErrorLabel.get());
         return false;
     }
 

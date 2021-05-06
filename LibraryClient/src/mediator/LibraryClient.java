@@ -59,7 +59,13 @@ public class LibraryClient implements ServerModel{
         Message m = gson.fromJson(s, Message.class);
 
         if(m.getType().equals("Message")){
-            if()
+            if(m.getMessage().equals("Login verified")){
+                model.setVerifyLogin(true);
+            } else if(m.getMessage().equals("Wrong Username")){
+                model.setErrorLabel("Wrong Username");
+            } else if(m.getMessage().equals("Wrong Password")){
+                model.setErrorLabel("Wrong Password");
+            }
         }
 
     }

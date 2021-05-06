@@ -23,6 +23,9 @@ public class ModelManager implements Model{
     private String username;
     private ServerModel serverModel;
 
+    private boolean verifyLogin;
+    private String ErrorLabel;
+
     /**
      *  Creates a model manager
      */
@@ -34,6 +37,7 @@ public class ModelManager implements Model{
         username = "";
         userRegistrationDate = LocalDateTime.now();
         serverModel = new LibraryClient("localhost", 6789, this);
+        verifyLogin = false;
     }
 
     /**
@@ -100,6 +104,18 @@ public class ModelManager implements Model{
     @Override public void Register(UserType user){
         serverModel.Register(user);
     }
+
+    @Override public boolean getVerifyLogin(){
+        return verifyLogin;
+    }
+
+    @Override public void setVerifyLogin(boolean value){
+        verifyLogin = value;
+    }
+
+    @Override public String getErrorLabel(){return ErrorLabel;}
+
+    @Override public void setErrorLabel(String label){ErrorLabel = label;}
 
 
 
