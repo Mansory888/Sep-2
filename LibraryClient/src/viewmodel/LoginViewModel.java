@@ -1,8 +1,13 @@
 package viewmodel;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Model;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 /**
  * @author Nick/Rokas
@@ -12,7 +17,11 @@ public class LoginViewModel {
     private StringProperty LoginUsername;
     private StringProperty LoginPassword;
     private StringProperty ErrorLabel;
+    private BooleanProperty loginVerified;
     private Model model;
+    private int loginVerifyX2 = 1;
+
+
 
 
     /**
@@ -24,6 +33,7 @@ public class LoginViewModel {
         LoginUsername = new SimpleStringProperty();
         LoginPassword = new SimpleStringProperty();
         ErrorLabel = new SimpleStringProperty();
+        loginVerified = new SimpleBooleanProperty();
     }
 
     /**
@@ -34,19 +44,21 @@ public class LoginViewModel {
         LoginUsername.set("");
         ErrorLabel.set("");
     }
-
     /**
      * method to validate the login
      */
-    public boolean validateLogin(){
+    public synchronized boolean validateLogin(){
+            loginVerified.set(true);
+
         model.Login(LoginUsername.get(), LoginPassword.get());
-        if(model.getVerifyLogin()){
+        if(model.getUser()!=null){
             model.setUsername(LoginUsername.get());
-            return true;
+            loginVerified.set(true);
+            return loginVerified.getValue();
         }
         ErrorLabel.set(model.getErrorLabel());
-        System.out.println(ErrorLabel.get());
-        return false;
+            loginVerified.set(false);
+        return loginVerified.getValue();
     }
 
     /**
@@ -66,4 +78,12 @@ public class LoginViewModel {
      * @return ErrorLabel
      */
     public StringProperty getErrorLabel(){return ErrorLabel;}
+    public boolean isLoginVerified() {
+        return loginVerified.get();
+    }
+
+    public BooleanProperty loginVerifiedProperty() {
+        return loginVerified;
+    }
+
 }

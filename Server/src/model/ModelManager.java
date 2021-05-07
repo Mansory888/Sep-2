@@ -19,6 +19,7 @@ public class ModelManager implements Model {
         libraryInventory = new LibraryInventory();
         userInventory = new UserInventory();
         users = new ArrayList<>();
+        users.add(new Admin("username@gmail.com","username","Username1*"));
     }
 
     @Override

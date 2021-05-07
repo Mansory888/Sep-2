@@ -1,6 +1,8 @@
 package model;
 
 
+import mediator.ServerModel;
+
 public interface Model {
     void addBookToLibrary(Book book);
     void BorrowBook(String id);
@@ -13,7 +15,8 @@ public interface Model {
     public boolean getIsReturned(String id);
     public void Login(String username, String password);
     void Register(UserType User);
-
+    void setUser(Object user);
+    Object getUser();
     boolean getVerifyLogin();
     void setVerifyLogin(boolean value);
 
@@ -31,4 +34,5 @@ public interface Model {
     Book getUserBookByIndex(int index);
     UserInventory getUserInventory();
     Book getUserBookByID(String id);
+    ServerModel getServerModel();
 }

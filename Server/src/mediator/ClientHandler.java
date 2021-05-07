@@ -3,10 +3,7 @@ package mediator;
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Preconditions;
 import javafx.application.Platform;
-import model.Customer;
-import model.Message;
-import model.Model;
-import model.UserType;
+import model.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -72,8 +69,14 @@ public class ClientHandler implements Runnable, PropertyChangeListener
                 usernameVerification = true;
                 if (model.getAllUsers().get(i).getPassword().equals(password)){
                   passwordVerification = true;
-                  String LoginVerified = gson.toJson(new Message("Login verified", "Message"));
-                  out.println(LoginVerified);
+                  Message login = new Message("Login verified", "Message");
+                  if(model.getAllUsers().get(i).isAdmin()){
+                    login.setUser((Admin) model.getAllUsers().get(i));
+                  }else{
+                    login.setUser((Customer) model.getAllUsers().get(i));
+                  }
+                  String loginVerified = gson.toJson(login);
+                  out.println(loginVerified);
                 }
               }
             }

@@ -2,10 +2,10 @@ package mediator;
 
 
 import com.google.gson.Gson;
-import model.Message;
-import model.Model;
-import model.UserType;
+import model.*;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,6 +23,7 @@ public class LibraryClient implements ServerModel{
     private PrintWriter out;
     private Model model;
     private Gson gson;
+    private PropertyChangeSupport property;
 
 
     /**
@@ -40,7 +41,7 @@ public class LibraryClient implements ServerModel{
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-
+            property = new PropertyChangeSupport(this);
             ClientReceiver clientReceiver = new ClientReceiver(this, in);
             Thread t1 = new Thread(clientReceiver, "");
             t1.start();
@@ -60,7 +61,8 @@ public class LibraryClient implements ServerModel{
 
         if(m.getType().equals("Message")){
             if(m.getMessage().equals("Login verified")){
-                model.setVerifyLogin(true);
+                model.setUser(m.getUser());
+                property.firePropertyChange("login",null,model);
             } else if(m.getMessage().equals("Wrong Username")){
                 model.setErrorLabel("Wrong Username");
             } else if(m.getMessage().equals("Wrong Password")){

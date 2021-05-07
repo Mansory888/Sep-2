@@ -1,5 +1,6 @@
 package model;
 
+import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
 import mediator.LibraryClient;
 import mediator.ServerModel;
@@ -22,7 +23,7 @@ public class ModelManager implements Model{
     private LocalDateTime userRegistrationDate;
     private String username;
     private ServerModel serverModel;
-
+    private Object user;
     private boolean verifyLogin;
     private String ErrorLabel;
 
@@ -38,6 +39,8 @@ public class ModelManager implements Model{
         userRegistrationDate = LocalDateTime.now();
         serverModel = new LibraryClient("localhost", 6789, this);
         verifyLogin = false;
+        user = null;
+        ErrorLabel="";
     }
 
     /**
@@ -46,6 +49,14 @@ public class ModelManager implements Model{
      */
     @Override public void addBookToLibrary(Book book){
         libraryInventory.addBook(book);
+    }
+    @Override
+    public Object getUser() {
+        return user;
+    }
+    @Override
+    public void setUser(Object user) {
+        this.user = user;
     }
 
     /**
@@ -69,9 +80,10 @@ public class ModelManager implements Model{
 
     /**
      * sets the username when the user is logged in
-     * @param username username
      */
-    @Override public void setUsername(String username){this.username = username;}
+    @Override public void setUsername(String username){
+        this.username=username;
+    }
 
     /**
      * gets the registration date of a registered user
@@ -117,7 +129,9 @@ public class ModelManager implements Model{
 
     @Override public void setErrorLabel(String label){ErrorLabel = label;}
 
-
+    @Override public ServerModel getServerModel(){
+        return serverModel;
+    }
 
     /**
      * gets library books size
