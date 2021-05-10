@@ -130,6 +130,10 @@ public class ModelManager implements Model{
 
     @Override public void setErrorLabel(String label){ErrorLabel = label;}
 
+    @Override public void addBookToServerLibrary(Book book){
+        serverModel.addBookToServerLibrary(book);
+    }
+
     /**
      * gets library books size
      * @return size

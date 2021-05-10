@@ -70,6 +70,11 @@ public class ModelManager implements Model {
 
     @Override public ArrayList<UserType> getAllUsers(){return users;}
 
+    @Override public LibraryInventory getLibraryInventory(){
+        return libraryInventory;
+    }
+
+
 
 
 

@@ -19,6 +19,7 @@ public interface Model {
     Object getUser();
     boolean getVerifyLogin();
     void setVerifyLogin(boolean value);
+    void addBookToServerLibrary(Book book);
 
     String getErrorLabel();
     void setErrorLabel(String label);

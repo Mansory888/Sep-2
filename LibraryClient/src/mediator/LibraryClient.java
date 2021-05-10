@@ -54,6 +54,13 @@ public class LibraryClient implements ServerModel{
      */
     public void receive(String s) throws IOException {
         Message m = gson.fromJson(s, Message.class);
+        switch (m.getType()){
+            case "Load_library":
+                Book book = gson.fromJson(m.getMessage(), Book.class);
+                model.addBookToLibrary(book);
+                break;
+
+        }
 
 
 
@@ -78,6 +85,7 @@ public class LibraryClient implements ServerModel{
                     model.setUser(m.getUser());
                     Thread t1 = new Thread(clientReceiver, "");
                     t1.start();
+                    out.println("Load_Library_inventory");
                     return true;
                 } else if(m.getMessage().equals("Wrong Username")){
                     model.setErrorLabel("Wrong Username");
@@ -95,5 +103,11 @@ public class LibraryClient implements ServerModel{
         out.println("Register");
         String RegisterUser = gson.toJson(User);
         out.println(RegisterUser);
+    }
+
+    @Override public void addBookToServerLibrary(Book book){
+        out.println("Add_Book");
+        String reply = gson.toJson(book);
+        out.println(reply);
     }
 }

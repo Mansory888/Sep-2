@@ -101,6 +101,7 @@ public class UserInventoryViewController {
     public Region getRoot(){return root;}
 
     public void reset(){userInventoryViewModel.clear();}
+
     public void load(){userInventoryViewModel.update();}
 
     public void setName(){

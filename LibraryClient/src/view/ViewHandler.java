@@ -93,6 +93,7 @@ public class ViewHandler {
                 mainViewController = loader.getController();
                 mainViewController.init(this, viewModelFactory.getMainViewModel(), root,viewState);
                 mainViewController.setName();
+                mainViewController.load();
             } catch (Exception e){
                 e.printStackTrace();
             }

@@ -105,6 +105,8 @@ public class MainViewController {
 
     public void reset(){mainViewModel.clear();}
 
+    public void load(){mainViewModel.update();}
+
 
     @FXML public void home_button(){
         viewHandler.openView("main");

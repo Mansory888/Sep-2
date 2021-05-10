@@ -64,6 +64,7 @@ public class AddBookViewModel {
                     errorLabelProperty.set("Book is already in inventory!");
                 } else {
                     model.addBookToLibrary(book);
+                    model.addBookToServerLibrary(book);
                     errorLabelProperty.set("");
                 }
 
