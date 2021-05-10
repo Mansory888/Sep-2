@@ -82,7 +82,11 @@ public class LibraryClient implements ServerModel{
              Message m = gson.fromJson(readLine,Message.class);
             if(m.getType().equals("Message")){
                 if(m.getMessage().equals("Login verified")){
-                    model.setUser(m.getUser());
+                    if(m.getUser().isAdmin()){
+                        model.setAdmin((Admin) m.getUser());
+                    }else{
+                        model.setCustomer((Customer) m.getUser());
+                    }
                     Thread t1 = new Thread(clientReceiver, "");
                     t1.start();
                     out.println("Load_Library_inventory");

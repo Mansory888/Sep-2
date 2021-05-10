@@ -15,10 +15,7 @@ public interface Model {
     public boolean getIsReturned(String id);
     boolean Login(String username, String password);
     void Register(UserType User);
-    void setUser(Object user);
-    Object getUser();
-    boolean getVerifyLogin();
-    void setVerifyLogin(boolean value);
+    UserType getUser();
     boolean isAdmin();
     ServerModel getServerModel();
     void loadBooksToLibrary(Book book);
@@ -37,4 +34,6 @@ public interface Model {
     Book getUserBookByIndex(int index);
     UserInventory getUserInventory();
     Book getUserBookByID(String id);
+    void setAdmin(Admin user);
+    void setCustomer(Customer user);
 }

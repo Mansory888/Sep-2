@@ -23,8 +23,7 @@ public class ModelManager implements Model{
     private LocalDateTime userRegistrationDate;
     private String username;
     private ServerModel serverModel;
-    private Object user;
-    private boolean verifyLogin;
+    private UserType user;
     private String ErrorLabel;
 
     /**
@@ -38,7 +37,6 @@ public class ModelManager implements Model{
         username = "";
         userRegistrationDate = LocalDateTime.now();
         serverModel = new LibraryClient("localhost", 6789, this);
-        verifyLogin = false;
         user = null;
         ErrorLabel="";
     }
@@ -53,13 +51,17 @@ public class ModelManager implements Model{
     }
 
     @Override
-    public Object getUser() {
+    public UserType getUser() {
         return user;
     }
 
     @Override
-    public void setUser(Object user) {
+    public void setAdmin(Admin user) {
         this.user = user;
+    }
+    @Override
+    public void setCustomer(Customer user){
+        this.user=user;
     }
 
     /**
@@ -123,19 +125,14 @@ public class ModelManager implements Model{
         serverModel.Register(user);
     }
 
-    @Override public boolean getVerifyLogin(){
-        return verifyLogin;
-    }
 
-    @Override public void setVerifyLogin(boolean value){
-        verifyLogin = value;
-    }
 
     @Override public String getErrorLabel(){return ErrorLabel;}
 
     @Override public void setErrorLabel(String label){ErrorLabel = label;}
 
-    @Override public boolean isAdmin(){return user instanceof Admin;}
+    @Override public boolean isAdmin(){
+        return user.isAdmin();}
 
     @Override public ServerModel getServerModel(){return serverModel;}
 

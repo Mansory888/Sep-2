@@ -3,7 +3,9 @@ package model;
 public class Message<T> {
     private String message;
     private String type;
-    private T user;
+    private UserType user;
+    private Admin admin;
+    private Customer customer;
 
     public Message(String message, String type){
         this.message = message;
@@ -22,11 +24,18 @@ public class Message<T> {
     public String getType(){
         return type;
     }
-    public T  getUser(){
-        return user;
+    public UserType  getUser(){
+        if(customer!=null){
+            return customer;
+        }else{
+            return admin;
+        }
     }
 
-    public void setUser(T user) {
-        this.user = user;
+    public void setCustomer(Customer user) {
+        this.customer = user;
+    }
+    public void setAdmin(Admin user){
+        this.admin=user;
     }
 }

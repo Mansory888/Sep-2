@@ -40,6 +40,7 @@ public class LoginViewController {
         if (loginViewModel.validateLogin()){
             viewHandler.openView("main");
         }
+
     }
 
     @FXML public void RegisterButton(){

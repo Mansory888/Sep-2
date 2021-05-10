@@ -99,9 +99,11 @@ public class ClientHandler implements Runnable, PropertyChangeListener
                   passwordVerification = true;
                   Message login = new Message("Login verified", "Message");
                   if(model.getAllUsers().get(i).isAdmin()){
-                    login.setUser((Admin) model.getAllUsers().get(i));
+
+                    login.setAdmin((Admin) model.getAllUsers().get(i));
+                    System.out.println("Is admin true?: " + login.getUser().isAdmin());
                   }else{
-                    login.setUser((Customer) model.getAllUsers().get(i));
+                    login.setCustomer((Customer) model.getAllUsers().get(i));
                   }
                   String loginVerified = gson.toJson(login);
                   out.println(loginVerified);
