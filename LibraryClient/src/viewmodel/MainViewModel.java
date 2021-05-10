@@ -79,6 +79,15 @@ public class MainViewModel {
     }
 
     /**
+     * Returns if the user is admin
+     *
+     * @return id admin
+     */
+    public boolean isAdmin() {
+        return model.isAdmin();
+    }
+
+    /**
      * returns the observable list
      * @return list
      */

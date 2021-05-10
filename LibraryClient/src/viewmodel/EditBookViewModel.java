@@ -54,6 +54,15 @@ public class EditBookViewModel {
     }
 
     /**
+     * Returns if the user is admin
+     *
+     * @return id admin
+     */
+    public boolean isAdmin() {
+        return model.isAdmin();
+    }
+
+    /**
      * returns Book ID TextField
      * @return BookIDTextField
      */

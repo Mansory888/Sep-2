@@ -134,6 +134,8 @@ public class ModelManager implements Model{
         serverModel.addBookToServerLibrary(book);
     }
 
+    @Override public boolean isAdmin(){return user instanceof Admin;}
+
     /**
      * gets library books size
      * @return size

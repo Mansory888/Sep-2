@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<VBox userData="Digital Library System" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileViewController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="381.0" userData="Digital Library System" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileViewController">
    <children>
       <HBox prefHeight="67.0" prefWidth="443.0" spacing="165.0">
          <children>
@@ -71,7 +74,7 @@
       </HBox>
       <HBox prefHeight="72.0" prefWidth="382.0" spacing="100.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#ManageButton" prefHeight="42.0" prefWidth="356.0" text="Manage Library">
+            <Button fx:id="ManageLibraryButtonID" mnemonicParsing="false" onAction="#ManageButton" prefHeight="42.0" prefWidth="356.0" text="Manage Library">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" top="10.0" />
                </HBox.margin>

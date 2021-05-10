@@ -20,6 +20,7 @@ public interface Model {
     boolean getVerifyLogin();
     void setVerifyLogin(boolean value);
     void addBookToServerLibrary(Book book);
+    boolean isAdmin();
 
     String getErrorLabel();
     void setErrorLabel(String label);

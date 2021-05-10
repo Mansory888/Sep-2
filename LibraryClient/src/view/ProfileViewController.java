@@ -1,6 +1,7 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import viewmodel.ProfileViewModel;
@@ -11,6 +12,7 @@ public class ProfileViewController {
     @FXML private Label RegisterLabel;
     @FXML private Label NrOfBooksLabel;
     @FXML private Label username_spot;
+    @FXML private Button ManageLibraryButtonID;
 
     private Region root;
     private ProfileViewModel profileViewModel;
@@ -29,6 +31,14 @@ public class ProfileViewController {
         UsernameLabel.textProperty().bind(profileViewModel.getUsernameLabel());
         RegisterLabel.textProperty().bind(profileViewModel.getRegisterLabel());
         NrOfBooksLabel.textProperty().bind(profileViewModel.getNrOfBooksLabel());
+
+        if (!profileViewModel.isAdmin()){
+            System.out.println(profileViewModel.isAdmin());
+            ManageLibraryButtonID.setOnAction((action) -> {
+                //Do nothing
+            });
+            ManageLibraryButtonID.setDisable(true);
+        }
 
     }
 
