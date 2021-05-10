@@ -98,8 +98,7 @@ public class ClientHandler implements Runnable, PropertyChangeListener
       }
       catch (Exception e)
       {
-        model.addLog("Client error");
-        e.printStackTrace();
+        model.addLog("Connection with the client ended.");
         close();
       }
     }
