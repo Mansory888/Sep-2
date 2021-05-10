@@ -110,4 +110,19 @@ public class LibraryClient implements ServerModel{
         String reply = gson.toJson(book);
         out.println(reply);
     }
+
+    @Override public void borrowBook(String id){
+        out.println("Borrow_book");
+        out.println(id);
+    }
+
+    @Override public void returnBook(String id){
+        out.println("Return_book");
+        out.println(id);
+    }
+
+    @Override public void removeBook(String id){
+        out.println("Remove_book");
+        out.println(id);
+    }
 }

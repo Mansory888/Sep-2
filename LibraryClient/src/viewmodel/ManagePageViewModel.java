@@ -39,6 +39,7 @@ public class ManagePageViewModel {
      */
     public void RemoveBook(){
         model.getLibraryInventory().removeBookById(IDTextFiled.get());
+        model.getServerModel().removeBook(IDTextFiled.get());
     }
 
     /**

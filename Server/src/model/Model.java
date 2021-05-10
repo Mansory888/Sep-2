@@ -13,6 +13,7 @@ public interface Model extends UnnamedPropertySubject{
     void BorrowBook(String id);
     ArrayList<UserType> getAllUsers();
     LibraryInventory getLibraryInventory();
+    UserInventory getUserInventory();
 }
 
 

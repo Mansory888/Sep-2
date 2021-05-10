@@ -20,6 +20,9 @@ public class ModelManager implements Model {
         userInventory = new UserInventory();
         users = new ArrayList<>();
         users.add(new Admin("username@gmail.com","username","Username1*"));
+//        libraryInventory.addBook(new Book("1","a",1, "1","1"));
+//        libraryInventory.addBook(new Book("2", "a", 2, "2", "2"));
+//        libraryInventory.addBook(new Book("3", "a", 3, "3", "3"));
     }
 
     @Override
@@ -73,6 +76,8 @@ public class ModelManager implements Model {
     @Override public LibraryInventory getLibraryInventory(){
         return libraryInventory;
     }
+
+    @Override public UserInventory getUserInventory() {return userInventory;}
 
 
 

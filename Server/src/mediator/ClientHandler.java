@@ -2,6 +2,7 @@ package mediator;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Preconditions;
+import com.sun.webkit.Timer;
 import javafx.application.Platform;
 import model.*;
 
@@ -51,6 +52,21 @@ public class ClientHandler implements Runnable, PropertyChangeListener
         model.addLog("Client> " + request);
 
         switch (request){
+          case "Borrow_book":
+            String id = in.readLine();
+            model.getUserInventory().addBook(model.getLibraryInventory().getBookById(id));
+            model.addLog("Book borrowed: " + id);
+            break;
+          case "Remove_book":
+            String id1 = in.readLine();
+            model.getLibraryInventory().removeBookById(id1);
+            model.addLog("Remove book: " + id1);
+            break;
+          case "Return_book":
+            String id2 = in.readLine();
+            model.getUserInventory().returnedBookById(id2);
+            model.addLog("Book returned: " + id2);
+            break;
           case "Load_Library_inventory":
             for (int i = 0; i < model.getLibraryInventory().getSize(); i++){
               Message serveReply = new Message(gson.toJson(model.getLibraryInventory().getBook(i)), "Load_library");

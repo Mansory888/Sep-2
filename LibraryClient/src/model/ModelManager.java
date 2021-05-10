@@ -49,11 +49,14 @@ public class ModelManager implements Model{
      */
     @Override public void addBookToLibrary(Book book){
         libraryInventory.addBook(book);
+        serverModel.addBookToServerLibrary(book);
     }
+
     @Override
     public Object getUser() {
         return user;
     }
+
     @Override
     public void setUser(Object user) {
         this.user = user;
@@ -65,6 +68,7 @@ public class ModelManager implements Model{
      */
     @Override public void BorrowBook(String id){
         userInventory.addBook(libraryInventory.getBookById(id));
+        serverModel.borrowBook(id);
     }
 
     /**
@@ -100,6 +104,7 @@ public class ModelManager implements Model{
      */
     @Override public void setBookReturned(String id){
         userInventory.returnedBookById(id);
+        serverModel.returnBook(id);
     }
 
     /**
@@ -130,11 +135,9 @@ public class ModelManager implements Model{
 
     @Override public void setErrorLabel(String label){ErrorLabel = label;}
 
-    @Override public void addBookToServerLibrary(Book book){
-        serverModel.addBookToServerLibrary(book);
-    }
-
     @Override public boolean isAdmin(){return user instanceof Admin;}
+
+    @Override public ServerModel getServerModel(){return serverModel;}
 
     /**
      * gets library books size
