@@ -21,6 +21,7 @@ public interface Model {
     void setVerifyLogin(boolean value);
     boolean isAdmin();
     ServerModel getServerModel();
+    void loadBooksToLibrary(Book book);
 
     String getErrorLabel();
     void setErrorLabel(String label);

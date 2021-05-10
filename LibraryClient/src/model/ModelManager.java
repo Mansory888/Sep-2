@@ -139,6 +139,10 @@ public class ModelManager implements Model{
 
     @Override public ServerModel getServerModel(){return serverModel;}
 
+    @Override public void loadBooksToLibrary(Book book){
+        libraryInventory.addBook(book);
+    }
+
     /**
      * gets library books size
      * @return size

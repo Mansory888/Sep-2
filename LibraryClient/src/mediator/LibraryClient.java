@@ -57,7 +57,7 @@ public class LibraryClient implements ServerModel{
         switch (m.getType()){
             case "Load_library":
                 Book book = gson.fromJson(m.getMessage(), Book.class);
-                model.addBookToLibrary(book);
+                model.loadBooksToLibrary(book);
                 break;
 
         }
