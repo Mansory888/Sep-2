@@ -13,7 +13,7 @@ public interface Model {
     String getUserRegistrationDate();
     public void setBookReturned(String id);
     public boolean getIsReturned(String id);
-    public void Login(String username, String password);
+    boolean Login(String username, String password);
     void Register(UserType User);
     void setUser(Object user);
     Object getUser();
@@ -34,5 +34,4 @@ public interface Model {
     Book getUserBookByIndex(int index);
     UserInventory getUserInventory();
     Book getUserBookByID(String id);
-    ServerModel getServerModel();
 }

@@ -16,7 +16,6 @@ public class LoginViewController {
     private Region root;
     private LoginViewModel loginViewModel;
     private ViewHandler viewHandler;
-
     public LoginViewController(){
 
     }
@@ -29,16 +28,6 @@ public class LoginViewController {
         LoginUsername.textProperty().bindBidirectional(loginViewModel.getLoginUsername());
         LoginPassword.textProperty().bindBidirectional(loginViewModel.getLoginPassword());
         ErrorLabel.textProperty().bind(loginViewModel.getErrorLabel());
-        loginViewModel.loginVerifiedProperty().addListener((obs,oldvalue,newvalue)->{
-                if(!newvalue) {
-                    if(!LoginButton()){
-                        LoginButton();
-
-                    }
-
-                }
-
-        });
     }
 
     public Region getRoot(){return root;}
@@ -47,12 +36,12 @@ public class LoginViewController {
         loginViewModel.clear();
     }
 
-    @FXML public boolean LoginButton(){
-        boolean identifier = loginViewModel.validateLogin();
-        if (identifier){
+    @FXML public void LoginButton(){
+        if (loginViewModel.validateLogin()){
             viewHandler.openView("main");
+        }else{
+            System.out.println("Login is not correct");
         }
-        return identifier;
     }
 
     @FXML public void RegisterButton(){

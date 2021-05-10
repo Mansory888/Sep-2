@@ -77,16 +77,20 @@ public class ClientHandler implements Runnable, PropertyChangeListener
                   }
                   String loginVerified = gson.toJson(login);
                   out.println(loginVerified);
+                  break;
                 }
               }
             }
 
-            if (usernameVerification = false){
+            if (!usernameVerification){
               String wrongUsername = gson.toJson(new Message("Wrong Username", "Message"));
               out.println(wrongUsername);
-            } else if (passwordVerification = false){
+            } else if (!passwordVerification){
               String wrongPassword = gson.toJson(new Message("Wrong Password", "Message"));
               out.println(wrongPassword);
+            }else{
+              String shouldNotReachHere = gson.toJson(new Message("Wrong statement","Message"));
+              out.println(shouldNotReachHere);
             }
             break;
 

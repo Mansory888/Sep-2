@@ -109,8 +109,9 @@ public class ModelManager implements Model{
      */
     @Override public boolean getIsReturned(String id){return userInventory.getBookById(id).getIsReturned();}
 
-    @Override public void Login(String username, String password){
-        serverModel.Login(username, password);
+    @Override public boolean Login(String username, String password){
+
+        return serverModel.Login(username, password);
     }
 
     @Override public void Register(UserType user){
@@ -128,10 +129,6 @@ public class ModelManager implements Model{
     @Override public String getErrorLabel(){return ErrorLabel;}
 
     @Override public void setErrorLabel(String label){ErrorLabel = label;}
-
-    @Override public ServerModel getServerModel(){
-        return serverModel;
-    }
 
     /**
      * gets library books size

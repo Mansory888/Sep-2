@@ -23,7 +23,7 @@ public class LibraryClient implements ServerModel{
     private PrintWriter out;
     private Model model;
     private Gson gson;
-    private PropertyChangeSupport property;
+    private ClientReceiver clientReceiver;
 
 
     /**
@@ -40,11 +40,7 @@ public class LibraryClient implements ServerModel{
 
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
-
-            property = new PropertyChangeSupport(this);
-            ClientReceiver clientReceiver = new ClientReceiver(this, in);
-            Thread t1 = new Thread(clientReceiver, "");
-            t1.start();
+            clientReceiver = new ClientReceiver(this, in);
 
         } catch (Exception e){
 
@@ -62,7 +58,6 @@ public class LibraryClient implements ServerModel{
         if(m.getType().equals("Message")){
             if(m.getMessage().equals("Login verified")){
                 model.setUser(m.getUser());
-                property.firePropertyChange("login",null,model);
             } else if(m.getMessage().equals("Wrong Username")){
                 model.setErrorLabel("Wrong Username");
             } else if(m.getMessage().equals("Wrong Password")){
@@ -78,10 +73,23 @@ public class LibraryClient implements ServerModel{
      * @param username the username
      * @param password the password
      */
-    @Override public void Login(String username, String password){
+    @Override public boolean Login(String username, String password){
         out.println("Login");
         out.println(username);
         out.println(password);
+
+        try {
+            String readLine = in.readLine();
+             Message m = gson.fromJson(readLine,Message.class);
+             if(m.getUser()!=null){
+                 Thread t1 = new Thread(clientReceiver, "");
+                 t1.start();
+                 return true;
+             }
+        }catch (Exception e){
+            return false;
+        }
+        return false;
     }
 
     @Override public void Register (UserType User){

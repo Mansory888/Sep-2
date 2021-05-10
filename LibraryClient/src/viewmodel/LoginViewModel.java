@@ -17,9 +17,7 @@ public class LoginViewModel {
     private StringProperty LoginUsername;
     private StringProperty LoginPassword;
     private StringProperty ErrorLabel;
-    private BooleanProperty loginVerified;
     private Model model;
-    private int loginVerifyX2 = 1;
 
 
 
@@ -33,7 +31,6 @@ public class LoginViewModel {
         LoginUsername = new SimpleStringProperty();
         LoginPassword = new SimpleStringProperty();
         ErrorLabel = new SimpleStringProperty();
-        loginVerified = new SimpleBooleanProperty();
     }
 
     /**
@@ -47,18 +44,13 @@ public class LoginViewModel {
     /**
      * method to validate the login
      */
-    public synchronized boolean validateLogin(){
-            loginVerified.set(true);
+    public boolean validateLogin(){
 
-        model.Login(LoginUsername.get(), LoginPassword.get());
-        if(model.getUser()!=null){
+        if(model.Login(LoginUsername.get(), LoginPassword.get())){
             model.setUsername(LoginUsername.get());
-            loginVerified.set(true);
-            return loginVerified.getValue();
+            return true;
         }
-        ErrorLabel.set(model.getErrorLabel());
-            loginVerified.set(false);
-        return loginVerified.getValue();
+        return false;
     }
 
     /**
@@ -78,12 +70,5 @@ public class LoginViewModel {
      * @return ErrorLabel
      */
     public StringProperty getErrorLabel(){return ErrorLabel;}
-    public boolean isLoginVerified() {
-        return loginVerified.get();
-    }
-
-    public BooleanProperty loginVerifiedProperty() {
-        return loginVerified;
-    }
 
 }
