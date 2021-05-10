@@ -55,15 +55,7 @@ public class LibraryClient implements ServerModel{
     public void receive(String s) throws IOException {
         Message m = gson.fromJson(s, Message.class);
 
-        if(m.getType().equals("Message")){
-            if(m.getMessage().equals("Login verified")){
-                model.setUser(m.getUser());
-            } else if(m.getMessage().equals("Wrong Username")){
-                model.setErrorLabel("Wrong Username");
-            } else if(m.getMessage().equals("Wrong Password")){
-                model.setErrorLabel("Wrong Password");
-            }
-        }
+
 
     }
 
@@ -81,11 +73,18 @@ public class LibraryClient implements ServerModel{
         try {
             String readLine = in.readLine();
              Message m = gson.fromJson(readLine,Message.class);
-             if(m.getUser()!=null){
-                 Thread t1 = new Thread(clientReceiver, "");
-                 t1.start();
-                 return true;
-             }
+            if(m.getType().equals("Message")){
+                if(m.getMessage().equals("Login verified")){
+                    model.setUser(m.getUser());
+                    Thread t1 = new Thread(clientReceiver, "");
+                    t1.start();
+                    return true;
+                } else if(m.getMessage().equals("Wrong Username")){
+                    model.setErrorLabel("Wrong Username");
+                } else if(m.getMessage().equals("Wrong Password")){
+                    model.setErrorLabel("Wrong Password");
+                }
+            }
         }catch (Exception e){
             return false;
         }

@@ -89,8 +89,7 @@ public class ClientHandler implements Runnable, PropertyChangeListener
               String wrongPassword = gson.toJson(new Message("Wrong Password", "Message"));
               out.println(wrongPassword);
             }else{
-              String shouldNotReachHere = gson.toJson(new Message("Wrong statement","Message"));
-              out.println(shouldNotReachHere);
+//          party
             }
             break;
 
