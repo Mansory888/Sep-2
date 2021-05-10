@@ -50,6 +50,7 @@ public class LoginViewModel {
             model.setUsername(LoginUsername.get());
             return true;
         }
+        ErrorLabel.set(model.getErrorLabel());
         return false;
     }
 

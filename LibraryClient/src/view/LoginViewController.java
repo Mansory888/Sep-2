@@ -39,8 +39,6 @@ public class LoginViewController {
     @FXML public void LoginButton(){
         if (loginViewModel.validateLogin()){
             viewHandler.openView("main");
-        }else{
-            System.out.println("Login is not correct");
         }
     }
 
