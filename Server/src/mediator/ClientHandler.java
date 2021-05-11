@@ -101,7 +101,6 @@ public class ClientHandler implements Runnable, PropertyChangeListener
                   if(model.getAllUsers().get(i).isAdmin()){
 
                     login.setAdmin((Admin) model.getAllUsers().get(i));
-                    System.out.println("Is admin true?: " + login.getUser().isAdmin());
                   }else{
                     login.setCustomer((Customer) model.getAllUsers().get(i));
                   }
