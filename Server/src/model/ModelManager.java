@@ -46,6 +46,22 @@ public class ModelManager implements Model {
         return nrOfUsers;
     }
 
+    @Override public void returnBook(String id, String username){
+        for (int i = 0; i < users.size(); i++){
+            if (users.get(i).getUsername().equals(username)){
+                users.get(i).getUserInventory().returnedBookById(id);
+            }
+        }
+    }
+
+    @Override public void borrowBook(String id, String username){
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(username)) {
+                users.get(i).getUserInventory().addBook(libraryInventory.getBookById(id));
+            }
+        }
+    }
+
 
     /**
      * adds a book to library inventory
@@ -63,13 +79,6 @@ public class ModelManager implements Model {
     @Override
     public void addUser(UserType user) { users.add(user); }
 
-    /**
-     * Borrows a book from library by id
-     *
-     * @param id id
-     */
-    @Override
-    public void BorrowBook(String id) { userInventory.addBook(libraryInventory.getBookById(id)); }
 
     @Override public ArrayList<UserType> getAllUsers(){return users;}
 

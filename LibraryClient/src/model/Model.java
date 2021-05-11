@@ -19,6 +19,7 @@ public interface Model {
     boolean isAdmin();
     ServerModel getServerModel();
     void loadBooksToLibrary(Book book);
+    void returnBook(String id);
 
     String getErrorLabel();
     void setErrorLabel(String label);

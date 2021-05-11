@@ -57,7 +57,7 @@ public class UserInventoryViewModel {
      * method to return the book to the library
      */
     public void ReturnBook(String id){
-        model.getUserInventory().returnedBookById(id);
+        model.returnBook(id);
         update();
     }
 

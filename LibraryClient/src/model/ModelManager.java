@@ -140,6 +140,11 @@ public class ModelManager implements Model{
         libraryInventory.addBook(book);
     }
 
+    @Override public void returnBook(String id){
+        userInventory.returnedBookById(id);
+        serverModel.returnBook(id);
+    }
+
     /**
      * gets library books size
      * @return size

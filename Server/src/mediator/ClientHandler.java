@@ -54,7 +54,9 @@ public class ClientHandler implements Runnable, PropertyChangeListener
         switch (request){
           case "Borrow_book":
             String id = in.readLine();
-            model.getUserInventory().addBook(model.getLibraryInventory().getBookById(id));
+            String username1 = in.readLine();
+            model.borrowBook(id,username1);
+            System.out.println("gay0");
             model.addLog("Book borrowed: " + id);
             break;
           case "Remove_book":
@@ -64,7 +66,8 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             break;
           case "Return_book":
             String id2 = in.readLine();
-            model.getUserInventory().returnedBookById(id2);
+            String username2 = in.readLine();
+            model.returnBook(id2, username2);
             model.addLog("Book returned: " + id2);
             break;
           case "Load_Library_inventory":

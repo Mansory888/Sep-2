@@ -90,6 +90,7 @@ public class LibraryClient implements ServerModel{
                     Thread t1 = new Thread(clientReceiver, "");
                     t1.start();
                     out.println("Load_Library_inventory");
+                    model.getUserInventory().getBooks().addAll(m.getUser().getUserInventory().getBooks());
                     return true;
                 } else if(m.getMessage().equals("Wrong Username")){
                     model.setErrorLabel("Wrong Username");
@@ -118,11 +119,13 @@ public class LibraryClient implements ServerModel{
     @Override public void borrowBook(String id){
         out.println("Borrow_book");
         out.println(id);
+        out.println(model.getUsername());
     }
 
     @Override public void returnBook(String id){
         out.println("Return_book");
         out.println(id);
+        out.println(model.getUsername());
     }
 
     @Override public void removeBook(String id){
