@@ -11,6 +11,7 @@ public abstract class UserType {
     private String email;
     private String username;
     private String password;
+    private UserInventory userInventory;
 
 
     /**
@@ -44,6 +45,7 @@ public abstract class UserType {
             this.email = email;
             this.username = username;
             this.password = password;
+            this.userInventory = new UserInventory();
         }else{
             throw  new IllegalArgumentException("One or more fields are left empty.");
         }
@@ -73,5 +75,14 @@ public abstract class UserType {
      * @return is admin
      */
     public abstract boolean isAdmin();
+
+    /**
+     * returning the user's library
+     * @return user library
+     */
+    public UserInventory getUserInventory(){
+        return userInventory;
+    }
+
 
 }
