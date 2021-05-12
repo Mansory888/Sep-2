@@ -70,7 +70,6 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             String id = in.readLine();
             String username1 = in.readLine();
             model.borrowBook(id,username1);
-            System.out.println("gay0");
             model.addLog("Book borrowed: " + id);
             break;
           case "Remove_book":
