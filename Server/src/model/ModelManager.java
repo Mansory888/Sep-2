@@ -26,9 +26,10 @@ public class ModelManager implements Model {
         libraryInventory = new LibraryInventory();
         users = new ArrayList<>();
         users.add(new Admin("username@gmail.com","username","Username1*"));
-        libraryInventory.addBook(new Book("1","a",1, "1","1"));
-        libraryInventory.addBook(new Book("2", "a", 2, "2", "2"));
-        libraryInventory.addBook(new Book("3", "a", 3, "3", "3"));
+        libraryInventory.addBook(new Book("The Lean Startup","Eric Ries",2011, "1","The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses is a book by Eric Ries describing his proposed lean startup strategy for startup companies. " +
+                "Ries developed the idea for the lean startup from his experiences as a startup advisor, employee, and founder."));
+        libraryInventory.addBook(new Book("Zero to One", "Blake Masters", 2014, "2", "Zero to One: Notes on Startups, or How to Build the Future is a 2014 book by the American entrepreneur and investor Peter Thiel co-written with Blake Masters."));
+        libraryInventory.addBook(new Book("The $100 Startup", "Chris Guillebeau", 2012, "3", "Here, Chris Guillebeau shows you how to lead a life of adventure, meaning and purpose--and earn a good living. Still in his early thirties, Chris has traveled around the world--and yet he's never held a real job"));
     }
 
     /**
