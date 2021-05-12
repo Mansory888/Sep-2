@@ -13,3 +13,4 @@
 12: Waiting for a client... 11/05/2021 22:27:12
 13: Client> Login 11/05/2021 22:27:21
 14: Client> Load_Library_inventory 11/05/2021 22:27:21
+15: Connection with the client ended. 11/05/2021 22:28:12

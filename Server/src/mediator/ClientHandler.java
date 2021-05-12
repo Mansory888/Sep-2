@@ -14,6 +14,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class ClientHandler implements Runnable, PropertyChangeListener
 {
   private Socket socket;
@@ -25,6 +30,12 @@ public class ClientHandler implements Runnable, PropertyChangeListener
   private String clientName = "";
   private String request;
 
+  /**
+   * Creates a Client Handler
+   * @param socket socket
+   * @param model model
+   * @throws IOException exception
+   */
   public ClientHandler(Socket socket, Model model)
       throws IOException
   {
@@ -39,6 +50,9 @@ public class ClientHandler implements Runnable, PropertyChangeListener
     this.out = new PrintWriter(socket.getOutputStream(), true);
   }
 
+  /**
+   * A method to implement the Runnable interface and start the communication protocol
+   */
   @Override
   public void run()
   {
@@ -136,7 +150,10 @@ public class ClientHandler implements Runnable, PropertyChangeListener
     }
     close();
   }
-  
+
+  /**
+   * A method to close the server
+   */
   public void close()
   {
     running = false;
@@ -152,6 +169,10 @@ public class ClientHandler implements Runnable, PropertyChangeListener
     }
   }
 
+  /**
+   * A method that implements property change listener
+   * @param evt event
+   */
   @Override
   public void propertyChange(PropertyChangeEvent evt)
   {

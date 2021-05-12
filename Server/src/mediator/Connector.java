@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class Connector implements Runnable
 {
   private final int PORT = 6789;
@@ -13,11 +18,18 @@ public class Connector implements Runnable
   private boolean running;
   private ServerSocket welcomeSocket;
 
+  /**
+   * Creates a connector
+   * @param model model
+   */
   public Connector(Model model)
   {
     this.model = model;
   }
 
+  /**
+   * A method to implement the Runnable interface
+   */
   @Override public void run()
   {
     try
@@ -46,6 +58,9 @@ public class Connector implements Runnable
     }
   }
 
+  /**
+   * A method to close the connection
+   */
   public void close()
   {
     running = false;

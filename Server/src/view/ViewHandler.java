@@ -6,6 +6,11 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import viewmodel.ViewModelFactory;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class ViewHandler
 {
   private Stage primaryStage;
@@ -13,11 +18,19 @@ public class ViewHandler
   private ViewModelFactory viewModelFactory;
   private LogViewController logViewController;
 
+  /**
+   * Creates a view Handler
+   * @param viewModelFactory view model factory
+   */
   public ViewHandler(ViewModelFactory viewModelFactory)
   {
     this.viewModelFactory = viewModelFactory;
   }
 
+  /**
+   * Starts the primary stage
+   * @param primaryStage primary stage
+   */
   public void start(Stage primaryStage)
   {
     this.primaryStage = primaryStage;
@@ -25,6 +38,10 @@ public class ViewHandler
     openView("log");
   }
 
+  /**
+   * A method to open view based on the view id
+   * @param id view id
+   */
   public void openView(String id)
   {
     Region root = null;
@@ -49,7 +66,11 @@ public class ViewHandler
   }
 
 
-
+  /**
+   * Returns the log view
+   * @param fxmlFile fxml file
+   * @return log view
+   */
   private Region loadLogView(String fxmlFile)
   {
     if (logViewController == null)

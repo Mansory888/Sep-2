@@ -6,8 +6,17 @@ import model.ModelManager;
 import view.ViewHandler;
 import viewmodel.ViewModelFactory;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class MyApplication extends Application
 {
+  /**
+   * A method to start the server
+   * @param primaryStage primary stage
+   */
   public void start(Stage primaryStage)
   {
 
