@@ -10,6 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import viewmodel.InspectBookViewModel;
 
+
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class InspectBookViewController {
     @FXML private TextField BookIDTextField;
     @FXML private Label BookTitle;
@@ -26,6 +32,13 @@ public class InspectBookViewController {
     private ViewState viewState;
 
 
+    /**
+     *  Initializes the Inspect Book Controller
+     * @param viewHandler view handler
+     * @param inspectBookViewModel inspect book view model
+     * @param root root
+     * @param viewState view state
+     */
     public void init(ViewHandler viewHandler, InspectBookViewModel inspectBookViewModel, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.inspectBookViewModel = inspectBookViewModel;
@@ -55,12 +68,24 @@ public class InspectBookViewController {
     }
 
 
+    /**
+     * Returns the root
+     *
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){
         inspectBookViewModel.clear(viewState.getSelectedBook());
     }
 
+
+    /**
+     * Cancel button
+     */
     @FXML public void CancelButton(){
         viewHandler.openView("main");
         viewState.setSelectedBook("");

@@ -9,6 +9,11 @@ import model.Book;
 import viewmodel.BookModel;
 import viewmodel.UserInventoryViewModel;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class UserInventoryViewController {
     @FXML private Label username_spot;
     @FXML private TextField search_textfield;
@@ -31,6 +36,13 @@ public class UserInventoryViewController {
 
     }
 
+    /**
+     * Initializes the User Inventory Controller
+     * @param viewHandler view handler
+     * @param userInventoryViewModel user inventory  view model
+     * @param root root
+     * @param viewState view state
+     */
     public void init(ViewHandler viewHandler, UserInventoryViewModel userInventoryViewModel, Region root, ViewState viewState){
         this.viewHandler = viewHandler;
         this.userInventoryViewModel = userInventoryViewModel;
@@ -47,9 +59,7 @@ public class UserInventoryViewController {
         BorrowDateCollum.setCellValueFactory(celldata -> celldata.getValue().getBorrowDate());
         ReturnDateCollum.setCellValueFactory(celldata -> celldata.getValue().getReturnDate());
 
-        //main_table.setItems(userInventoryViewModel.getList());
-
-        //CAUTION super code that does real time searching for everything form an indian guy on YT
+       // search function
         FilteredList<BookModel> filteredData = new FilteredList<>(userInventoryViewModel.getList(), b -> true);
 
         search_textfield.textProperty().addListener(((observable, oldValue, newValue) ->{
@@ -98,22 +108,45 @@ public class UserInventoryViewController {
 
     }
 
+    /**
+     * Returns the root
+     *
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){userInventoryViewModel.clear();}
 
+    /**
+     * A method to load the table
+     */
     public void load(){userInventoryViewModel.update();}
 
+    /**
+     * A method to set name
+     */
     public void setName(){
         userInventoryViewModel.setName();
     }
 
+    /**
+     * Button to go to the main window
+     */
     @FXML public void home_button(){
         viewHandler.openView("main");
     }
 
+    /**
+     * Button to go to profile window
+     */
     @FXML public void Profile_button(){viewHandler.openView("profile");}
 
+    /**
+     * Button to return book
+     */
     @FXML public void ReturnButton(){
         BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
         userInventoryViewModel.ReturnBook(selectedItem.getBookID().get());

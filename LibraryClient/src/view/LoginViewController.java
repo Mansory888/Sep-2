@@ -8,6 +8,11 @@ import javafx.scene.layout.Region;
 import viewmodel.LoginViewModel;
 
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class LoginViewController {
     @FXML private TextField LoginUsername;
     @FXML private PasswordField LoginPassword;
@@ -20,6 +25,12 @@ public class LoginViewController {
 
     }
 
+    /**
+     * Initializes the Login Controller
+     * @param viewHandler view handler
+     * @param loginViewModel login view model
+     * @param root root
+     */
     public void init(ViewHandler viewHandler, LoginViewModel loginViewModel, Region root){
         this.viewHandler = viewHandler;
         this.loginViewModel = loginViewModel;
@@ -30,12 +41,23 @@ public class LoginViewController {
         ErrorLabel.textProperty().bind(loginViewModel.getErrorLabel());
     }
 
+    /**
+     * Returns the root
+     *
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){
         loginViewModel.clear();
     }
 
+    /**
+     * Button to login
+     */
     @FXML public void LoginButton(){
         if (loginViewModel.validateLogin()){
             viewHandler.openView("main");
@@ -43,6 +65,9 @@ public class LoginViewController {
 
     }
 
+    /**
+     * Button to go to the register window
+     */
     @FXML public void RegisterButton(){
         viewHandler.openView("register");
     }

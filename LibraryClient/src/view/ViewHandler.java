@@ -6,6 +6,11 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import viewmodel.ViewModelFactory;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class ViewHandler {
     private Stage primaryStage;
     private Scene currentScene;
@@ -21,18 +26,30 @@ public class ViewHandler {
     private EditBookViewController editBookViewController;
     private ViewState viewState;
 
+    /**
+     * Creates a view Handler
+     * @param viewModelFactory view model factory
+     */
     public ViewHandler(ViewModelFactory viewModelFactory){
         this.viewModelFactory = viewModelFactory;
         this.currentScene = new Scene(new Region());
         viewState=new ViewState();
     }
 
+    /**
+     * Starts the primary stage
+     * @param primaryStage primary stage
+     */
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         openView("login");
 
     }
 
+    /**
+     * A method to open view by id
+     * @param id id
+     */
     public void openView(String id){
         Region root = null;
 
@@ -79,10 +96,16 @@ public class ViewHandler {
         primaryStage.show();
     }
 
-
-
+    /**
+     * A method to close the view
+     */
     public void closeView(){primaryStage.close();}
 
+    /**
+     * Returns the MainView root
+     * @param fxmFile fxmFile
+     * @return MainView root
+     */
     private Region loadMainView(String fxmFile){
         Region root = null;
         if(mainViewController == null){
@@ -105,6 +128,11 @@ public class ViewHandler {
 
     }
 
+    /**
+     * Returns the ProfileView root
+     * @param fxmFile fxmFile
+     * @return ProfileView root
+     */
     private Region loadProfileView(String fxmFile){
         Region root = null;
         if(profileViewController == null){
@@ -126,7 +154,11 @@ public class ViewHandler {
 
     }
 
-
+    /**
+     * Returns the UserInventoryView root
+     * @param fxmFile fxmFile
+     * @return UserInventoryView root
+     */
     private Region loadUserInventoryView(String fxmFile){
         Region root = null;
         if(userInventoryViewController == null){
@@ -149,7 +181,11 @@ public class ViewHandler {
 
     }
 
-
+    /**
+     * Returns the AddBookView root
+     * @param fxmFile fxmFile
+     * @return AddBookView root
+     */
     private Region loadAddBookView(String fxmFile){
         Region root = null;
         if(addBookViewController == null){
@@ -170,7 +206,11 @@ public class ViewHandler {
 
     }
 
-
+    /**
+     * Returns the ManagePageView root
+     * @param fxmFile fxmFile
+     * @return ManagePageView root
+     */
     private Region loadManagePageView(String fxmFile){
         Region root = null;
         if(managePageViewController == null){
@@ -192,7 +232,11 @@ public class ViewHandler {
 
     }
 
-
+    /**
+     * Returns the LoginView root
+     * @param fxmFile fxmFile
+     * @return LoginView root
+     */
     private Region loadLoginView(String fxmFile){
         Region root = null;
         if(loginViewController == null){
@@ -213,7 +257,11 @@ public class ViewHandler {
 
     }
 
-
+    /**
+     * Returns the RegisterView root
+     * @param fxmFile fxmFile
+     * @return RegisterView root
+     */
     private Region loadRegisterView(String fxmFile){
         Region root = null;
         if(registerViewController == null){
@@ -234,6 +282,11 @@ public class ViewHandler {
 
     }
 
+    /**
+     * Returns the InspectBookView root
+     * @param fxmFile fxmFile
+     * @return InspectBookView root
+     */
     private Region loadInspectBookView(String fxmFile){
         Region root = null;
         if(inspectBookViewController == null){
@@ -254,6 +307,11 @@ public class ViewHandler {
 
     }
 
+    /**
+     * Returns the EditBookView root
+     * @param fxmFile fxmFile
+     * @return EditBookView root
+     */
     private Region loadEditBookView(String fxmFile){
         Region root = null;
         if(editBookViewController == null){

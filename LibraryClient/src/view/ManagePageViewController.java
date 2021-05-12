@@ -6,6 +6,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import viewmodel.ManagePageViewModel;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
 
 public class ManagePageViewController {
     @FXML private TextField IDTextFiled;
@@ -20,6 +24,12 @@ public class ManagePageViewController {
 
     }
 
+    /**
+     * Initializes the Manage Page Controller
+     * @param viewHandler view handler
+     * @param managePageViewModel mange page view model
+     * @param root root
+     */
     public void init(ViewHandler viewHandler, ManagePageViewModel managePageViewModel, Region root) {
         this.viewHandler = viewHandler;
         this.managePageViewModel = managePageViewModel;
@@ -30,28 +40,54 @@ public class ManagePageViewController {
         username_spot.textProperty().bind(managePageViewModel.getUsername_spot());
     }
 
+    /**
+     * Returns the root
+     *
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){
         managePageViewModel.clear();
     }
 
+    /**
+     * A method to set name
+     */
     public void setName(){
         managePageViewModel.setName();
     }
 
+    /**
+     * Button to go to add book window
+     */
     @FXML public void AddBookButton(){viewHandler.openView("addBook");}
 
+    /**
+     * Button to go to profile window
+     */
     @FXML public void Profile_button(){viewHandler.openView("profile");}
 
+    /**
+     * Button to go to the main window
+     */
     @FXML public void home_button(){
         viewHandler.openView("main");
     }
 
+    /**
+     * Button to remove book
+     */
     @FXML public void RemoveSubmitButton(){
         managePageViewModel.RemoveBook();
     }
 
+    /**
+     * Button to give admin privileges
+     */
     @FXML public void AdminSubmitButton(){
         managePageViewModel.giveAdmin();
     }

@@ -50,17 +50,27 @@ public class ModelManager implements Model{
         serverModel.addBookToServerLibrary(book);
     }
 
-    @Override
-    public UserType getUser() {
+    /**
+     * Returns user
+     * @return user
+     */
+    @Override public UserType getUser() {
         return user;
     }
 
-    @Override
-    public void setAdmin(Admin user) {
+    /**
+     * A method to set admin
+     * @param user user
+     */
+    @Override public void setAdmin(Admin user) {
         this.user = user;
     }
-    @Override
-    public void setCustomer(Customer user){
+
+    /**
+     * A method to set customer
+     * @param user user
+     */
+    @Override public void setCustomer(Customer user){
         this.user=user;
     }
 
@@ -116,30 +126,60 @@ public class ModelManager implements Model{
      */
     @Override public boolean getIsReturned(String id){return userInventory.getBookById(id).getIsReturned();}
 
+    /**
+     * A method to verify login
+     * @param username username
+     * @param password password
+     * @return login verification
+     */
     @Override public boolean Login(String username, String password){
-
         return serverModel.Login(username, password);
     }
 
+    /**
+     * A method to register
+     * @param user user
+     */
     @Override public void Register(UserType user){
         serverModel.Register(user);
     }
 
-
-
+    /**
+     * A method to get error Label
+     * @return error label
+     */
     @Override public String getErrorLabel(){return ErrorLabel;}
 
+    /**
+     * A method to set the error Label
+     * @param label error label
+     */
     @Override public void setErrorLabel(String label){ErrorLabel = label;}
 
-    @Override public boolean isAdmin(){
-        return user.isAdmin();}
+    /**
+     * Returns if its admin or no
+     * @return true of false
+     */
+    @Override public boolean isAdmin(){ return user.isAdmin();}
 
+    /**
+     * Returns server model
+     * @return server model
+     */
     @Override public ServerModel getServerModel(){return serverModel;}
 
+    /**
+     * A method to load books to library from server
+     * @param book book
+     */
     @Override public void loadBooksToLibrary(Book book){
         libraryInventory.addBook(book);
     }
 
+    /**
+     * A method to returns books by id
+     * @param id id
+     */
     @Override public void returnBook(String id){
         userInventory.returnedBookById(id);
         serverModel.returnBook(id);

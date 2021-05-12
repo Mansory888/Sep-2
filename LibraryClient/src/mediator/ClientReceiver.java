@@ -13,8 +13,8 @@ public class ClientReceiver implements Runnable {
 
     /**
      *  Creates a client receiver
-     * @param client
-     * @param in
+     * @param client client
+     * @param in in
      */
     public ClientReceiver(LibraryClient client, BufferedReader in){
         this.in = in;

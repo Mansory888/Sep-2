@@ -7,6 +7,11 @@ import javafx.scene.layout.Region;
 import viewmodel.ProfileViewModel;
 
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class ProfileViewController {
     @FXML private Label UsernameLabel;
     @FXML private Label RegisterLabel;
@@ -22,6 +27,12 @@ public class ProfileViewController {
 
     }
 
+    /**
+     * Initializes the Profile Controller
+     * @param viewHandler view handler
+     * @param profileViewModel profile view model
+     * @param root root
+     */
     public void init(ViewHandler viewHandler, ProfileViewModel profileViewModel, Region root){
         this.viewHandler = viewHandler;
         this.profileViewModel = profileViewModel;
@@ -42,21 +53,40 @@ public class ProfileViewController {
 
     }
 
+    /**
+     * Returns the root
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){
         profileViewModel.clear();
     }
 
+    /**
+     * A method to set name
+     */
     public void setName(){
         profileViewModel.setName();
     }
 
+    /**
+     * Button to go to profile window
+     */
     @FXML public void Profile_button(){viewHandler.openView("profile");}
 
+    /**
+     * Button to go to the main window
+     */
     @FXML public void home_button(){
         viewHandler.openView("main");
     }
 
+    /**
+     * Button to go to the manage window
+     */
     @FXML public void ManageButton(){viewHandler.openView("managePage");}
 }

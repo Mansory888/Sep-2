@@ -7,6 +7,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import viewmodel.AddBookViewModel;
 
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
 
 public class AddBookViewController {
     @FXML private TextField BookIDTextField;
@@ -21,6 +25,12 @@ public class AddBookViewController {
     private ViewHandler viewHandler;
 
 
+    /**
+     * Initializes the add book controller
+     * @param viewHandler view handler
+     * @param addBookViewModel add book view model
+     * @param root root
+     */
     public void init(ViewHandler viewHandler, AddBookViewModel addBookViewModel, Region root) {
         this.viewHandler = viewHandler;
         this.addBookViewModel = addBookViewModel;
@@ -34,14 +44,27 @@ public class AddBookViewController {
         errorLabel.textProperty().bind(addBookViewModel.getErrorLabelProperty());
     }
 
+    /**
+     * Returns the root
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){
         addBookViewModel.clear();
     }
 
+    /**
+     * Cancel button
+     */
     @FXML public void CancelButton(){viewHandler.openView("managePage");}
 
+    /**
+     * Add book button
+     */
     @FXML public void AddButton(){
         addBookViewModel.addBook();
         if(errorLabel.textProperty().get().equals("")){

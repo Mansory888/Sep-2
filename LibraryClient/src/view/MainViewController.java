@@ -12,6 +12,12 @@ import javafx.scene.layout.Region;
 import viewmodel.BookModel;
 import viewmodel.MainViewModel;
 
+
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class MainViewController {
     @FXML private Label username_spot;
     @FXML private TextField search_textfield;
@@ -32,6 +38,13 @@ public class MainViewController {
 
     }
 
+    /**
+     * Initializes the add book controller
+     * @param viewHandler view handler
+     * @param mainViewModel main view model
+     * @param root root
+     * @param viewState view state
+     */
     public void init(ViewHandler viewHandler, MainViewModel mainViewModel, Region root,ViewState viewState){
         this.viewHandler = viewHandler;
         this.mainViewModel = mainViewModel;
@@ -46,9 +59,7 @@ public class MainViewController {
         YearPublishedCollum.setCellValueFactory(celldata -> celldata.getValue().getYearPublished());
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
 
-        //main_table.setItems(mainViewModel.getList());
-
-        //CAUTION super code that does real time searching for everything form an indian guy on YT
+        // Search function
         FilteredList<BookModel> filteredData = new FilteredList<>(mainViewModel.getList(), b -> true);
 
         search_textfield.textProperty().addListener(((observable, oldValue, newValue) ->{
@@ -80,7 +91,6 @@ public class MainViewController {
         main_table.setItems(sortedList);
 
 
-
         //Double click to open book
         main_table.setRowFactory( tv -> {
             TableRow<BookModel> row = new TableRow<>();
@@ -102,21 +112,39 @@ public class MainViewController {
 
     }
 
+    /**
+     * Returns the root
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to set name
+     */
     public void setName(){
         mainViewModel.setName();
     }
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){mainViewModel.clear();}
 
+    /**
+     * A method to load the table
+     */
     public void load(){mainViewModel.update();}
 
-
+    /**
+     * Button that goes to main window
+     */
     @FXML public void home_button(){
         viewHandler.openView("main");
     }
 
+    /**
+     * Button to borrow book
+     */
     @FXML public void borrow_button(){
         BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
         if(selectedItem!=null){
@@ -126,10 +154,16 @@ public class MainViewController {
         }
     }
 
+    /**
+     * Button to go to the inventory window
+     */
     @FXML public void inventory_button(){
         viewHandler.openView("inventory");
     }
 
+    /**
+     * Button to go to the profile window
+     */
     @FXML public void Profile_button(){viewHandler.openView("profile");}
 
 

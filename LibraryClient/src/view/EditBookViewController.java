@@ -12,6 +12,12 @@ import viewmodel.AddBookViewModel;
 import viewmodel.EditBookViewModel;
 import viewmodel.InspectBookViewModel;
 
+
+/**
+ * @author Nick/Rokas
+ * @version 1.0
+ */
+
 public class EditBookViewController {
     @FXML private TextField BookIDTextField;
     @FXML private TextField BookTitleTextField;
@@ -29,6 +35,13 @@ public class EditBookViewController {
     private ViewState viewState;
 
 
+    /**
+     * Initializes the Edit Book Controller
+     *
+     * @param viewHandler      view handler
+     * @param editBookViewModel editBookViewModel
+     * @param root             root
+     */
     public void init(ViewHandler viewHandler, EditBookViewModel editBookViewModel, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.editBookViewModel = editBookViewModel;
@@ -51,17 +64,31 @@ public class EditBookViewController {
     }
 
 
+    /**
+     * Returns the root
+     *
+     * @return root
+     */
     public Region getRoot(){return root;}
 
+    /**
+     * A method to reset the fields
+     */
     public void reset(){
         editBookViewModel.clear(viewState.getSelectedBook());
     }
 
+    /**
+     * Cancel button
+     */
     @FXML public void CancelButton(){
         viewHandler.openView("main");
         viewState.setSelectedBook("");
     }
 
+    /**
+     * Edit book button
+     */
     @FXML public void EditButton(){
         editBookViewModel.editBook(viewState.getSelectedBook());
         viewHandler.openView("main");

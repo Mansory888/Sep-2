@@ -8,7 +8,7 @@ import javafx.application.Application;
 public class MainServer
 {
   /**
-   * Starts the server
+   * Starts the Application
    * @param args args
    */
   public static void main(String[] args)

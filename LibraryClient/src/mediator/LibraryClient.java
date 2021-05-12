@@ -104,30 +104,50 @@ public class LibraryClient implements ServerModel{
         return false;
     }
 
+    /**
+     * A method to register
+     * @param User user
+     */
     @Override public void Register (UserType User){
         out.println("Register");
         String RegisterUser = gson.toJson(User);
         out.println(RegisterUser);
     }
 
+    /**
+     * A method to add book to server library
+     * @param book book
+     */
     @Override public void addBookToServerLibrary(Book book){
         out.println("Add_Book");
         String reply = gson.toJson(book);
         out.println(reply);
     }
 
+    /**
+     * A method to borrow book
+     * @param id id
+     */
     @Override public void borrowBook(String id){
         out.println("Borrow_book");
         out.println(id);
         out.println(model.getUsername());
     }
 
+    /**
+     * A method to return a book by id
+     * @param id id
+     */
     @Override public void returnBook(String id){
         out.println("Return_book");
         out.println(id);
         out.println(model.getUsername());
     }
 
+    /**
+     * A method to remove a book
+     * @param id id
+     */
     @Override public void removeBook(String id){
         out.println("Remove_book");
         out.println(id);
