@@ -46,11 +46,11 @@ public class EditBookViewModel {
      * method to edit book
      */
     public void editBook(String bookID){
-        //model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setId(BookIDTextField.get());
         model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setTitle(TitleField.get());
         model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setAuthor(AuthorTextField.get());
         model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setYear(Integer.parseInt(YearTextField.get()));
         model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setDescription(DescriptionTextArea.get());
+        model.getServerModel().editBook(BookIDTextField.get(),TitleField.get(), AuthorTextField.get(), YearTextField.get(), DescriptionTextArea.get());
     }
 
     /**

@@ -152,4 +152,20 @@ public class LibraryClient implements ServerModel{
         out.println("Remove_book");
         out.println(id);
     }
+
+    /**
+     * A method to edit the book
+     * @param title title
+     * @param author author
+     * @param year year
+     * @param description description
+     */
+    @Override public void editBook(String id, String title, String author, String year, String description){
+        out.println("Edit_book");
+        out.println(id);
+        out.println(title);
+        out.println(author);
+        out.println(year);
+        out.println(description);
+    }
 }
