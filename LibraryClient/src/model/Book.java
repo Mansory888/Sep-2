@@ -45,13 +45,14 @@ public class Book {
             if(patternId.matcher(id).find()){
                 throw  new IllegalArgumentException("Book ID contains characters or symbols.");
             }
+            if(year<0){
+                throw new IllegalArgumentException("Entered year is lower than 0!");
+            }
             this.description = description;
             this.title = title;
             this.author = author;
             this.id = id;
-            if(year<0){
-                throw new IllegalArgumentException("Entered year is lower than 0!");
-            }
+
             this.year = year;
             ratingCount = 0;
             rating = 0.0;
