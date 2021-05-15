@@ -26,7 +26,7 @@ public class EditBookViewController {
     @FXML private TextArea DescriptionTextArea;
     @FXML private ComboBox<Integer> RatingBox;
     private ObservableList<Integer> choiceList;
-    private String bookId;
+
 
 
     private Region root;
