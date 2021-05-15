@@ -75,7 +75,7 @@ public class ModelManager implements Model {
     @Override public void returnBook(String id, String username){
         for (int i = 0; i < users.size(); i++){
             if (users.get(i).getUsername().equals(username)){
-                users.get(i).getUserInventory().returnedBookById(id);
+                users.get(i).getUserInventory().returnBookById(id);
             }
         }
     }
