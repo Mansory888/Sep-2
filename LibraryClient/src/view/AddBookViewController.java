@@ -66,8 +66,8 @@ public class AddBookViewController {
      * Add book button
      */
     @FXML public void AddButton(){
-        addBookViewModel.addBook();
-        if(errorLabel.textProperty().get().equals("")){
+
+        if(addBookViewModel.addBook()){
         viewHandler.openView("managePage");
     }}
 }

@@ -49,7 +49,7 @@ public class AddBookViewModel {
     /**
      * method to add a book to the library
      */
-    public void addBook() {
+    public boolean addBook() {
         try {
             Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
                     BookIDTextField.get(), DescriptionTextArea.get());
@@ -58,17 +58,21 @@ public class AddBookViewModel {
                 for(int i=0;i<model.getLibraryInventory().getSize();i++){
                     if(model.getLibraryInventory().getBook(i).getId().equals(book.getId())){
                         isInInventory=true;
+                        break;
                     }
                 }
                 if(isInInventory){
                     errorLabelProperty.set("Book is already in inventory!");
+                    return false;
+
                 } else {
                     model.addBookToLibrary(book);
                     errorLabelProperty.set("");
+                    return true;
                 }
 
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
             errorLabelProperty.set("");
         }catch (NumberFormatException numberFormatException){
@@ -76,7 +80,7 @@ public class AddBookViewModel {
         } catch (IllegalArgumentException illegalArgumentException) {
             errorLabelProperty.set(illegalArgumentException.getMessage());
         }
-
+        return false;
 
 
 
