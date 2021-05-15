@@ -103,15 +103,15 @@ public class ViewHandler {
 
     /**
      * Returns the MainView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return MainView root
      */
-    private Region loadMainView(String fxmFile){
+    private Region loadMainView(String fxmlFile){
         Region root = null;
         if(mainViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 mainViewController = loader.getController();
                 mainViewController.init(this, viewModelFactory.getMainViewModel(), root,viewState);
@@ -130,15 +130,15 @@ public class ViewHandler {
 
     /**
      * Returns the ProfileView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return ProfileView root
      */
-    private Region loadProfileView(String fxmFile){
+    private Region loadProfileView(String fxmlFile){
         Region root = null;
         if(profileViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 profileViewController = loader.getController();
                 profileViewController.init(this, viewModelFactory.getProfileViewModel(), root);
@@ -156,15 +156,15 @@ public class ViewHandler {
 
     /**
      * Returns the UserInventoryView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return UserInventoryView root
      */
-    private Region loadUserInventoryView(String fxmFile){
+    private Region loadUserInventoryView(String fxmlFile){
         Region root = null;
         if(userInventoryViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 userInventoryViewController = loader.getController();
                 userInventoryViewController.init(this, viewModelFactory.getUserInventoryViewModel(), root,viewState);
@@ -183,15 +183,15 @@ public class ViewHandler {
 
     /**
      * Returns the AddBookView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return AddBookView root
      */
-    private Region loadAddBookView(String fxmFile){
+    private Region loadAddBookView(String fxmlFile){
         Region root = null;
         if(addBookViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 addBookViewController = loader.getController();
                 addBookViewController.init(this, viewModelFactory.getAddBookViewModel(), root);
@@ -208,15 +208,15 @@ public class ViewHandler {
 
     /**
      * Returns the ManagePageView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return ManagePageView root
      */
-    private Region loadManagePageView(String fxmFile){
+    private Region loadManagePageView(String fxmlFile){
         Region root = null;
         if(managePageViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 managePageViewController = loader.getController();
                 managePageViewController.init(this, viewModelFactory.getManagePageViewModel(), root);
@@ -233,16 +233,17 @@ public class ViewHandler {
     }
 
     /**
+     * 
      * Returns the LoginView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return LoginView root
      */
-    private Region loadLoginView(String fxmFile){
+    private Region loadLoginView(String fxmlFile){
         Region root = null;
         if(loginViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 loginViewController = loader.getController();
                 loginViewController.init(this, viewModelFactory.getLoginViewModel(), root);
@@ -259,15 +260,15 @@ public class ViewHandler {
 
     /**
      * Returns the RegisterView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return RegisterView root
      */
-    private Region loadRegisterView(String fxmFile){
+    private Region loadRegisterView(String fxmlFile){
         Region root = null;
         if(registerViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 registerViewController = loader.getController();
                 registerViewController.init(this, viewModelFactory.getRegisterViewModel(), root);
@@ -284,15 +285,15 @@ public class ViewHandler {
 
     /**
      * Returns the InspectBookView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return InspectBookView root
      */
-    private Region loadInspectBookView(String fxmFile){
+    private Region loadInspectBookView(String fxmlFile){
         Region root = null;
         if(inspectBookViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 inspectBookViewController = loader.getController();
                 inspectBookViewController.init(this, viewModelFactory.getInspectBookViewModel(), root, viewState);
@@ -309,15 +310,15 @@ public class ViewHandler {
 
     /**
      * Returns the EditBookView root
-     * @param fxmFile fxmFile
+     * @param fxmlFile fxmlFile
      * @return EditBookView root
      */
-    private Region loadEditBookView(String fxmFile){
+    private Region loadEditBookView(String fxmlFile){
         Region root = null;
         if(editBookViewController == null){
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(fxmFile));
+                loader.setLocation(getClass().getResource(fxmlFile));
                 root = loader.load();
                 editBookViewController = loader.getController();
                 editBookViewController.init(this, viewModelFactory.getEditBookViewModel(), root, viewState);
