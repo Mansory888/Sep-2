@@ -49,6 +49,7 @@ public class AddBookViewModel {
 
     /**
      * method to add a book to the library
+     * @return true or false.
      */
     public boolean addBook() {
         try {
