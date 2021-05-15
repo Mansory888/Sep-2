@@ -3,6 +3,7 @@ package viewmodel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Book;
+import model.LibraryInventory;
 import model.Model;
 
 /**
@@ -54,22 +55,17 @@ public class AddBookViewModel {
             Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
                     BookIDTextField.get(), DescriptionTextArea.get());
             try {
-                boolean isInInventory=false;
-                for(int i=0;i<model.getLibraryInventory().getSize();i++){
-                    if(model.getLibraryInventory().getBook(i).getId().equals(book.getId())){
-                        isInInventory=true;
-                        break;
+
+                LibraryInventory libraryInventory= model.getLibraryInventory();
+                for(int i=0;i<libraryInventory.getSize();i++){
+                    if(libraryInventory.getBook(i).getId().equals(book.getId())){
+                        errorLabelProperty.set("The Book ID already exists!");
+                        return false;
                     }
                 }
-                if(isInInventory){
-                    errorLabelProperty.set("Book is already in inventory!");
-                    return false;
-
-                } else {
                     model.addBookToLibrary(book);
                     errorLabelProperty.set("");
                     return true;
-                }
 
             } catch (Exception e) {
 
