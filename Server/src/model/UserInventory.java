@@ -80,7 +80,7 @@ public class UserInventory {
      * Sets a book as returned by id
      * @param id id
      */
-    public void returnedBookById(String id){
+    public void returnBookById(String id){
         for (int i = 0; i < books.size(); i++){
             if (books.get(i).getId().equals(id)){
                 books.get(i).setReturned();

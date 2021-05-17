@@ -1,11 +1,8 @@
 package model;
 
-import javafx.beans.binding.ObjectBinding;
-import javafx.fxml.FXML;
 import mediator.LibraryClient;
 import mediator.ServerModel;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -115,7 +112,7 @@ public class ModelManager implements Model{
      * @param id id
      */
     @Override public void setBookReturned(String id){
-        userInventory.returnedBookById(id);
+        userInventory.returnBookById(id);
         serverModel.returnBook(id);
     }
 
@@ -181,7 +178,7 @@ public class ModelManager implements Model{
      * @param id id
      */
     @Override public void returnBook(String id){
-        userInventory.returnedBookById(id);
+        userInventory.returnBookById(id);
         serverModel.returnBook(id);
     }
 
