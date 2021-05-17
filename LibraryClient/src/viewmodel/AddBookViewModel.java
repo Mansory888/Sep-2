@@ -56,17 +56,18 @@ public class AddBookViewModel {
             Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
                     BookIDTextField.get(), DescriptionTextArea.get());
             try {
-
+                boolean isInInventory = false;
                 LibraryInventory libraryInventory= model.getLibraryInventory();
                 for(int i=0;i<libraryInventory.getSize();i++){
                     if(libraryInventory.getBook(i).getId().equals(book.getId())){
                         errorLabelProperty.set("The Book ID already exists!");
-                        return false;
+                        return isInInventory;
                     }
                 }
                     model.addBookToLibrary(book);
                     errorLabelProperty.set("");
-                    return true;
+                    isInInventory=true;
+                    return isInInventory;
 
             } catch (Exception e) {
 
