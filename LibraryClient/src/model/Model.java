@@ -2,8 +2,9 @@ package model;
 
 
 import mediator.ServerModel;
+import utility.UnnamedPropertySubject;
 
-public interface Model {
+public interface Model extends UnnamedPropertySubject {
     void addBookToLibrary(Book book);
     void BorrowBook(String id);
 
@@ -20,6 +21,7 @@ public interface Model {
     ServerModel getServerModel();
     void loadBooksToLibrary(Book book);
     void returnBook(String id);
+    void fireProperty(String event, String message);
 
     String getErrorLabel();
     void setErrorLabel(String label);

@@ -1,14 +1,19 @@
 package viewmodel;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Alert;
 import model.Model;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 /**
  * @author Nick/Rokas
  * @version 1.0
  */
-public class ProfileViewModel {
+public class ProfileViewModel implements PropertyChangeListener {
     private StringProperty usernameLabel;
     private StringProperty RegisterLabel;
     private StringProperty NrOfBooksLabel;
@@ -25,9 +30,7 @@ public class ProfileViewModel {
         usernameLabel = new SimpleStringProperty();
         RegisterLabel = new SimpleStringProperty();
         NrOfBooksLabel = new SimpleStringProperty();
-
-        // should be model.get size and username and for register idk
-        RegisterLabel.set("Register: ");
+        model.addListener(this);
     }
 
     /**
@@ -78,4 +81,19 @@ public class ProfileViewModel {
      * @return username spot
      */
     public StringProperty getUsername_spot(){return username_spot;}
+
+    /**
+     * Listens for a property change
+     * @param evt event
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add book");
+            alert.setHeaderText("Added Book:");
+            alert.setContentText(evt.getNewValue() + "");
+            alert.show();
+        });
+    }
 }

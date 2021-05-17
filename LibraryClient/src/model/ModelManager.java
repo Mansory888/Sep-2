@@ -240,6 +240,31 @@ public class ModelManager implements Model{
      */
     @Override public Book getUserBookByID(String id) {return userInventory.getBookById(id);}
 
+    /**
+     * A method to add a listener
+     * @param listener listener
+     */
+    @Override public void addListener(PropertyChangeListener listener) {
+        property.addPropertyChangeListener(listener);
+    }
+
+    /**
+     * A method to remove a listener
+     * @param listener listener
+     */
+    @Override public void removeListener(PropertyChangeListener listener) {
+        property.removePropertyChangeListener(listener);
+    }
+
+    /**
+     * A method firing a property that can be called from where is a model.
+     * @param event event
+     * @param message message
+     */
+    @Override public void fireProperty(String event, String message){
+        property.firePropertyChange(event, null, message);
+    }
+
 
 
 

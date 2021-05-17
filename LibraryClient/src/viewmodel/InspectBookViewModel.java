@@ -1,14 +1,19 @@
 package viewmodel;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Alert;
 import model.Model;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 /**
  * @author Nick/Rokas
  * @version 1.0
  */
-public class InspectBookViewModel {
+public class InspectBookViewModel implements PropertyChangeListener {
     private StringProperty BookIDTextField;
     private StringProperty TitleLabel;
     private StringProperty AuthorTextField;
@@ -28,7 +33,7 @@ public class InspectBookViewModel {
         AuthorTextField = new SimpleStringProperty();
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
-
+        model.addListener(this);
     }
 
     /**
@@ -72,4 +77,19 @@ public class InspectBookViewModel {
      * @return Description TextArea
      */
     public StringProperty getDescriptionTextArea (){return DescriptionTextArea;}
+
+    /**
+     * Listens for a property change
+     * @param evt event
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add book");
+            alert.setHeaderText("Added Book:");
+            alert.setContentText(evt.getNewValue() + "");
+            alert.show();
+        });
+    }
 }

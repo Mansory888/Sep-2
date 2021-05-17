@@ -1,16 +1,21 @@
 package viewmodel;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import model.Model;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 /**
  * @author Nick/Rokas
  * @version 1.0
  */
-public class UserInventoryViewModel {
+public class UserInventoryViewModel implements PropertyChangeListener {
     private StringProperty search_textfield;
     private StringProperty username_spot;
     private ObservableList<BookModel> Userlist;
@@ -25,6 +30,7 @@ public class UserInventoryViewModel {
         search_textfield =  new SimpleStringProperty();
         username_spot = new SimpleStringProperty();
         Userlist = FXCollections.observableArrayList();
+        model.addListener(this);
 
     }
 
@@ -80,4 +86,19 @@ public class UserInventoryViewModel {
      * @return username spot
      */
     public StringProperty getUsername_spot(){return username_spot;}
+
+    /**
+     * Listens for a property change
+     * @param evt event
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add book");
+            alert.setHeaderText("Added Book:");
+            alert.setContentText(evt.getNewValue() + "");
+            alert.show();
+        });
+    }
 }

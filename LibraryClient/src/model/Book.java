@@ -200,4 +200,8 @@ public class Book {
      * @return returned
      */
     public boolean getIsReturned(){return  returned;}
+
+    @Override public String toString(){
+        return "Id: "+ id + " Title: "+ title + " Author: " + author + " Year: " + year;
+    }
 }
