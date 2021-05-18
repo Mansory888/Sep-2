@@ -61,7 +61,9 @@ public class EditBookViewModel {
      */
     public void rateBook(String bookID, int rating) {
         model.getLibraryBookByID(bookID).setRating(rating, model.getUser().getUsername());
-        model.getUserInventory().getBookById(bookID).setRating(rating, model.getUser().getUsername());
+        if(model.getUserBookByID(bookID)!=null){
+            model.getUserInventory().getBookById(bookID).setRating(rating, model.getUser().getUsername());
+        }
         model.getServerModel().rateBook(bookID, model.getUser().getUsername(), rating);
     }
 

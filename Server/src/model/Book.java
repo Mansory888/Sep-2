@@ -82,14 +82,18 @@ public class Book {
      */
     public double getRating(){
         int result = 0;
+        int index = 0;
         if (ratings == null || ratings.isEmpty()){
             return 0.0;
         } else {
             for (int i = 0; i < ratings.size(); i++) {
-                result += ratings.get(i).getRating();
+                if(ratings.get(i)!=null){
+                    result += ratings.get(i).getRating();
+                    index++;
+                }
             }
             System.out.println(ratings.toString());
-            return result/ratings.size();
+            return (double) result/index;
         }
     }
 
