@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 /**
@@ -17,8 +18,7 @@ public class Book {
     private String author;
     private String description;
     private int year;
-    private double rating;
-    private int ratingCount;
+    private ArrayList<Rating> ratings;
 
     private LocalDateTime borrowDate;
     private LocalDateTime returnDate;
@@ -54,8 +54,7 @@ public class Book {
             this.id = id;
 
             this.year = year;
-            ratingCount = 0;
-            rating = 0.0;
+            ratings = new ArrayList<>();
             borrowDate = LocalDateTime.now();
             returnDate = LocalDateTime.now();
             borrowed = false;
@@ -82,19 +81,36 @@ public class Book {
      * @return rating
      */
     public double getRating(){
-        if(ratingCount == 0){
-            return 0;
+        int result = 0;
+        if (ratings == null || ratings.isEmpty()){
+            return 0.0;
+        } else {
+            for (int i = 0; i < ratings.size(); i++) {
+                result += ratings.get(i).getRating();
+            }
+            System.out.println(ratings.toString());
+            return result/ratings.size();
         }
-        return rating/ratingCount;
     }
 
     /**
      * Sets the rating
-     * @param i the input
+     * @param rate rate
      */
-    public void setRating(int i){
-        rating =+ i;
-        ratingCount++;
+    public void setRating(int rate, String username){
+        boolean isRatedByUser = false;
+        if(ratings != null){
+            for (int i = 0; i < ratings.size(); i++) {
+                if (ratings.get(i).getUsername().equals(username)) {
+                    isRatedByUser = true;
+                    ratings.get(i).setRating(rate);
+                }
+            }
+
+            if (!isRatedByUser) {
+                ratings.add(new Rating(username, rate));
+            }
+        }
     }
 
     /**
@@ -128,7 +144,7 @@ public class Book {
         }
         Book other =(Book) obj;
         return id.equals(other.id) && title.equals(other.title) && author.equals(other.author) &&
-                description.equals(other.description) && year == other.year && rating == other.rating;
+                description.equals(other.description) && year == other.year;
     }
 
     /**
@@ -201,6 +217,10 @@ public class Book {
      */
     public boolean getIsReturned(){return  returned;}
 
+    /**
+     * Returning a string with the information about the book
+     * @return string
+     */
     @Override public String toString(){
         return "Id: "+ id + " Title: "+ title + " Author: " + author + " Year: " + year;
     }

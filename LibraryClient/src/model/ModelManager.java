@@ -3,6 +3,7 @@ package model;
 import mediator.LibraryClient;
 import mediator.ServerModel;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

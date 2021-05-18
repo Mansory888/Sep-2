@@ -47,6 +47,17 @@ public class InspectBookViewModel implements PropertyChangeListener {
         DescriptionTextArea.set(model.getLibraryBookByID(bookID).getDescription());
     }
 
+    /**
+     * A method to rate a book
+     * @param bookID book id
+     * @param rating rating
+     */
+    public void rateBook(String bookID, int rating){
+        model.getLibraryBookByID(bookID).setRating(rating, model.getUser().getUsername());
+        model.getUserInventory().getBookById(bookID).setRating(rating, model.getUser().getUsername());
+        model.getServerModel().rateBook(bookID, model.getUser().getUsername(), rating);
+    }
+
 
     /**
      * returns Book ID TextField

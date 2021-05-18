@@ -54,8 +54,19 @@ public class EditBookViewModel {
     }
 
     /**
-     * Returns if the user is admin
+     * A method to rate a book
      *
+     * @param bookID book id
+     * @param rating rating
+     */
+    public void rateBook(String bookID, int rating) {
+        model.getLibraryBookByID(bookID).setRating(rating, model.getUser().getUsername());
+        model.getUserInventory().getBookById(bookID).setRating(rating, model.getUser().getUsername());
+        model.getServerModel().rateBook(bookID, model.getUser().getUsername(), rating);
+    }
+
+    /**
+     * Returns if the user is admin
      * @return id admin
      */
     public boolean isAdmin() {

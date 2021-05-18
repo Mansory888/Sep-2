@@ -171,4 +171,11 @@ public class LibraryClient implements ServerModel{
         out.println(year);
         out.println(description);
     }
+
+    @Override public void rateBook(String id, String username, int rating){
+        out.println("Rate_book");
+        out.println(id);
+        out.println(username);
+        out.println(rating+"");
+    }
 }

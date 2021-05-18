@@ -93,6 +93,20 @@ public class ModelManager implements Model {
         }
     }
 
+    /**
+     * Rating a book in the users inventory
+     * @param rating rating
+     * @param username username
+     * @param id id
+     */
+    @Override public void rateBookInUserInventory(int rating, String username, String id){
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(username)) {
+                users.get(i).getUserInventory().getBookById(id).setRating(rating, username);
+            }
+        }
+    }
+
 
     /**
      * adds a book to library inventory

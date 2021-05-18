@@ -12,4 +12,5 @@ public interface ServerModel {
     void returnBook(String id);
     void removeBook(String id);
     void editBook(String id, String title, String author, String year, String description);
+    void rateBook(String id, String username, int rating);
 }

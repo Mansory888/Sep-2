@@ -14,6 +14,7 @@ public interface Model extends UnnamedPropertySubject{
     void borrowBook(String id, String username);
     ArrayList<UserType> getAllUsers();
     LibraryInventory getLibraryInventory();
+    void rateBookInUserInventory(int rating, String username, String id);
 
 }
 
