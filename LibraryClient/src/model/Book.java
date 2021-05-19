@@ -60,6 +60,7 @@ public class Book {
             returnDate = LocalDateTime.now();
             borrowed = false;
             returned = false;
+            genre = "";
         }else{
             throw new IllegalArgumentException("There are empty fields.");
         }

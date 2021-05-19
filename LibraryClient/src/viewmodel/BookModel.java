@@ -17,6 +17,7 @@ public class BookModel {
     private StringProperty description;
     private StringProperty BorrowDate;
     private StringProperty ReturnDate;
+    private StringProperty genre;
 
     /**
      * Creates a book model
@@ -31,6 +32,7 @@ public class BookModel {
         description = new SimpleStringProperty(book.getDescription());
         BorrowDate = new SimpleStringProperty(book.getBorrowDate());
         ReturnDate = new SimpleStringProperty(book.getReturnDate());
+        genre = new SimpleStringProperty(book.getGenre());
     }
 
     /**
@@ -81,4 +83,7 @@ public class BookModel {
      */
     public StringProperty getReturnDate(){return ReturnDate;}
 
+    public StringProperty getGenre() {
+        return genre;
+    }
 }
