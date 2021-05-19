@@ -50,7 +50,7 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="60.0" prefWidth="150.0">
                <children>
                   <ComboBox fx:id="genresBox" onAction="#filterBooks" prefWidth="150.0">
                      <VBox.margin>
@@ -82,7 +82,7 @@
          </VBox.margin></HBox>
       <HBox prefHeight="350.0" prefWidth="699.0">
          <children>
-            <TableView fx:id="main_table" prefHeight="360.0" prefWidth="700.0">
+            <TableView fx:id="main_table" prefHeight="344.0" prefWidth="850.0">
               <columns>
                 <TableColumn fx:id="BookIDCollum" prefWidth="56.799983978271484" text="BookId" />
                   <TableColumn fx:id="BookNameCollum" prefWidth="160.0" text="Book Name" />
