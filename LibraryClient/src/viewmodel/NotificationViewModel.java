@@ -41,7 +41,12 @@ public class NotificationViewModel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Platform.runLater(() -> {
-            notifications.add(0, evt.getPropertyName()+evt.getNewValue() + "");
+            switch (evt.getPropertyName()){
+                case "notification":
+                    notifications.add(0, "Book Added: " + evt.getNewValue() + "");
+                    break;
+            }
+
         });
     }
 }

@@ -119,11 +119,16 @@ public class MainViewModel implements PropertyChangeListener {
      */
     @Override public void propertyChange(PropertyChangeEvent evt) {
         Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Add book");
-                alert.setHeaderText("Added Book:");
-                alert.setContentText(evt.getNewValue()+"");
-                alert.show();
+            switch (evt.getPropertyName()){
+                case "Alert window":
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Add book");
+                    alert.setHeaderText("Added Book:");
+                    alert.setContentText(evt.getNewValue() + "");
+                    alert.show();
+                    break;
+            }
+
         });
     }
 

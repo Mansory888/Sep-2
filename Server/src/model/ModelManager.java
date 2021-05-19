@@ -1,5 +1,7 @@
 package model;
 
+import javafx.fxml.FXML;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class ModelManager implements Model {
     private int nrOfUsers;
     private LibraryInventory libraryInventory;
     private ArrayList<UserType> users;
+    private ArrayList<String> notifications;
 
     /**
      * Creates a model manager for the server
@@ -25,6 +28,7 @@ public class ModelManager implements Model {
         this.property = new PropertyChangeSupport(this);
         libraryInventory = new LibraryInventory();
         users = new ArrayList<>();
+        notifications = new ArrayList<>();
         users.add(new Admin("username@gmail.com","username","Username1*"));
         libraryInventory.addBook(new Book("The Lean Startup","Eric Ries",2011, "1","The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses is a book by Eric Ries describing his proposed lean startup strategy for startup companies. " +
                 "Ries developed the idea for the lean startup from his experiences as a startup advisor, employee, and founder."));
@@ -41,6 +45,9 @@ public class ModelManager implements Model {
         String logValue = loglist.getLogSize() + ": " + log;
         loglist.addlog(logValue);
         property.firePropertyChange("add", null, logValue);
+        if(notifications.size() > 100){
+            notifications.clear();
+        }
     }
 
     /**
@@ -138,6 +145,12 @@ public class ModelManager implements Model {
     @Override public LibraryInventory getLibraryInventory(){
         return libraryInventory;
     }
+
+    /**
+     * Returns the notifications list
+     * @return notifications list
+     */
+    @Override public ArrayList<String> getNotifications(){return notifications;}
 
     /**
      * Adds a listener to the model

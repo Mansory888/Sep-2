@@ -109,11 +109,17 @@ public class ClientHandler implements Runnable, PropertyChangeListener
               out.println(gson.toJson(serveReply));
             }
             break;
+          case "Load_notifications":
+            for(int i = 0; i<model.getNotifications().size(); i++){
+              out.println(gson.toJson(new Message(model.getNotifications().get(i), "notification")));
+            }
+            break;
           case "Add_Book":
             String book = in.readLine();
             Book book1 = gson.fromJson(book, Book.class);
             model.addBookToLibrary(book1);
             out.println(gson.toJson(new Message(book1.toString(), "Alert")));
+            model.getNotifications().add("Book Added: " + book1.toString());
             model.addLog("Book added to library: "+ book1.getTitle() + " "+ book1.getAuthor());
             break;
           case "Register":

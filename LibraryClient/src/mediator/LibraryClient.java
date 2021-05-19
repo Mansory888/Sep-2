@@ -60,7 +60,11 @@ public class LibraryClient implements ServerModel{
                 model.loadBooksToLibrary(book);
                 break;
             case "Alert":
-                model.fireProperty("Book Added: ", m.getMessage());
+                model.fireProperty("Alert window", m.getMessage());
+                model.fireProperty("notification", m.getMessage());
+                break;
+            case "notification":
+                model.fireProperty("notification", m.getMessage());
                 break;
         }
 
@@ -92,6 +96,7 @@ public class LibraryClient implements ServerModel{
                     Thread t1 = new Thread(clientReceiver, "");
                     t1.start();
                     out.println("Load_Library_inventory");
+                    out.println("Load_notifications");
                     model.getUserInventory().getBooks().addAll(m.getUser().getUserInventory().getBooks());
                     return true;
                 } else if(m.getMessage().equals("Wrong Username")){
