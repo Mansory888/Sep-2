@@ -1,5 +1,7 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -8,6 +10,8 @@ import javafx.scene.layout.Region;
 import model.Book;
 import viewmodel.BookModel;
 import viewmodel.UserInventoryViewModel;
+
+import java.time.LocalDateTime;
 
 /**
  * @author Nick/Rokas
@@ -25,12 +29,16 @@ public class UserInventoryViewController {
     @FXML private TableColumn<BookModel, String> RatingCollum;
     @FXML private TableColumn<BookModel, String> BorrowDateCollum;
     @FXML private TableColumn<BookModel, String> ReturnDateCollum;
+    @FXML private ComboBox<String> genresBox;
+    @FXML private ComboBox<Integer> publishingYearBox;
 
 
     private Region root;
     private UserInventoryViewModel userInventoryViewModel;
     private ViewHandler viewHandler;
     private ViewState viewState;
+    private ObservableList<String> genres;
+    private ObservableList<Integer> publishingYears;
 
     public UserInventoryViewController (){
 
@@ -104,7 +112,17 @@ public class UserInventoryViewController {
             return row;
         });
 
-
+        // filters
+        // genres
+        genres = FXCollections.observableArrayList("All","Science","Finance","Fiction");
+        genresBox.getItems().addAll(genres);
+        //year
+        publishingYears = FXCollections.observableArrayList();
+        publishingYears.add(null);
+        for(int i = LocalDateTime.now().getYear(); i>=0; i--){
+            publishingYears.add(i);
+        }
+        publishingYearBox.getItems().addAll(publishingYears);
 
     }
 
@@ -151,6 +169,32 @@ public class UserInventoryViewController {
         BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
         userInventoryViewModel.ReturnBook(selectedItem.getBookID().get());
     }
+    /**
+     * Filter books by chosen year/genre or both criterias.
+     */
 
+    @FXML private void filterBooks(){
+        FilteredList<BookModel> filteredData = new FilteredList<>(userInventoryViewModel.getList(), b -> true);
+        filteredData.setPredicate(book -> {
+            if(genresBox.getValue() == null && publishingYearBox.getValue()==null || genresBox.getValue().equals("All") && publishingYearBox.getValue()==null){
+                return true;
+            }
+
+
+            if(book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
+                    || book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==null
+                    || genresBox.getValue().equals("All") && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
+                    || genresBox.getValue()==null && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get()) ) {
+                return true;
+            }else{
+                return false;
+            }
+        });
+        SortedList<BookModel> sortedList = new SortedList<>(filteredData);
+
+        sortedList.comparatorProperty().bind(main_table.comparatorProperty());
+
+        main_table.setItems(sortedList);
+    }
 
 }

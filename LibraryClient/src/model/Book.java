@@ -18,6 +18,7 @@ public class Book {
     private String author;
     private String description;
     private int year;
+    private String genre;
     private ArrayList<Rating> ratings;
 
     private LocalDateTime borrowDate;
@@ -59,6 +60,7 @@ public class Book {
             returnDate = LocalDateTime.now();
             borrowed = false;
             returned = false;
+            genre = "";
         }else{
             throw new IllegalArgumentException("There are empty fields.");
         }
@@ -221,6 +223,23 @@ public class Book {
      */
     public boolean getIsReturned(){return  returned;}
 
+    /**
+     * Returns the genre of the book.
+     * @return genre - book genre.
+     */
+    public String getGenre(){return genre;}
+
+    /**
+     * Sets the genre in the book, after checking if it is not an empty field.
+     * @param genre - book genre.
+     */
+    public void setGenre(String genre){
+        if(!genre.equals("")){
+            this.genre = genre;
+        }else{
+            throw new IllegalArgumentException("Empty field left!");
+        }
+    }
     /**
      * Returning a string with the information about the book
      * @return string
