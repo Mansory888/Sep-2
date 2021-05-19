@@ -60,8 +60,7 @@ public class LibraryClient implements ServerModel{
                 model.loadBooksToLibrary(book);
                 break;
             case "Alert":
-                Book book2 = gson.fromJson(m.getMessage(), Book.class);
-                model.fireProperty("Book Added: ", book2.toString());
+                model.fireProperty("Book Added: ", m.getMessage());
                 break;
         }
 

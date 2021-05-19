@@ -13,7 +13,7 @@ import java.beans.PropertyChangeListener;
  * @author Nick/Rokas
  * @version 1.0
  */
-public class InspectBookViewModel implements PropertyChangeListener {
+public class InspectBookViewModel  {
     private StringProperty BookIDTextField;
     private StringProperty TitleLabel;
     private StringProperty AuthorTextField;
@@ -33,7 +33,7 @@ public class InspectBookViewModel implements PropertyChangeListener {
         AuthorTextField = new SimpleStringProperty();
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
-        model.addListener(this);
+
     }
 
     /**
@@ -91,18 +91,4 @@ public class InspectBookViewModel implements PropertyChangeListener {
      */
     public StringProperty getDescriptionTextArea (){return DescriptionTextArea;}
 
-    /**
-     * Listens for a property change
-     * @param evt event
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Add book");
-            alert.setHeaderText("Added Book:");
-            alert.setContentText(evt.getNewValue() + "");
-            alert.show();
-        });
-    }
 }

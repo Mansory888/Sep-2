@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="900.0" userData="Digital Library System" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UserInventoryViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="910.0" userData="Digital Library System" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UserInventoryViewController">
    <children>
       <HBox prefHeight="66.0" prefWidth="739.0" spacing="20.0">
          <children>
@@ -85,12 +85,12 @@
             <TableView fx:id="main_table" prefHeight="344.0" prefWidth="850.0">
               <columns>
                 <TableColumn fx:id="BookIDCollum" prefWidth="56.799983978271484" text="BookId" />
-                  <TableColumn fx:id="BookNameCollum" prefWidth="160.0" text="Book Name" />
-                  <TableColumn fx:id="BookAuthorCollum" prefWidth="160.0" text="Author" />
-                  <TableColumn fx:id="YearPublishedCollum" prefWidth="95.20001220703125" text="Year Pusblished" />
-                  <TableColumn fx:id="RatingCollum" prefWidth="54.39996337890625" text="Rating" />
-                  <TableColumn fx:id="BorrowDateCollum" prefWidth="82.40008544921875" text="Borrow" />
-                  <TableColumn fx:id="ReturnDateCollum" prefWidth="74.39990234375" text="Return" />
+                  <TableColumn fx:id="BookNameCollum" prefWidth="215.0" text="Book Name" />
+                  <TableColumn fx:id="BookAuthorCollum" prefWidth="215.0" text="Author" />
+                  <TableColumn fx:id="YearPublishedCollum" prefWidth="100.0" text="Year Pusblished" />
+                  <TableColumn fx:id="RatingCollum" prefWidth="60.0" text="Rating" />
+                  <TableColumn fx:id="BorrowDateCollum" prefWidth="100.0" text="Borrow" />
+                  <TableColumn fx:id="ReturnDateCollum" prefWidth="100.0" text="Return" />
               </columns>
             </TableView>
          </children>

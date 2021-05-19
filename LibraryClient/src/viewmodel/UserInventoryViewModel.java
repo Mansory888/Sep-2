@@ -15,7 +15,7 @@ import java.beans.PropertyChangeListener;
  * @author Nick/Rokas
  * @version 1.0
  */
-public class UserInventoryViewModel implements PropertyChangeListener {
+public class UserInventoryViewModel  {
     private StringProperty search_textfield;
     private StringProperty username_spot;
     private ObservableList<BookModel> Userlist;
@@ -30,7 +30,7 @@ public class UserInventoryViewModel implements PropertyChangeListener {
         search_textfield =  new SimpleStringProperty();
         username_spot = new SimpleStringProperty();
         Userlist = FXCollections.observableArrayList();
-        model.addListener(this);
+
 
     }
 
@@ -87,18 +87,4 @@ public class UserInventoryViewModel implements PropertyChangeListener {
      */
     public StringProperty getUsername_spot(){return username_spot;}
 
-    /**
-     * Listens for a property change
-     * @param evt event
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Add book");
-            alert.setHeaderText("Added Book:");
-            alert.setContentText(evt.getNewValue() + "");
-            alert.show();
-        });
-    }
 }

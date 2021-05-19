@@ -13,7 +13,7 @@ import java.beans.PropertyChangeListener;
  * @author Nick/Rokas
  * @version 1.0
  */
-public class ProfileViewModel implements PropertyChangeListener {
+public class ProfileViewModel  {
     private StringProperty usernameLabel;
     private StringProperty RegisterLabel;
     private StringProperty NrOfBooksLabel;
@@ -30,7 +30,7 @@ public class ProfileViewModel implements PropertyChangeListener {
         usernameLabel = new SimpleStringProperty();
         RegisterLabel = new SimpleStringProperty();
         NrOfBooksLabel = new SimpleStringProperty();
-        model.addListener(this);
+
     }
 
     /**
@@ -82,18 +82,4 @@ public class ProfileViewModel implements PropertyChangeListener {
      */
     public StringProperty getUsername_spot(){return username_spot;}
 
-    /**
-     * Listens for a property change
-     * @param evt event
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Add book");
-            alert.setHeaderText("Added Book:");
-            alert.setContentText(evt.getNewValue() + "");
-            alert.show();
-        });
-    }
 }
