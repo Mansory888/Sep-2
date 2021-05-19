@@ -185,38 +185,21 @@ public class MainViewController {
     @FXML public void Profile_button(){viewHandler.openView("profile");}
 
     /**
-     * Filters the book by year chosen in combo box
+     * Filter books by chosen year/genre or both criterias.
      */
-    @FXML private void filterBookByYear(){
-        FilteredList<BookModel> filteredData = new FilteredList<>(mainViewModel.getList(), b -> true);
-            filteredData.setPredicate(book -> {
-                if(publishingYearBox.getValue() == null){
-                    return true;
-                }
 
-
-                if(Integer.parseInt(book.getYearPublished().get())==publishingYearBox.getValue()) {
-                    return true;
-                }else{
-                    return false;
-                }
-            });
-        SortedList<BookModel> sortedList = new SortedList<>(filteredData);
-
-        sortedList.comparatorProperty().bind(main_table.comparatorProperty());
-
-        main_table.setItems(sortedList);
-
-    }
-    @FXML private void filterBookByGenre(){
+    @FXML private void filterBooks(){
         FilteredList<BookModel> filteredData = new FilteredList<>(mainViewModel.getList(), b -> true);
         filteredData.setPredicate(book -> {
-            if(genresBox.getValue() == null || genresBox.getValue().equals("All")){
+            if(genresBox.getValue() == null && publishingYearBox.getValue()==null || genresBox.getValue().equals("All") && publishingYearBox.getValue()==null){
                 return true;
             }
 
 
-            if(book.getGenre().get().equals(genresBox.getValue())) {
+            if(book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
+                    || book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==null
+                    || genresBox.getValue().equals("All") && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
+                    || genresBox.getValue()==null && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get()) ) {
                 return true;
             }else{
                 return false;
@@ -228,6 +211,7 @@ public class MainViewController {
 
         main_table.setItems(sortedList);
     }
+
 
 
 }

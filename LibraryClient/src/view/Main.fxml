@@ -40,12 +40,12 @@
             </TextField>
             <VBox prefHeight="60.0" prefWidth="150.0">
                <children>
-                  <ComboBox fx:id="genresBox" onAction="#filterBookByGenre" prefWidth="150.0">
+                  <ComboBox fx:id="genresBox" onAction="#filterBooks" prefWidth="150.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="publishingYearBox" onAction="#filterBookByYear" prefWidth="150.0">
+                  <ComboBox fx:id="publishingYearBox" onAction="#filterBooks" prefWidth="150.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
