@@ -61,7 +61,6 @@ public class MainViewController {
 
         // Search function
         FilteredList<BookModel> filteredData = new FilteredList<>(mainViewModel.getList(), b -> true);
-
         search_textfield.textProperty().addListener(((observable, oldValue, newValue) ->{
             filteredData.setPredicate(book -> {
                 if(newValue == null || newValue.isEmpty()){
