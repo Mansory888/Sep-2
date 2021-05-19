@@ -24,6 +24,7 @@ public class ViewHandler {
     private RegisterViewController registerViewController;
     private InspectBookViewController inspectBookViewController;
     private EditBookViewController editBookViewController;
+    private NotificationViewController notificationViewController;
     private ViewState viewState;
 
     /**
@@ -80,6 +81,9 @@ public class ViewHandler {
                 break;
             case "edit":
                 root = loadEditBookView("EditBook.fxml");
+                break;
+            case "notifications":
+                root = loadNotificationsView("NotificationView.fxml");
                 break;
 
 
@@ -330,6 +334,31 @@ public class ViewHandler {
             editBookViewController.reset();
         }
         return editBookViewController.getRoot();
+
+    }
+
+    /**
+     * Returns the NotificationsView root
+     * @param fxmlFile fxmlFile
+     * @return NotificationsView root
+     */
+    private Region loadNotificationsView(String fxmlFile) {
+        Region root = null;
+        if (notificationViewController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                root = loader.load();
+                notificationViewController = loader.getController();
+                notificationViewController.init(this, viewModelFactory.getNotificationViewModel(), root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            notificationViewController.reset();
+        }
+        return notificationViewController.getRoot();
 
     }
 }

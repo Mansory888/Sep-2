@@ -89,4 +89,9 @@ public class ProfileViewController {
      * Button to go to the manage window
      */
     @FXML public void ManageButton(){viewHandler.openView("managePage");}
+
+    /**
+     * Button to go to the notifications window
+     */
+    @FXML public void NotificationButton(){viewHandler.openView("notifications");}
 }

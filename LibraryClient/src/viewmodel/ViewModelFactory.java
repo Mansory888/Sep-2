@@ -17,6 +17,7 @@ public class ViewModelFactory {
     private RegisterViewModel registerViewModel;
     private InspectBookViewModel inspectBookViewModel;
     private EditBookViewModel editBookViewModel;
+    private NotificationViewModel notificationViewModel;
 
     /**
      * Creates a view model factory that creates all view models
@@ -33,6 +34,7 @@ public class ViewModelFactory {
         registerViewModel = new RegisterViewModel(model);
         inspectBookViewModel = new InspectBookViewModel(model);
         editBookViewModel = new EditBookViewModel(model);
+        notificationViewModel = new NotificationViewModel(model);
     }
 
     /**
@@ -88,4 +90,10 @@ public class ViewModelFactory {
      * @return EditBookViewModel
      */
     public EditBookViewModel getEditBookViewModel(){return editBookViewModel;}
+
+    /**
+     * returns NotificationViewModel
+     * @return NotificationViewModel
+     */
+    public NotificationViewModel getNotificationViewModel(){return notificationViewModel;}
 }
