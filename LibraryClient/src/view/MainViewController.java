@@ -79,13 +79,11 @@ public class MainViewController {
 
                 if(book.getBookName().get().toLowerCase().contains(lowerCaseFilter)){
                     return true;
-                } else if (book.getBookID().get().toLowerCase().contains(lowerCaseFilter)){
+                } else if (book.getBookID().get().toLowerCase().equals(lowerCaseFilter)){
                     return true;
                 } else if (book.getBookAuthor().get().toLowerCase().contains(lowerCaseFilter)){
                     return true;
-                } else if (book.getYearPublished().get().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                } else {
+                }  else {
                     return false;
                 }
             });
