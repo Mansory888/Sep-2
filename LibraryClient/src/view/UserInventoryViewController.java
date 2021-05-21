@@ -123,6 +123,8 @@ public class UserInventoryViewController {
             publishingYears.add(i);
         }
         publishingYearBox.getItems().addAll(publishingYears);
+        genresBox.getSelectionModel().select(0);
+        publishingYearBox.getSelectionModel().select(0);
 
     }
 
