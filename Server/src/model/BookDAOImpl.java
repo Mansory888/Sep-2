@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class BookDAOImpl implements BookDAO {
     private static BookDAOImpl bookDAO;
+
     private BookDAOImpl() throws SQLException {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
+
     public static synchronized BookDAOImpl getInstance() throws SQLException{
         if(bookDAO == null){
             bookDAO = new BookDAOImpl();
@@ -19,6 +21,7 @@ public class BookDAOImpl implements BookDAO {
         return DriverManager.getConnection("jdbc:postgresql://pg-870e174-nicoric-963b.aivencloud.com:15475/defaultdb?currentSchema=library_management_system",
                 "avnadmin","wby0old272aqkhsk");
     }
+
     @Override
     public void create(Book book) throws SQLException{
         try(Connection connection = getConnection()){
