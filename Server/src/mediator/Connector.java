@@ -1,5 +1,6 @@
 package mediator;
 
+import model.BookDAO;
 import model.BookDAOImpl;
 import model.Model;
 
@@ -38,6 +39,7 @@ public class Connector implements Runnable
     {
       model.addLog("Starting Server...");
       BookDAOImpl.getInstance();
+      model.getLibraryInventory().getBooks().addAll(BookDAOImpl.getInstance().readAllBooks());
       welcomeSocket = new ServerSocket(PORT);
 
       running = true;

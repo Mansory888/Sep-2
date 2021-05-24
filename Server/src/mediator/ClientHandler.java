@@ -75,8 +75,13 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             break;
           case "Remove_book":
             String id1 = in.readLine();
+          try {
             model.getLibraryInventory().removeBookById(id1);
+            BookDAOImpl.getInstance().remove(id1);
             model.addLog("Remove book: " + id1);
+          }catch (SQLException e){
+            model.addLog(e.getMessage());
+          }
             break;
           case "Edit_book":
             String id2 = in.readLine();
@@ -85,12 +90,17 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             String editedYear = in.readLine();
             String editedDescription = in.readLine();
             String editedGenre = in.readLine();
+          try {
             model.getLibraryInventory().getBookById(id2).setTitle(editedTitle);
             model.getLibraryInventory().getBookById(id2).setAuthor(editedAuthor);
             model.getLibraryInventory().getBookById(id2).setYear(Integer.parseInt(editedYear));
             model.getLibraryInventory().getBookById(id2).setDescription(editedDescription);
             model.getLibraryInventory().getBookById(id2).setGenre(editedGenre);
+            BookDAOImpl.getInstance().updateBook(id2, editedTitle, editedAuthor, Integer.parseInt(editedYear), editedDescription, editedGenre);
             model.addLog("Edited book: " + id2);
+          }catch (SQLException e){
+            model.addLog(e.getMessage());
+          }
             break;
           case "Return_book":
             String id3 = in.readLine();
@@ -127,7 +137,7 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             model.getNotifications().add("Book Added: " + book1.toString());
             model.addLog("Book added to library: " + book1.getTitle() + " " + book1.getAuthor());
           }catch (SQLException e){
-            e.printStackTrace();
+            model.addLog(e.getMessage());
           }
             break;
           case "Register":

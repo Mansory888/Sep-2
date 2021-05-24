@@ -1,9 +1,6 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class BookDAOImpl implements BookDAO {
@@ -39,21 +36,65 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public Book readById(String id)throws SQLException {
-        return null;
+        try(Connection connection = getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Books where book_id = ?");
+            preparedStatement.setString(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                String description = resultSet.getString("description");
+                int yearOfPublication = resultSet.getInt("year");
+                String genre = resultSet.getString("genre");
+                return new Book(title,author,yearOfPublication,id,description,genre);
+            }else{
+                return null;
+            }
+        }
     }
 
     @Override
     public ArrayList<Book> readAllBooks()throws SQLException {
-        return null;
+        try(Connection connection = getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Books");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<Book> books = new ArrayList<>();
+            while (resultSet.next()){
+                String bookId = resultSet.getString("book_id");
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                String description = resultSet.getString("description");
+                int yearOfPublication = resultSet.getInt("year");
+                String genre = resultSet.getString("genre");
+                books.add(new Book(title,author,yearOfPublication,bookId,description,genre));
+            }
+            return books;
+        }
     }
 
     @Override
     public void remove(String id)throws SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM books WHERE book_id = ?");
+            statement.setString(1,id);
+            statement.executeUpdate();
 
+        }
     }
 
     @Override
-    public void updateBook(String id, String title, String Author, int year, String description, String genre)throws SQLException {
+    public void updateBook(String id, String title, String author, int year, String description, String genre)throws SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement statement = connection.prepareStatement("UPDATE books SET title = ?, author = ?, description = ?, " +
+                    "year = ?, genre = ? WHERE book_id = ? ");
+            statement.setString(1,title);
+            statement.setString(2, author);
+            statement.setString(3,description);
+            statement.setInt(4,year);
+            statement.setString(5,genre);
+            statement.setString(6,id);
+            statement.executeUpdate();
 
+        }
     }
 }
