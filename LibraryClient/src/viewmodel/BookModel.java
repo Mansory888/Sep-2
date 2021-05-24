@@ -83,6 +83,10 @@ public class BookModel {
      */
     public StringProperty getReturnDate(){return ReturnDate;}
 
+    /**
+     * returns genre
+     * @return genre
+     */
     public StringProperty getGenre() {
         return genre;
     }

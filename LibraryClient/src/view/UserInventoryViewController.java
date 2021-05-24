@@ -31,6 +31,7 @@ public class UserInventoryViewController {
     @FXML private TableColumn<BookModel, String> ReturnDateCollum;
     @FXML private ComboBox<String> genresBox;
     @FXML private ComboBox<Integer> publishingYearBox;
+    @FXML private TableColumn<BookModel, String> GenreCollum;
 
 
     private Region root;
@@ -66,6 +67,7 @@ public class UserInventoryViewController {
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
         BorrowDateCollum.setCellValueFactory(celldata -> celldata.getValue().getBorrowDate());
         ReturnDateCollum.setCellValueFactory(celldata -> celldata.getValue().getReturnDate());
+        GenreCollum.setCellValueFactory(celldata -> celldata.getValue().getGenre());
 
        // search function
         FilteredList<BookModel> filteredData = new FilteredList<>(userInventoryViewModel.getList(), b -> true);

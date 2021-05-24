@@ -23,6 +23,7 @@ public class EditBookViewController {
     @FXML private TextField BookTitleTextField;
     @FXML private TextField AuthorTextField;
     @FXML private TextField YearTextField;
+    @FXML private TextField GenreTextField;
     @FXML private TextArea DescriptionTextArea;
     @FXML private ComboBox<Integer> RatingBox;
     private ObservableList<Integer> choiceList;
@@ -53,6 +54,7 @@ public class EditBookViewController {
         AuthorTextField.textProperty().bindBidirectional(editBookViewModel.getAuthorTextField());
         YearTextField.textProperty().bindBidirectional(editBookViewModel.getYearTextField());
         DescriptionTextArea.textProperty().bindBidirectional(editBookViewModel.getDescriptionTextArea());
+        GenreTextField.textProperty().bindBidirectional(editBookViewModel.getGenreTextFiled());
 
         choiceList = FXCollections.observableArrayList(1,2,3,4,5);
         BookIDTextField.setEditable(false);

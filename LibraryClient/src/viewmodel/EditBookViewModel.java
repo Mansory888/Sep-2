@@ -13,6 +13,7 @@ public class EditBookViewModel {
     private StringProperty TitleField;
     private StringProperty AuthorTextField;
     private StringProperty YearTextField;
+    private StringProperty GenreTextFiled;
     private StringProperty DescriptionTextArea;
     private Model model;
 
@@ -28,7 +29,7 @@ public class EditBookViewModel {
         AuthorTextField = new SimpleStringProperty();
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
-
+        GenreTextFiled = new SimpleStringProperty();
     }
 
     /**
@@ -40,17 +41,19 @@ public class EditBookViewModel {
         AuthorTextField.set(model.getLibraryBookByID(bookID).getAuthor());
         YearTextField.set(model.getLibraryBookByID(bookID).getYearOfPublication()+"");
         DescriptionTextArea.set(model.getLibraryBookByID(bookID).getDescription());
+        GenreTextFiled.set(model.getLibraryBookByID(bookID).getGenre());
     }
 
     /**
      * method to edit book
      */
     public void editBook(String bookID){
-        model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setTitle(TitleField.get());
-        model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setAuthor(AuthorTextField.get());
-        model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setYear(Integer.parseInt(YearTextField.get()));
-        model.getLibraryInventory().getBookById(model.getLibraryBookByID(bookID).getId()).setDescription(DescriptionTextArea.get());
-        model.getServerModel().editBook(BookIDTextField.get(),TitleField.get(), AuthorTextField.get(), YearTextField.get(), DescriptionTextArea.get());
+        model.getLibraryInventory().getBookById(bookID).setTitle(TitleField.get());
+        model.getLibraryInventory().getBookById(bookID).setAuthor(AuthorTextField.get());
+        model.getLibraryInventory().getBookById(bookID).setYear(Integer.parseInt(YearTextField.get()));
+        model.getLibraryInventory().getBookById(bookID).setDescription(DescriptionTextArea.get());
+        model.getLibraryInventory().getBookById(bookID).setGenre(GenreTextFiled.get());
+        model.getServerModel().editBook(BookIDTextField.get(),TitleField.get(), AuthorTextField.get(), YearTextField.get(), DescriptionTextArea.get(), GenreTextFiled.get());
     }
 
     /**
@@ -98,6 +101,12 @@ public class EditBookViewModel {
      * @return Year TextField
      */
     public StringProperty getYearTextField (){ return YearTextField;}
+
+    /**
+     * returns genre Text Filed
+     * @return genre Text Filed
+     */
+    public StringProperty getGenreTextFiled(){ return GenreTextFiled; }
 
     /**
      * returns Description TextArea

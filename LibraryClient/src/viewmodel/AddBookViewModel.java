@@ -15,6 +15,7 @@ public class AddBookViewModel {
     private StringProperty TitleTextField;
     private StringProperty AuthorTextField;
     private StringProperty YearTextField;
+    private StringProperty GenreTextField;
     private StringProperty DescriptionTextArea;
     private StringProperty errorLabelProperty;
     private Model model;
@@ -32,6 +33,7 @@ public class AddBookViewModel {
         YearTextField = new SimpleStringProperty();
         DescriptionTextArea = new SimpleStringProperty();
         errorLabelProperty = new SimpleStringProperty();
+        GenreTextField = new SimpleStringProperty();
         errorLabelProperty.set("");
     }
 
@@ -45,6 +47,7 @@ public class AddBookViewModel {
         YearTextField.set("");
         DescriptionTextArea.set("");
         errorLabelProperty.set("");
+        GenreTextField.set("");
     }
 
     /**
@@ -54,7 +57,7 @@ public class AddBookViewModel {
     public boolean addBook() {
         try {
             Book book = new Book(TitleTextField.get(), AuthorTextField.get(), Integer.parseInt(YearTextField.get()),
-                    BookIDTextField.get(), DescriptionTextArea.get());
+                    BookIDTextField.get(), DescriptionTextArea.get(), GenreTextField.get());
             try {
                 boolean isInInventory = false;
                 LibraryInventory libraryInventory= model.getLibraryInventory();
@@ -123,6 +126,12 @@ public class AddBookViewModel {
     public StringProperty getDescriptionTextArea() {
         return DescriptionTextArea;
     }
+
+    /**
+     * returns Genre TextField
+     * @return Genre TextField
+     */
+    public StringProperty getGenreTextField(){ return  GenreTextField;}
 
     /**
      * returns Error Label Property

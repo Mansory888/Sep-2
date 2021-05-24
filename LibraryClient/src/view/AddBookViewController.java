@@ -18,6 +18,7 @@ public class AddBookViewController {
     @FXML private TextField AuthorTextField;
     @FXML private TextField YearTextField;
     @FXML private TextArea DescriptionTextArea;
+    @FXML private TextField GenreTextField;
     @FXML private Label errorLabel;
 
     private Region root;
@@ -41,6 +42,7 @@ public class AddBookViewController {
         AuthorTextField.textProperty().bindBidirectional(addBookViewModel.getAuthorTextField());
         YearTextField.textProperty().bindBidirectional(addBookViewModel.getYearTextField());
         DescriptionTextArea.textProperty().bindBidirectional(addBookViewModel.getDescriptionTextArea());
+        GenreTextField.textProperty().bindBidirectional(addBookViewModel.getGenreTextField());
         errorLabel.textProperty().bind(addBookViewModel.getErrorLabelProperty());
     }
 

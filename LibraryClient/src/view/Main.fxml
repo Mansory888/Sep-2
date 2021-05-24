@@ -72,11 +72,12 @@
          <children>
             <TableView fx:id="main_table" prefHeight="344.0" prefWidth="850.0">
               <columns>
-                <TableColumn fx:id="BookIDCollum" prefWidth="140.0" text="BookId" />
+                <TableColumn fx:id="BookIDCollum" prefWidth="75.20001602172852" text="BookId" />
                   <TableColumn fx:id="BookNameCollum" prefWidth="215.0" text="Book Name" />
                   <TableColumn fx:id="BookAuthorCollum" prefWidth="215.0" text="Author" />
-                  <TableColumn fx:id="YearPublishedCollum" prefWidth="140.0" text="Year Pusblished" />
-                  <TableColumn fx:id="RatingCollum" prefWidth="140.0" text="Rating" />
+                  <TableColumn fx:id="YearPublishedCollum" prefWidth="108.0" text="Year Pusblished" />
+                  <TableColumn fx:id="RatingCollum" prefWidth="64.0" text="Rating" />
+                  <TableColumn fx:id="GenreCollum" prefWidth="170.0" text="Genre" />
               </columns>
             </TableView>
          </children>

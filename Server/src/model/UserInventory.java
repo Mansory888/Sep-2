@@ -22,7 +22,7 @@ public class UserInventory {
      * @param book
      */
     public void addBook(Book book){
-        Book book1 = new Book(book.getTitle(), book.getAuthor(), book.getYearOfPublication(), book.getId(), book.getDescription());
+        Book book1 = new Book(book.getTitle(), book.getAuthor(), book.getYearOfPublication(), book.getId(), book.getDescription(), book.getGenre());
         books.add(book1);
         book1.setBorrowed();
     }

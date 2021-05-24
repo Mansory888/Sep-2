@@ -33,6 +33,7 @@ public class MainViewController {
     @FXML private TableColumn<BookModel, String> RatingCollum;
     @FXML private ComboBox<String> genresBox;
     @FXML private ComboBox<Integer> publishingYearBox;
+    @FXML private TableColumn<BookModel, String> GenreCollum;
 
 
 
@@ -66,6 +67,7 @@ public class MainViewController {
         BookAuthorCollum.setCellValueFactory(celldata -> celldata.getValue().getBookAuthor());
         YearPublishedCollum.setCellValueFactory(celldata -> celldata.getValue().getYearPublished());
         RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
+        GenreCollum.setCellValueFactory(celldata -> celldata.getValue().getGenre());
 
         // Search function
         FilteredList<BookModel> filteredData = new FilteredList<>(mainViewModel.getList(), b -> true);

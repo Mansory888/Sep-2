@@ -167,13 +167,14 @@ public class LibraryClient implements ServerModel{
      * @param year year
      * @param description description
      */
-    @Override public void editBook(String id, String title, String author, String year, String description){
+    @Override public void editBook(String id, String title, String author, String year, String description, String genre){
         out.println("Edit_book");
         out.println(id);
         out.println(title);
         out.println(author);
         out.println(year);
         out.println(description);
+        out.println(genre);
     }
 
     @Override public void rateBook(String id, String username, int rating){

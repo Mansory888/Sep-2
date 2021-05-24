@@ -83,10 +83,12 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             String editedAuthor = in.readLine();
             String editedYear = in.readLine();
             String editedDescription = in.readLine();
+            String editedGenre = in.readLine();
             model.getLibraryInventory().getBookById(id2).setTitle(editedTitle);
             model.getLibraryInventory().getBookById(id2).setAuthor(editedAuthor);
             model.getLibraryInventory().getBookById(id2).setYear(Integer.parseInt(editedYear));
             model.getLibraryInventory().getBookById(id2).setDescription(editedDescription);
+            model.getLibraryInventory().getBookById(id2).setGenre(editedGenre);
             model.addLog("Edited book: " + id2);
             break;
           case "Return_book":

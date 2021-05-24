@@ -11,6 +11,6 @@ public interface ServerModel {
     void borrowBook(String id);
     void returnBook(String id);
     void removeBook(String id);
-    void editBook(String id, String title, String author, String year, String description);
+    void editBook(String id, String title, String author, String year, String description, String genre);
     void rateBook(String id, String username, int rating);
 }

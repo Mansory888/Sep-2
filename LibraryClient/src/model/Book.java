@@ -36,7 +36,7 @@ public class Book {
      * @param id id for a book
      * @param description description for bok
      */
-    public Book(String title, String author, int year, String id, String description){
+    public Book(String title, String author, int year, String id, String description, String genre){
         if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("") ){
             Pattern patternAuthor = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
             if(patternAuthor.matcher(author).find()){
@@ -60,7 +60,7 @@ public class Book {
             returnDate = LocalDateTime.now();
             borrowed = false;
             returned = false;
-            genre = "";
+            this.genre = genre;
         }else{
             throw new IllegalArgumentException("There are empty fields.");
         }

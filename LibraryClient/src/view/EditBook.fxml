@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox  userData="Digital Library System" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="428.0" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditBookViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="428.0" spacing="5.0" userData="Digital Library System" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditBookViewController">
    <children>
       <TextField fx:id="BookTitleTextField" alignment="CENTER" prefHeight="51.0" prefWidth="428.0">
          <font>
@@ -64,6 +64,23 @@
                </HBox.margin>
             </Label>
             <TextField fx:id="YearTextField" prefHeight="36.0" prefWidth="282.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="54.0" prefWidth="414.0">
+         <children>
+            <Label prefHeight="54.0" prefWidth="101.0" text="Genre">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="GenreTextField" prefHeight="36.0" prefWidth="282.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
