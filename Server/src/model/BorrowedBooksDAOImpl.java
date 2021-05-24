@@ -58,6 +58,16 @@ public class BorrowedBooksDAOImpl implements BorrowedBooksDAO {
 
     @Override
     public void returnBook(String bookId, String username) throws SQLException {
+        try(Connection connection = getConnection()){
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("UPDATE borrowed_books SET status = ?, date_returned = ? WHERE username = ? AND book_id = ?");
+            preparedStatement.setString(1,"borrowed");
+            preparedStatement.setDate(2,java.sql.Date.valueOf(LocalDate.now()));
+            preparedStatement.setString(3,username);
+            preparedStatement.setString(4,bookId);
+
+            preparedStatement.executeUpdate();
+        }
 
     }
 }

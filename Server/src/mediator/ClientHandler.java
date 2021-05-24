@@ -114,8 +114,13 @@ public class ClientHandler implements Runnable, PropertyChangeListener
           case "Return_book":
             String id3 = in.readLine();
             String username2 = in.readLine();
+          try {
             model.returnBook(id3, username2);
+            BorrowedBooksDAOImpl.getInstance().returnBook(id3,username2);
             model.addLog("Book returned: " + id3);
+          }catch (SQLException e){
+            model.addLog(e.getMessage());
+          }
             break;
           case "Rate_book":
             try {
