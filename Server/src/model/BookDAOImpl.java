@@ -21,8 +21,8 @@ public class BookDAOImpl implements BookDAO {
     }
 
     public Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=library_management_system",
-                "postgres","database13");
+        return DriverManager.getConnection("jdbc:postgresql://pg-870e174-nicoric-963b.aivencloud.com:15475/defaultdb?currentSchema=library_management_system",
+                "avnadmin","wby0old272aqkhsk");
     }
 
     @Override
