@@ -44,7 +44,6 @@ public class ProfileViewController {
         NrOfBooksLabel.textProperty().bind(profileViewModel.getNrOfBooksLabel());
 
         if (!profileViewModel.isAdmin()){
-            System.out.println(profileViewModel.isAdmin());
             ManageLibraryButtonID.setOnAction((action) -> {
                 //Do nothing
             });

@@ -3,6 +3,7 @@ package mediator;
 import model.BookDAO;
 import model.BookDAOImpl;
 import model.Model;
+import model.UserDAOImpl;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -40,6 +41,7 @@ public class Connector implements Runnable
       model.addLog("Starting Server...");
       BookDAOImpl.getInstance();
       model.getLibraryInventory().getBooks().addAll(BookDAOImpl.getInstance().readAllBooks());
+      model.getAllUsers().addAll(UserDAOImpl.getInstance().readAllUsers());
       welcomeSocket = new ServerSocket(PORT);
 
       running = true;

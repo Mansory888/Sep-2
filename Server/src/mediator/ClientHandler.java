@@ -150,10 +150,15 @@ public class ClientHandler implements Runnable, PropertyChangeListener
           }
             break;
           case "Register":
-            String user = in.readLine();
-            UserType userType = gson.fromJson(user, Customer.class);
-            model.addUser(userType);
-            model.addLog("User Registered: "+ userType.toString());
+            try {
+              String user = in.readLine();
+              UserType userType = gson.fromJson(user, Customer.class);
+              model.addUser(userType);
+              UserDAOImpl.getInstance().create(userType);
+              model.addLog("User Registered: " + userType.toString());
+            } catch (SQLException e){
+              e.printStackTrace();
+            }
             break;
 
           case "Login":

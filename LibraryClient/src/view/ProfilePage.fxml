@@ -89,7 +89,7 @@
       </HBox>
       <HBox prefHeight="72.0" prefWidth="382.0" spacing="100.0">
          <children>
-            <Button fx:id="ManageLibraryButtonID1" mnemonicParsing="false" onAction="#ManageButton" prefHeight="42.0" prefWidth="356.0" text="Manage Library">
+            <Button fx:id="ManageLibraryButtonID" mnemonicParsing="false" onAction="#ManageButton" prefHeight="42.0" prefWidth="356.0" text="Manage Library">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" top="5.0" />
                </HBox.margin>
