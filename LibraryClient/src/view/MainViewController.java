@@ -199,10 +199,9 @@ public class MainViewController {
             }
 
 
-            if(book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
-                    || book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==null
-                    || genresBox.getValue().equals("All") && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
-                    || genresBox.getValue()==null && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get()) ) {
+            if(book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==null
+                    || book.getGenre().get().equals(genresBox.getValue()) && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())
+                    ||  genresBox.getValue().equals("All") && publishingYearBox.getValue()==Integer.parseInt(book.getYearPublished().get())) {
                 return true;
             }else{
                 return false;

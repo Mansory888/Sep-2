@@ -1,10 +1,12 @@
 package mediator;
 
+import model.BookDAOImpl;
 import model.Model;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 
 /**
  * @author Nick/Rokas
@@ -35,6 +37,7 @@ public class Connector implements Runnable
     try
     {
       model.addLog("Starting Server...");
+      BookDAOImpl.getInstance();
       welcomeSocket = new ServerSocket(PORT);
 
       running = true;
@@ -55,6 +58,9 @@ public class Connector implements Runnable
     catch (IOException e)
     {
       model.addLog("Error: " + e.getMessage());
+    }
+    catch (SQLException sql){
+      model.addLog(sql.getMessage());
     }
   }
 

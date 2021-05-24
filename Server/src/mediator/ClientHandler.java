@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.sql.SQLException;
 
 /**
  * @author Nick/Rokas
@@ -118,11 +119,16 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             break;
           case "Add_Book":
             String book = in.readLine();
+          try{
             Book book1 = gson.fromJson(book, Book.class);
             model.addBookToLibrary(book1);
+            BookDAOImpl.getInstance().create(book1);
             out.println(gson.toJson(new Message(book1.toString(), "Alert")));
             model.getNotifications().add("Book Added: " + book1.toString());
-            model.addLog("Book added to library: "+ book1.getTitle() + " "+ book1.getAuthor());
+            model.addLog("Book added to library: " + book1.getTitle() + " " + book1.getAuthor());
+          }catch (SQLException e){
+            e.printStackTrace();
+          }
             break;
           case "Register":
             String user = in.readLine();
