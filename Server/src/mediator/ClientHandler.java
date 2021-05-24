@@ -14,6 +14,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  * @author Nick/Rokas
@@ -70,8 +74,13 @@ public class ClientHandler implements Runnable, PropertyChangeListener
           case "Borrow_book":
             String id = in.readLine();
             String username1 = in.readLine();
-            model.borrowBook(id,username1);
+          try{
+            model.borrowBook(id, username1);
+            BorrowedBooksDAOImpl.getInstance().create(id,username1);
             model.addLog("Book borrowed: " + id);
+          }catch (SQLException e){
+            model.addLog(e.getMessage());
+          }
             break;
           case "Remove_book":
             String id1 = in.readLine();
@@ -153,34 +162,39 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             boolean usernameVerification = false;
             boolean passwordVerification = false;
 
-            for (int i = 0; i<model.getAllUsers().size(); i++){
-              if (model.getAllUsers().get(i).getUsername().equals(username)){
+          try {
+            for (int i = 0; i < model.getAllUsers().size(); i++) {
+              if (model.getAllUsers().get(i).getUsername().equals(username)) {
                 usernameVerification = true;
-                if (model.getAllUsers().get(i).getPassword().equals(password)){
+                if (model.getAllUsers().get(i).getPassword().equals(password)) {
                   passwordVerification = true;
                   Message login = new Message("Login verified", "Message");
-                  if(model.getAllUsers().get(i).isAdmin()){
+
+                  if (model.getAllUsers().get(i).isAdmin()) {
 
                     login.setAdmin((Admin) model.getAllUsers().get(i));
-                  }else{
+                  } else {
                     login.setCustomer((Customer) model.getAllUsers().get(i));
                   }
+                  login.getUser().getUserInventory().getBooks().addAll(BorrowedBooksDAOImpl.getInstance().readAllBooks(username));
                   String loginVerified = gson.toJson(login);
                   out.println(loginVerified);
                   break;
                 }
               }
             }
-
             if (!usernameVerification){
               String wrongUsername = gson.toJson(new Message("Wrong Username", "Message"));
               out.println(wrongUsername);
             } else if (!passwordVerification){
               String wrongPassword = gson.toJson(new Message("Wrong Password", "Message"));
               out.println(wrongPassword);
-            }else{
-//          party
             }
+          }catch (SQLException e){
+            model.addLog(e.getMessage());
+          }
+
+
             break;
 
         }

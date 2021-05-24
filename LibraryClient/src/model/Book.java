@@ -189,7 +189,7 @@ public class Book {
      */
     public String getBorrowDate(){
         if(borrowed){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             return borrowDate.format(formatter);
         }
         return "";
@@ -201,7 +201,7 @@ public class Book {
      */
     public String getReturnDate(){
         if(returned){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             return returnDate.format(formatter);
         }
        return "";

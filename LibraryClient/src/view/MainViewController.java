@@ -167,11 +167,15 @@ public class MainViewController {
      * Button to borrow book
      */
     @FXML public void borrow_button(){
-        BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
-        if(selectedItem!=null){
-        mainViewModel.BorrowBook(selectedItem.getBookID().get());
-    }else{
-            throw new IllegalArgumentException("None of the books are selected.");
+        try{
+            BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
+            if (selectedItem != null) {
+                mainViewModel.BorrowBook(selectedItem.getBookID().get());
+            } else {
+                throw new IllegalArgumentException("None of the books are selected.");
+            }
+        }catch (IllegalArgumentException e){
+            // set label
         }
     }
 
