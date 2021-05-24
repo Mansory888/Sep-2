@@ -94,7 +94,6 @@ public class Book {
                     index++;
                 }
             }
-            System.out.println(ratings.toString());
             return (double) result/index;
         }
     }
