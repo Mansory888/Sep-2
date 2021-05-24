@@ -114,7 +114,8 @@ public class UserInventoryViewController {
 
         // filters
         // genres
-        genres = FXCollections.observableArrayList("All","Science","Finance","Fiction");
+        genres = FXCollections.observableArrayList("All","Science","Finance","Science Fiction","Fantasy","Mystery","Thriller",
+                "Romance","Westerns","Dystopian","Contemporary","Memoir","Adventure");
         genresBox.getItems().addAll(genres);
         //year
         publishingYears = FXCollections.observableArrayList();
