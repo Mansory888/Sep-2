@@ -118,12 +118,17 @@ public class ClientHandler implements Runnable, PropertyChangeListener
             model.addLog("Book returned: " + id3);
             break;
           case "Rate_book":
-            String id4 = in.readLine();
-            String username3 = in.readLine();
-            String rating = in.readLine();
-            model.getLibraryInventory().getBookById(id4).setRating(Integer.parseInt(rating), username3);
-            model.rateBookInUserInventory(Integer.parseInt(rating),username3,id4);
-            model.addLog("Book rated: "+ model.getLibraryInventory().getBookById(id4).toString() + " rating: " + rating);
+            try {
+              String id4 = in.readLine();
+              String username3 = in.readLine();
+              String rating = in.readLine();
+              model.getLibraryInventory().getBookById(id4).setRating(Integer.parseInt(rating), username3);
+              model.rateBookInUserInventory(Integer.parseInt(rating), username3, id4);
+              RatingDaoImpl.getInstance().createRating(Integer.parseInt(rating), username3, id4);
+              model.addLog("Book rated: " + model.getLibraryInventory().getBookById(id4).toString() + " rating: " + rating);
+            } catch (SQLException e){
+              e.printStackTrace();
+            }
             break;
           case "Load_Library_inventory":
             for (int i = 0; i < model.getLibraryInventory().getSize(); i++){

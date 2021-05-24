@@ -1,14 +1,12 @@
 package mediator;
 
-import model.BookDAO;
-import model.BookDAOImpl;
-import model.Model;
-import model.UserDAOImpl;
+import model.*;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author Nick/Rokas
@@ -42,6 +40,20 @@ public class Connector implements Runnable
       BookDAOImpl.getInstance();
       model.getLibraryInventory().getBooks().addAll(BookDAOImpl.getInstance().readAllBooks());
       model.getAllUsers().addAll(UserDAOImpl.getInstance().readAllUsers());
+
+
+      ArrayList<Rating> ratingArrayList = new ArrayList<>();
+      ratingArrayList.addAll(RatingDaoImpl.getInstance().getAllRatings());
+      for (int i = 0; i< ratingArrayList.size(); i++){
+        model.getLibraryInventory().getBookById(ratingArrayList.get(i).getBook_id()).
+                setRating(ratingArrayList.get(i).getRating(),
+                ratingArrayList.get(i).getUsername());
+
+        model.rateBookInUserInventory(ratingArrayList.get(i).getRating(),
+                ratingArrayList.get(i).getUsername(),
+                ratingArrayList.get(i).getBook_id() );
+      }
+
       welcomeSocket = new ServerSocket(PORT);
 
       running = true;

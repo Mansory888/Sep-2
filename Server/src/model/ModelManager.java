@@ -108,7 +108,9 @@ public class ModelManager implements Model {
     @Override public void rateBookInUserInventory(int rating, String username, String id){
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername().equals(username)) {
-                users.get(i).getUserInventory().getBookById(id).setRating(rating, username);
+                if(users.get(i).getUserInventory().getBookById(id) != null ){
+                    users.get(i).getUserInventory().getBookById(id).setRating(rating, username);
+                }
             }
         }
     }

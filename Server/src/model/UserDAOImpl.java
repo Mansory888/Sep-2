@@ -58,9 +58,7 @@ public class UserDAOImpl implements UserDAO{
             preparedStatement.setString(3, userType.getPassword());
             preparedStatement.setString(4,"Customer");
             preparedStatement.executeUpdate();
-
         }
-
     }
 
     /**

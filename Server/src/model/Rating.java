@@ -8,15 +8,17 @@ package model;
 public class Rating {
     private String username;
     private int rating;
+    private String book_id;
 
     /**
      * A constructor creating a rating class
      * @param username username
      * @param rating rating
      */
-    public Rating(String username, int rating){
+    public Rating(String username, int rating, String book_id){
         this.rating = rating;
         this.username = username;
+        this.book_id = book_id;
     }
 
     /**
@@ -35,11 +37,20 @@ public class Rating {
     }
 
     /**
-     * A method setting username
+     * returning the username
      * @return username
      */
     public String getUsername(){
         return username;
+    }
+
+    /**
+     * returning the book id
+     *
+     * @return book id
+     */
+    public String getBook_id() {
+        return book_id;
     }
 
     /**

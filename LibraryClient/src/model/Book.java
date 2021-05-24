@@ -114,7 +114,7 @@ public class Book {
             }
 
             if (!isRatedByUser) {
-                ratings.add(new Rating(username, rate));
+                ratings.add(new Rating(username, rate, id));
             }
         }
     }
