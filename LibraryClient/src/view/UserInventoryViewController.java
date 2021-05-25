@@ -26,7 +26,6 @@ public class UserInventoryViewController {
     @FXML private TableColumn<BookModel, String> BookNameCollum;
     @FXML private TableColumn<BookModel, String> BookAuthorCollum;
     @FXML private TableColumn<BookModel, String> YearPublishedCollum;
-    @FXML private TableColumn<BookModel, String> RatingCollum;
     @FXML private TableColumn<BookModel, String> BorrowDateCollum;
     @FXML private TableColumn<BookModel, String> ReturnDateCollum;
     @FXML private ComboBox<String> genresBox;
@@ -64,7 +63,6 @@ public class UserInventoryViewController {
         BookNameCollum.setCellValueFactory(celldata -> celldata.getValue().getBookName());
         BookAuthorCollum.setCellValueFactory(celldata -> celldata.getValue().getBookAuthor());
         YearPublishedCollum.setCellValueFactory(celldata -> celldata.getValue().getYearPublished());
-        RatingCollum.setCellValueFactory(celldata -> celldata.getValue().getRating());
         BorrowDateCollum.setCellValueFactory(celldata -> celldata.getValue().getBorrowDate());
         ReturnDateCollum.setCellValueFactory(celldata -> celldata.getValue().getReturnDate());
         GenreCollum.setCellValueFactory(celldata -> celldata.getValue().getGenre());
@@ -97,20 +95,6 @@ public class UserInventoryViewController {
         sortedList.comparatorProperty().bind(main_table.comparatorProperty());
 
         main_table.setItems(sortedList);
-
-
-        main_table.setRowFactory( tv -> {
-            TableRow<BookModel> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if(event.getClickCount() == 2 && (! row.isEmpty())){
-                    BookModel rowData = row.getItem();
-                    viewState.setSelectedBook(rowData.getBookID().get());
-
-                    viewHandler.openView("inspect");
-                }
-            });
-            return row;
-        });
 
         // filters
         // genres

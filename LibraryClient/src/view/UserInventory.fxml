@@ -85,10 +85,9 @@
             <TableView fx:id="main_table" prefHeight="344.0" prefWidth="850.0">
               <columns>
                 <TableColumn fx:id="BookIDCollum" prefWidth="56.799983978271484" text="BookId" />
-                  <TableColumn fx:id="BookNameCollum" prefWidth="170.0" text="Book Name" />
-                  <TableColumn fx:id="BookAuthorCollum" prefWidth="170.0" text="Author" />
+                  <TableColumn fx:id="BookNameCollum" prefWidth="200.0" text="Book Name" />
+                  <TableColumn fx:id="BookAuthorCollum" prefWidth="200.0" text="Author" />
                   <TableColumn fx:id="YearPublishedCollum" prefWidth="100.0" text="Year Pusblished" />
-                  <TableColumn fx:id="RatingCollum" prefWidth="60.0" text="Rating" />
                   <TableColumn fx:id="BorrowDateCollum" prefWidth="100.0" text="Borrow" />
                   <TableColumn fx:id="ReturnDateCollum" prefWidth="100.0" text="Return" />
                   <TableColumn fx:id="GenreCollum" prefWidth="90.0" text="Genre" />

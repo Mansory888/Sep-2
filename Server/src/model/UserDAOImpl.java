@@ -62,7 +62,7 @@ public class UserDAOImpl implements UserDAO{
     }
 
     /**
-     * A method to read a user by username
+     * A method to read a user by username from the database
      * @param username username
      * @return the user
      * @throws SQLException SQLException
@@ -113,7 +113,7 @@ public class UserDAOImpl implements UserDAO{
     }
 
     /**
-     * A method to get if its admin
+     * A method to get if its admin from the database
      * @param username username
      * @return true or false
      * @throws SQLException SQLException

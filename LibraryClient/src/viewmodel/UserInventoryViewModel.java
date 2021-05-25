@@ -30,8 +30,6 @@ public class UserInventoryViewModel  {
         search_textfield =  new SimpleStringProperty();
         username_spot = new SimpleStringProperty();
         Userlist = FXCollections.observableArrayList();
-
-
     }
 
     /**

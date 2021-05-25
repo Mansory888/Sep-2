@@ -11,10 +11,19 @@ import java.util.ArrayList;
 public class RatingDaoImpl implements RatingsDAO{
     private static RatingDaoImpl ratingDao;
 
+    /**
+     * Creates a rating database implementation
+     * @throws SQLException SQLException
+     */
     private RatingDaoImpl() throws SQLException{
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
+    /**
+     * Retunrs the RatingDaoImpl instance
+     * @return RatingDaoImpl instance
+     * @throws SQLException SQLException
+     */
     public static synchronized RatingDaoImpl getInstance() throws SQLException{
         if(ratingDao==null){
             ratingDao = new RatingDaoImpl();
@@ -32,8 +41,13 @@ public class RatingDaoImpl implements RatingsDAO{
                 "avnadmin", "wby0old272aqkhsk");
     }
 
-
-
+    /**
+     * A method to create a rating in the database
+     * @param rating rating
+     * @param username username
+     * @param id id
+     * @throws SQLException SQLException
+     */
     @Override public void createRating(int rating, String username, String id) throws SQLException {
         try (Connection connection = getConnection()) {
             boolean ratedBefore = false;
@@ -69,22 +83,12 @@ public class RatingDaoImpl implements RatingsDAO{
         }
     }
 
-    @Override public boolean bookRated(String username, String id) throws SQLException {
-        try (Connection connection = getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * from book_ratings where username= ? and book_id= ?;"
-            );
-            preparedStatement.setString(1,username);
-            preparedStatement.setString(2,id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
 
+    /**
+     * A method to get all the ratings from the database
+     * @return all the ratings
+     * @throws SQLException SQLException
+     */
     @Override public ArrayList<Rating> getAllRatings() throws SQLException{
         try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(
