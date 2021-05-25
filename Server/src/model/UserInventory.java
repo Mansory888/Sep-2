@@ -86,6 +86,7 @@ public class UserInventory {
         for (int i = 0; i < books.size(); i++){
             if (books.get(i).getId().equals(id)){
                 books.get(i).setReturned();
+                books.get(i).setReturnDate(Date.valueOf(LocalDate.now()));
             }
         }
     }
