@@ -1,8 +1,10 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -21,9 +23,8 @@ public class Book {
     private String genre;
     private ArrayList<Rating> ratings;
 
-    private LocalDateTime borrowDate;
-    private LocalDateTime returnDate;
-    private boolean borrowed;
+    private Date borrowDate;
+    private Date returnDate;
     private boolean returned;
 
 
@@ -56,9 +57,8 @@ public class Book {
 
             this.year = year;
             ratings = new ArrayList<>();
-            borrowDate = LocalDateTime.now();
-            returnDate = LocalDateTime.now();
-            borrowed = false;
+            borrowDate = Date.valueOf(LocalDate.now());
+            returnDate = Date.valueOf(LocalDate.now());
             returned = false;
             this.genre = genre;
         }else{
@@ -177,6 +177,25 @@ public class Book {
     public void setDescription(String description) {this.description = description;}
 
     /**
+     * Sets a borrowing date for a book
+     * @param borrowDate
+     */
+    /**
+     * Sets a borrowing date for a book
+     * @param borrowDate
+     */
+    public void setBorrowDate(Date borrowDate){
+        this.borrowDate=borrowDate;
+    }
+
+    /**
+     * Sets a date when the book was returned.
+     * @param returnDate
+     */
+    public void setReturnDate(Date returnDate){
+        this.returnDate=returnDate;
+    }
+    /**
      * sets the year
      * @param year year
      */
@@ -187,11 +206,9 @@ public class Book {
      * @return borrow date
      */
     public String getBorrowDate(){
-        if(borrowed){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            return borrowDate.format(formatter);
-        }
-        return "";
+
+        return borrowDate.toString();
+
     }
 
     /**
@@ -200,16 +217,11 @@ public class Book {
      */
     public String getReturnDate(){
         if(returned){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            return returnDate.format(formatter);
-        }
-       return "";
-    }
 
-    /**
-     * sets borrowed
-     */
-    public void setBorrowed(){borrowed = true;}
+            return returnDate.toString();
+        }
+        return "";
+    }
 
     /**
      * set returned

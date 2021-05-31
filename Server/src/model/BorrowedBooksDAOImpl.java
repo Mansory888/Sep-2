@@ -71,22 +71,34 @@ public class BorrowedBooksDAOImpl implements BorrowedBooksDAO {
      */
     @Override public ArrayList<Book> readAllBooks(String username) throws SQLException {
 
-           try(Connection connection = getConnection()){
-               PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM borrowed_books JOIN books on borrowed_books.book_id = books.book_id where username= ?");
-               preparedStatement.setString(1,username);
-               ResultSet resultSet = preparedStatement.executeQuery();
-               ArrayList<Book> books = new ArrayList<>();
-               while (resultSet.next()){
-                   String bookId = resultSet.getString("book_id");
-                   String title = resultSet.getString("title");
-                   String author = resultSet.getString("author");
-                   String description = resultSet.getString("description");
-                   int yearOfPublication = resultSet.getInt("year");
-                   String genre = resultSet.getString("genre");
-                   books.add(new Book(title,author,yearOfPublication,bookId,description,genre));
-               }
-               return books;
-       }
+        try(Connection connection = getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM borrowed_books JOIN books on borrowed_books.book_id = books.book_id where username= ?");
+            preparedStatement.setString(1,username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<Book> books = new ArrayList<>();
+            while (resultSet.next()){
+                String bookId = resultSet.getString("book_id");
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                String description = resultSet.getString("description");
+                int yearOfPublication = resultSet.getInt("year");
+                String genre = resultSet.getString("genre");
+                Date borrowDate = resultSet.getDate("date_borrowed");
+                Date returnDate = resultSet.getDate("date_returned");
+                Book book = new Book(title,author,yearOfPublication,bookId,description,genre);
+                if(borrowDate!=null){
+                    book.setBorrowDate(borrowDate);
+                }
+                if(returnDate!=null){
+                    book.setReturnDate(returnDate);
+                    book.setReturned();
+                }else{
+                    book.setReturnDate(null);
+                }
+                books.add(book);
+            }
+            return books;
+        }
     }
 
     /**

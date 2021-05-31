@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,7 @@ public class UserInventory {
     public void addBook(Book book){
         Book book1 = new Book(book.getTitle(), book.getAuthor(), book.getYearOfPublication(), book.getId(), book.getDescription(), book.getGenre());
         books.add(book1);
-        book1.setBorrowed();
+        book1.setBorrowDate(Date.valueOf(LocalDate.now()));
     }
 
     /**
@@ -84,8 +86,16 @@ public class UserInventory {
         for (int i = 0; i < books.size(); i++){
             if (books.get(i).getId().equals(id)){
                 books.get(i).setReturned();
+                books.get(i).setReturnDate(Date.valueOf(LocalDate.now()));
             }
         }
+    }
+
+    /**
+     * Clears user inventory, before loading a new one when a client logs in.
+     */
+    public void clearUserInventory(){
+        books.clear();
     }
 
 
