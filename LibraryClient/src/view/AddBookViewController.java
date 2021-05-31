@@ -62,12 +62,12 @@ public class AddBookViewController {
     /**
      * Cancel button
      */
-    @FXML public void CancelButton(){viewHandler.openView("managePage");}
+    @FXML private void CancelButton(){viewHandler.openView("managePage");}
 
     /**
      * Add book button
      */
-    @FXML public void AddButton(){
+    @FXML private void AddButton(){
 
         if(addBookViewModel.addBook()){
         viewHandler.openView("managePage");

@@ -86,7 +86,7 @@ public class InspectBookViewController {
     /**
      * Cancel button
      */
-    @FXML public void CancelButton(){
+    @FXML private void CancelButton(){
         if(RatingBox.getValue() != null){
             inspectBookViewModel.rateBook(viewState.getSelectedBook(), RatingBox.getValue());
         }

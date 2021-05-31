@@ -75,22 +75,22 @@ public class ProfileViewController {
     /**
      * Button to go to profile window
      */
-    @FXML public void Profile_button(){viewHandler.openView("profile");}
+    @FXML private void Profile_button(){viewHandler.openView("profile");}
 
     /**
      * Button to go to the main window
      */
-    @FXML public void home_button(){
+    @FXML private void home_button(){
         viewHandler.openView("main");
     }
 
     /**
      * Button to go to the manage window
      */
-    @FXML public void ManageButton(){viewHandler.openView("managePage");}
+    @FXML private void ManageButton(){viewHandler.openView("managePage");}
 
     /**
      * Button to go to the notifications window
      */
-    @FXML public void NotificationButton(){viewHandler.openView("notifications");}
+    @FXML private void NotificationButton(){viewHandler.openView("notifications");}
 }

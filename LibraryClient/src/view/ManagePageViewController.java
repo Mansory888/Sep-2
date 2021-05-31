@@ -64,31 +64,31 @@ public class ManagePageViewController {
     /**
      * Button to go to add book window
      */
-    @FXML public void AddBookButton(){viewHandler.openView("addBook");}
+    @FXML private void AddBookButton(){viewHandler.openView("addBook");}
 
     /**
      * Button to go to profile window
      */
-    @FXML public void Profile_button(){viewHandler.openView("profile");}
+    @FXML private void Profile_button(){viewHandler.openView("profile");}
 
     /**
      * Button to go to the main window
      */
-    @FXML public void home_button(){
+    @FXML private void home_button(){
         viewHandler.openView("main");
     }
 
     /**
      * Button to remove book
      */
-    @FXML public void RemoveSubmitButton(){
+    @FXML private void RemoveSubmitButton(){
         managePageViewModel.RemoveBook();
     }
 
     /**
      * Button to give admin privileges
      */
-    @FXML public void AdminSubmitButton(){
+    @FXML private void AdminSubmitButton(){
         managePageViewModel.giveAdmin();
     }
 

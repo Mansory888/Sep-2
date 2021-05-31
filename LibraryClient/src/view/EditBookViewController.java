@@ -83,7 +83,7 @@ public class EditBookViewController {
     /**
      * Cancel button
      */
-    @FXML public void CancelButton(){
+    @FXML private void CancelButton(){
         if(RatingBox.getValue() != null){
             editBookViewModel.rateBook(viewState.getSelectedBook(), RatingBox.getValue());
         }
@@ -94,7 +94,7 @@ public class EditBookViewController {
     /**
      * Edit book button
      */
-    @FXML public void EditButton(){
+    @FXML private void EditButton(){
         if (RatingBox.getValue() != null) {
             editBookViewModel.rateBook(viewState.getSelectedBook(), RatingBox.getValue());
         }

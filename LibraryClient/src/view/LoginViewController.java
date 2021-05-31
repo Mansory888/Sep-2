@@ -58,7 +58,7 @@ public class LoginViewController {
     /**
      * Button to login
      */
-    @FXML public void LoginButton(){
+    @FXML private void LoginButton(){
         if (loginViewModel.validateLogin()){
             viewHandler.openView("main");
         }
@@ -68,7 +68,7 @@ public class LoginViewController {
     /**
      * Button to go to the register window
      */
-    @FXML public void RegisterButton(){
+    @FXML private void RegisterButton(){
         viewHandler.openView("register");
     }
 

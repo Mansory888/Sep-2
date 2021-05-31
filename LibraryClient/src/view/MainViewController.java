@@ -159,14 +159,14 @@ public class MainViewController {
     /**
      * Button that goes to main window
      */
-    @FXML public void home_button(){
+    @FXML private void home_button(){
         viewHandler.openView("main");
     }
 
     /**
      * Button to borrow book
      */
-    @FXML public void borrow_button(){
+    @FXML private void borrow_button(){
         try{
             BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
@@ -182,14 +182,14 @@ public class MainViewController {
     /**
      * Button to go to the inventory window
      */
-    @FXML public void inventory_button(){
+    @FXML private void inventory_button(){
         viewHandler.openView("inventory");
     }
 
     /**
      * Button to go to the profile window
      */
-    @FXML public void Profile_button(){viewHandler.openView("profile");}
+    @FXML private void Profile_button(){viewHandler.openView("profile");}
 
     /**
      * Filter books by chosen year/genre or both criterias.

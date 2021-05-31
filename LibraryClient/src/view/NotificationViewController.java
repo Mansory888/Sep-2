@@ -47,5 +47,5 @@ public class NotificationViewController {
     /**
      * Button to go to profile window
      */
-    @FXML public void BackButton(){viewHandler.openView("profile");}
+    @FXML private void BackButton(){viewHandler.openView("profile");}
 }

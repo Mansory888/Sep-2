@@ -140,19 +140,19 @@ public class UserInventoryViewController {
     /**
      * Button to go to the main window
      */
-    @FXML public void home_button(){
+    @FXML private void home_button(){
         viewHandler.openView("main");
     }
 
     /**
      * Button to go to profile window
      */
-    @FXML public void Profile_button(){viewHandler.openView("profile");}
+    @FXML private void Profile_button(){viewHandler.openView("profile");}
 
     /**
      * Button to return book
      */
-    @FXML public void ReturnButton(){
+    @FXML private void ReturnButton(){
         BookModel selectedItem = main_table.getSelectionModel().getSelectedItem();
         userInventoryViewModel.ReturnBook(selectedItem.getBookID().get());
     }

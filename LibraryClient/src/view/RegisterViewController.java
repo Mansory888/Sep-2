@@ -60,7 +60,7 @@ public class RegisterViewController {
     /**
      * Button to register
      */
-    @FXML public void RegisterButton(){
+    @FXML private void RegisterButton(){
         registerViewModel.Register();
         if(ErrorLabel.textProperty().get().equals("")){
         viewHandler.openView("login");}
