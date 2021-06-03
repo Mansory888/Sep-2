@@ -59,6 +59,7 @@ public class UserInventoryViewModel  {
 
     /**
      * method to return the book to the library
+     * @param id book id
      */
     public void ReturnBook(String id){
         model.returnBook(id);
