@@ -58,7 +58,7 @@ public class EditBookViewController {
         DescriptionTextArea.textProperty().bindBidirectional(editBookViewModel.getDescriptionTextArea());
         GenreTextField.textProperty().bindBidirectional(editBookViewModel.getGenreTextFiled());
 
-        choiceList = FXCollections.observableArrayList(1,2,3,4,5);
+        choiceList = FXCollections.observableArrayList(null,1,2,3,4,5);
         BookIDTextField.setEditable(false);
 
         RatingBox.getItems().addAll(choiceList);

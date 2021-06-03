@@ -51,7 +51,7 @@ public class InspectBookViewController {
         YearTextField.textProperty().bindBidirectional(inspectBookViewModel.getYearTextField());
         DescriptionTextArea.textProperty().bindBidirectional(inspectBookViewModel.getDescriptionTextArea());
 
-        choiceList = FXCollections.observableArrayList(1,2,3,4,5);
+        choiceList = FXCollections.observableArrayList(null,1,2,3,4,5);
 
 
         BookIDTextField.setEditable(false);
