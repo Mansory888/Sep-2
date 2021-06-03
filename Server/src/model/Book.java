@@ -35,7 +35,8 @@ public class Book {
      * @param author author for a book
      * @param year year for a book
      * @param id id for a book
-     * @param description description for bok
+     * @param description description for book
+     * @param genre genre of the book
      */
     public Book(String title, String author, int year, String id, String description, String genre){
         if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("")
@@ -105,6 +106,7 @@ public class Book {
     /**
      * Sets the rating
      * @param rate rate
+     * @param username users nickname
      */
     public void setRating(int rate, String username){
         boolean isRatedByUser = false;
@@ -220,13 +222,10 @@ public class Book {
         }
     }
 
+
     /**
      * Sets a borrowing date for a book
-     * @param borrowDate
-     */
-    /**
-     * Sets a borrowing date for a book
-     * @param borrowDate
+     * @param borrowDate the date when user borrowed a book
      */
     public void setBorrowDate(Date borrowDate){
         this.borrowDate=borrowDate;
@@ -234,7 +233,7 @@ public class Book {
 
     /**
      * Sets a date when the book was returned.
-     * @param returnDate
+     * @param returnDate the date when user returned a book
      */
     public void setReturnDate(Date returnDate){
         this.returnDate=returnDate;

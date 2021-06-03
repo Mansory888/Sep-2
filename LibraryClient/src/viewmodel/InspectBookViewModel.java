@@ -38,6 +38,7 @@ public class InspectBookViewModel  {
 
     /**
      * method to clear the fields
+     * @param bookID book id of the inspecting book
      */
     public void clear(String bookID){
         BookIDTextField.set(model.getLibraryBookByID(bookID).getId());

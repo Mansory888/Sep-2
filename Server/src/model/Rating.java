@@ -14,6 +14,7 @@ public class Rating {
      * A constructor creating a rating class
      * @param username username
      * @param rating rating
+     * @param book_id the book id of a book which was rated
      */
     public Rating(String username, int rating, String book_id){
         this.rating = rating;
@@ -31,6 +32,7 @@ public class Rating {
 
     /**
      * A method getting the rating
+     * @return rating returns a rating between 0 to 5
      */
     public int getRating(){
         return rating;

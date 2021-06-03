@@ -21,7 +21,7 @@ public class UserInventory {
 
     /**
      *  adds a book to the user inventory
-     * @param book
+     * @param book the book that will be added
      */
     public void addBook(Book book){
         Book book1 = new Book(book.getTitle(), book.getAuthor(), book.getYearOfPublication(), book.getId(), book.getDescription(), book.getGenre());

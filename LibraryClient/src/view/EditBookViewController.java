@@ -43,6 +43,7 @@ public class EditBookViewController {
      * @param viewHandler      view handler
      * @param editBookViewModel editBookViewModel
      * @param root             root
+     * @param viewState viewState
      */
     public void init(ViewHandler viewHandler, EditBookViewModel editBookViewModel, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;

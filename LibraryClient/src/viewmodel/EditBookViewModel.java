@@ -34,6 +34,7 @@ public class EditBookViewModel {
 
     /**
      * method to clear the fields
+     * @param bookID bookID of the selected book to edit.
      */
     public void clear(String bookID){
         BookIDTextField.set(model.getLibraryBookByID(bookID).getId());
@@ -46,6 +47,7 @@ public class EditBookViewModel {
 
     /**
      * method to edit book
+     * @param bookID book id of the book in editing
      */
     public void editBook(String bookID){
         model.getLibraryInventory().getBookById(bookID).setTitle(TitleField.get());

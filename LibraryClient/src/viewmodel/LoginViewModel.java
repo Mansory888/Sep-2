@@ -43,6 +43,7 @@ public class LoginViewModel {
     }
     /**
      * method to validate the login
+     * @return true or false, which represents if the user logged in with right credentials
      */
     public boolean validateLogin(){
 
