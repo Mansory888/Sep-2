@@ -38,7 +38,8 @@ public class Book {
      * @param description description for bok
      */
     public Book(String title, String author, int year, String id, String description, String genre){
-        if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("") ){
+        if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("")
+        && genre!=null && !genre.equals("")){
             Pattern patternAuthor = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
             if(patternAuthor.matcher(author).find()){
                 throw  new IllegalArgumentException("Author name contains numbers or symbols.");
@@ -49,6 +50,9 @@ public class Book {
             }
             if(year<0){
                 throw new IllegalArgumentException("Entered year is lower than 0!");
+            }
+            if(description.length()>3000){
+                throw new IllegalArgumentException("Description is over 3000 characters");
             }
             this.description = description;
             this.title = title;
@@ -206,7 +210,11 @@ public class Book {
      */
     public void setDescription(String description) {
         if(description!=null && !description.equals("")){
-            this.description = description;
+            if (description.length()<=3000){
+                this.description = description;
+            }else {
+                throw new IllegalArgumentException("Description is over 3000 characters");
+            }
         }else {
             throw  new IllegalArgumentException("Description is empty.");
         }
@@ -235,7 +243,12 @@ public class Book {
      * sets the year
      * @param year year
      */
-    public void setYear(int year){this.year = year;}
+    public void setYear(int year){
+        if (year<0){
+            throw new IllegalArgumentException("Entered year is lower than 0");
+        }
+        this.year=year;
+    }
 
     /**
      * returns the borrow date
@@ -281,7 +294,7 @@ public class Book {
      * @param genre - book genre.
      */
     public void setGenre(String genre){
-        if(!genre.equals("")){
+        if(genre!=null && !genre.equals("")){
             this.genre = genre;
         }else{
             throw new IllegalArgumentException("Empty field left!");
