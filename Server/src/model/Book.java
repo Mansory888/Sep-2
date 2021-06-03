@@ -20,8 +20,9 @@ public class Book {
     private String author;
     private String description;
     private int year;
-    private ArrayList<Rating> ratings;
     private String genre;
+    private ArrayList<Rating> ratings;
+
     private Date borrowDate;
     private Date returnDate;
     private boolean returned;
@@ -37,7 +38,8 @@ public class Book {
      * @param description description for bok
      */
     public Book(String title, String author, int year, String id, String description, String genre){
-        if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("") ){
+        if(title!=null && !title.equals("") && author!=null && !author.equals("") && id!=null &&  !id.equals("") && description!=null &&  !description.equals("")
+                && genre!=null && !genre.equals("")){
             Pattern patternAuthor = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
             if(patternAuthor.matcher(author).find()){
                 throw  new IllegalArgumentException("Author name contains numbers or symbols.");
@@ -48,6 +50,9 @@ public class Book {
             }
             if(year<0){
                 throw new IllegalArgumentException("Entered year is lower than 0!");
+            }
+            if(description.length()>3000){
+                throw new IllegalArgumentException("Description is over 3000 characters");
             }
             this.description = description;
             this.title = title;
@@ -96,38 +101,28 @@ public class Book {
             return (double) result/index;
         }
     }
-    /**
-     * Sets a borrowing date for a book
-     * @param borrowDate
-     */
-    public void setBorrowDate(Date borrowDate){
-        this.borrowDate=borrowDate;
-    }
 
-    /**
-     * Sets a date when the book was returned.
-     * @param returnDate
-     */
-    public void setReturnDate(Date returnDate){
-        this.returnDate=returnDate;
-    }
     /**
      * Sets the rating
      * @param rate rate
      */
     public void setRating(int rate, String username){
         boolean isRatedByUser = false;
-        if(ratings != null){
-            for (int i = 0; i < ratings.size(); i++) {
-                if (ratings.get(i).getUsername().equals(username)) {
-                    isRatedByUser = true;
-                    ratings.get(i).setRating(rate);
+        if( rate<=5 && rate>=0 ) {
+            if (ratings != null) {
+                for (int i = 0; i < ratings.size(); i++) {
+                    if (ratings.get(i).getUsername().equals(username)) {
+                        isRatedByUser = true;
+                        ratings.get(i).setRating(rate);
+                    }
+                }
+
+                if (!isRatedByUser) {
+                    ratings.add(new Rating(username, rate, id));
                 }
             }
-
-            if (!isRatedByUser) {
-                ratings.add(new Rating(username, rate,id));
-            }
+        }else{
+            throw new IllegalArgumentException("The selected rating is out of bounds");
         }
     }
 
@@ -169,38 +164,100 @@ public class Book {
      * sets the id
      * @param id id
      */
-    public void setId(String id){ this.id = id;}
+    public void setId(String id){
+
+        if(id!=null &&  !id.equals("")){
+            Pattern patternId= Pattern.compile("[^0-9 ]");
+            if(patternId.matcher(id).find()){
+                throw  new IllegalArgumentException("Book ID contains characters or symbols.");
+            }
+            this.id = id;
+        }else{
+            throw new IllegalArgumentException("Book id is left empty.");
+        }
+    }
 
     /**
      * sets the title
      * @param title title
      */
-    public void setTitle(String title) {this.title = title;}
+    public void setTitle(String title) {
+        if(title!=null && !title.equals("")) {
+            this.title = title;
+        }else {
+            throw new IllegalArgumentException("Title is empty.");
+        }
+    }
 
     /**
      * sets the author
      * @param author author
      */
-    public void setAuthor(String author) {this.author = author;}
+    public void setAuthor(String author) {
+        if (author!=null && !author.equals("")){
+            Pattern patternAuthor = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
+            if (patternAuthor.matcher(author).find()) {
+                throw new IllegalArgumentException("Author name contains numbers or symbols.");
+            }
+            this.author = author;
+        }else {
+            throw new IllegalArgumentException("Author field is left empty");}
+    }
 
     /**
      * sets the description
      * @param description description
      */
-    public void setDescription(String description) {this.description = description;}
+    public void setDescription(String description) {
+        if(description!=null && !description.equals("")){
+            if (description.length()<=3000){
+                this.description = description;
+            }else {
+                throw new IllegalArgumentException("Description is over 3000 characters");
+            }
+        }else {
+            throw  new IllegalArgumentException("Description is empty.");
+        }
+    }
 
+    /**
+     * Sets a borrowing date for a book
+     * @param borrowDate
+     */
+    /**
+     * Sets a borrowing date for a book
+     * @param borrowDate
+     */
+    public void setBorrowDate(Date borrowDate){
+        this.borrowDate=borrowDate;
+    }
+
+    /**
+     * Sets a date when the book was returned.
+     * @param returnDate
+     */
+    public void setReturnDate(Date returnDate){
+        this.returnDate=returnDate;
+    }
     /**
      * sets the year
      * @param year year
      */
-    public void setYear(int year){this.year = year;}
+    public void setYear(int year){
+        if (year<0){
+            throw new IllegalArgumentException("Entered year is lower than 0");
+        }
+        this.year=year;
+    }
 
     /**
      * returns the borrow date
      * @return borrow date
      */
     public String getBorrowDate(){
+
         return borrowDate.toString();
+
     }
 
     /**
@@ -209,6 +266,7 @@ public class Book {
      */
     public String getReturnDate(){
         if(returned){
+
             return returnDate.toString();
         }
         return "";
@@ -224,6 +282,7 @@ public class Book {
      * @return returned
      */
     public boolean getIsReturned(){return  returned;}
+
     /**
      * Returns the genre of the book.
      * @return genre - book genre.
@@ -235,7 +294,7 @@ public class Book {
      * @param genre - book genre.
      */
     public void setGenre(String genre){
-        if(!genre.equals("")){
+        if(genre!=null && !genre.equals("")){
             this.genre = genre;
         }else{
             throw new IllegalArgumentException("Empty field left!");
