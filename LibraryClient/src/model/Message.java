@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Message<T> {
     private String message;
     private String type;
-    private UserType user;
     private Admin admin;
     private Customer customer;
     private ArrayList<Admin> admins;
@@ -24,7 +23,6 @@ public class Message<T> {
     public Message(String message, String type){
         this.message = message;
         this.type = type;
-        user=null;
         this.admins= new ArrayList<>();
         this.customers= new ArrayList<>();
     }
@@ -83,18 +81,37 @@ public class Message<T> {
         this.admin=user;
     }
 
+    /**
+     * A method to add an admin
+     * @param admin admin
+     */
     public void addAdmin(Admin admin)
     {
         admins.add(admin);
     }
+
+    /**
+     * A method to add a customer
+     * @param customer customer
+     */
     public void addCustomer(Customer customer)
     {
         customers.add(customer);
     }
+
+    /**
+     * Returns  all the admins
+     * @return all the admins
+     */
     public ArrayList<Admin> getAdmins()
     {
         return  admins;
     }
+
+    /**
+     * Returns all the customers
+     * @return all the customers
+     */
     public ArrayList<Customer> getCustomers()
     {
         return customers;

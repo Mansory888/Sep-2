@@ -265,14 +265,29 @@ public class ModelManager implements Model{
         property.firePropertyChange(event, null, message);
     }
 
+    /**
+     *  Returns the user list size
+     * @return user list size
+     */
     @Override public int getUserListSize()
     {
         return userList.getSize();
     }
+
+    /**
+     * Gets user by index
+     * @param i index
+     * @return user
+     */
     @Override public UserType getUserListByIndex(int i)
     {
         return userList.getUser(i);
     }
+
+    /**
+     * Returns the user list
+     * @return Returns the user list
+     */
     public UserList getUserList()
     {
         return userList;
