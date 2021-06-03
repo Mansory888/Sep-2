@@ -23,6 +23,7 @@ public class ModelManager implements Model{
     private ServerModel serverModel;
     private UserType user;
     private String ErrorLabel;
+    private UserList userList;
 
     /**
      *  Creates a model manager
@@ -37,6 +38,7 @@ public class ModelManager implements Model{
         serverModel = new LibraryClient("localhost", 6789, this);
         user = null;
         ErrorLabel="";
+        userList= new UserList();
     }
 
     /**
@@ -263,7 +265,18 @@ public class ModelManager implements Model{
         property.firePropertyChange(event, null, message);
     }
 
-
+    @Override public int getUserListSize()
+    {
+        return userList.getSize();
+    }
+    @Override public UserType getUserListByIndex(int i)
+    {
+        return userList.getUser(i);
+    }
+    public UserList getUserList()
+    {
+        return userList;
+    }
 
 
 

@@ -7,7 +7,6 @@ import utility.UnnamedPropertySubject;
 public interface Model extends UnnamedPropertySubject {
     void addBookToLibrary(Book book);
     void BorrowBook(String id);
-
     void addUser(UserType user);
     String getUsername();
     void setUsername(String username);
@@ -22,21 +21,19 @@ public interface Model extends UnnamedPropertySubject {
     void loadBooksToLibrary(Book book);
     void returnBook(String id);
     void fireProperty(String event, String message);
-
     String getErrorLabel();
     void setErrorLabel(String label);
-
-
-
     int getLibraryBooksSize();
     Book getLibraryBookByIndex(int index);
     LibraryInventory getLibraryInventory();
     Book getLibraryBookByID(String id);
-
     int getUserBooksSize();
     Book getUserBookByIndex(int index);
     UserInventory getUserInventory();
     Book getUserBookByID(String id);
     void setAdmin(Admin user);
     void setCustomer(Customer user);
+    UserType getUserListByIndex(int i);
+    UserList getUserList();
+    int getUserListSize();
 }

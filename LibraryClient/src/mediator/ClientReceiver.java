@@ -32,7 +32,7 @@ public class ClientReceiver implements Runnable {
                 client.receive(serverReply);
 
             } catch (Exception e){
-
+            e.printStackTrace();
             }
         }
     }

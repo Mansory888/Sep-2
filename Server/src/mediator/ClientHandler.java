@@ -202,6 +202,20 @@ public class ClientHandler implements Runnable, PropertyChangeListener {
 
 
             break;
+          case "LoadUserList":
+            Message message= new Message("Loading User List", "LoadUserList");
+            for (int i=0; i<model.getAllUsers().size(); i++)
+            {
+              if (model.getAllUsers().get(i).isAdmin())
+              {
+                message.addAdmin((Admin) model.getAllUsers().get(i));
+              }
+              else {
+                message.addCustomer((Customer) model.getAllUsers().get(i));
+              }
+            }
+            out.println(gson.toJson(message));
+            break;
 
         }
 

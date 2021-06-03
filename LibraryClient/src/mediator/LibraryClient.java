@@ -66,6 +66,10 @@ public class LibraryClient implements ServerModel{
             case "notification":
                 model.fireProperty("notification", m.getMessage());
                 break;
+            case "LoadUserList":
+                model.getUserList().getUsers().addAll(m.getAdmins());
+                model.getUserList().getUsers().addAll(m.getCustomers());
+                break;
         }
 
 
@@ -97,6 +101,7 @@ public class LibraryClient implements ServerModel{
                     t1.start();
                     out.println("Load_Library_inventory");
                     out.println("Load_notifications");
+                    out.println("LoadUserList");
                     model.getUserInventory().getBooks().addAll(m.getUser().getUserInventory().getBooks());
                     return true;
                 } else if(m.getMessage().equals("Wrong Username")){

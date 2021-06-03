@@ -25,6 +25,7 @@ public class ViewHandler {
     private InspectBookViewController inspectBookViewController;
     private EditBookViewController editBookViewController;
     private NotificationViewController notificationViewController;
+    private UserListViewController userListViewController;
     private ViewState viewState;
 
     /**
@@ -84,6 +85,9 @@ public class ViewHandler {
                 break;
             case "notifications":
                 root = loadNotificationsView("NotificationView.fxml");
+                break;
+            case "UserList":
+                root= loadUserListView("UserList.fxml");
                 break;
 
 
@@ -359,6 +363,26 @@ public class ViewHandler {
             notificationViewController.reset();
         }
         return notificationViewController.getRoot();
+
+    }
+    private Region loadUserListView(String fxmlFile) {
+        Region root = null;
+        if (userListViewController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                root = loader.load();
+                userListViewController = loader.getController();
+                userListViewController.init(this, viewModelFactory.getUserListViewModel(), root, viewState);
+                userListViewController.load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            userListViewController.reset();
+        }
+        return userListViewController.getRoot();
 
     }
 }

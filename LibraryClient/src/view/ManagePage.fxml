@@ -82,7 +82,7 @@
       </HBox>
       <HBox prefHeight="56.0" prefWidth="382.0">
          <children>
-            <Label fx:id="NrOfBooksLabel11" prefHeight="39.0" prefWidth="354.0" text="Give admin privileges:">
+            <Label fx:id="NrOfBooksLabel11" prefHeight="39.0" prefWidth="354.0" text="Manage users">
                <HBox.margin>
                   <Insets left="20.0" top="10.0" />
                </HBox.margin>
@@ -94,15 +94,13 @@
       </HBox>
       <HBox prefHeight="59.0" prefWidth="382.0" spacing="15.0">
          <children>
-            <TextField fx:id="UsernameTextFiled" prefHeight="42.0" prefWidth="226.0" promptText="Username">
+            <Button mnemonicParsing="false" onAction="#OpenUserListButton" prefHeight="43.0" prefWidth="382.0" text="Open Manage Users">
                <HBox.margin>
-                  <Insets left="20.0" top="5.0" />
+                  <Insets left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
-            </TextField>
-            <Button mnemonicParsing="false" onAction="#AdminSubmitButton" prefHeight="43.0" prefWidth="85.0" text="Submit">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
             </Button>
          </children>
          <VBox.margin>

@@ -13,7 +13,6 @@ import viewmodel.ManagePageViewModel;
 
 public class ManagePageViewController {
     @FXML private TextField IDTextFiled;
-    @FXML private TextField UsernameTextFiled;
     @FXML private Label username_spot;
 
     private Region root;
@@ -36,7 +35,6 @@ public class ManagePageViewController {
         this.root = root;
 
         IDTextFiled.textProperty().bindBidirectional(managePageViewModel.getIDTextFiled());
-        UsernameTextFiled.textProperty().bindBidirectional(managePageViewModel.getUsernameTextFiled());
         username_spot.textProperty().bind(managePageViewModel.getUsername_spot());
     }
 
@@ -88,8 +86,8 @@ public class ManagePageViewController {
     /**
      * Button to give admin privileges
      */
-    @FXML private void AdminSubmitButton(){
-        managePageViewModel.giveAdmin();
+    @FXML private void OpenUserListButton(){
+        viewHandler.openView("UserList");
     }
 
 }
