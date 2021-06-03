@@ -104,17 +104,21 @@ public class Book {
      */
     public void setRating(int rate, String username){
         boolean isRatedByUser = false;
-        if(ratings != null){
-            for (int i = 0; i < ratings.size(); i++) {
-                if (ratings.get(i).getUsername().equals(username)) {
-                    isRatedByUser = true;
-                    ratings.get(i).setRating(rate);
+        if( rate<=5 && rate>=0 ) {
+            if (ratings != null) {
+                for (int i = 0; i < ratings.size(); i++) {
+                    if (ratings.get(i).getUsername().equals(username)) {
+                        isRatedByUser = true;
+                        ratings.get(i).setRating(rate);
+                    }
+                }
+
+                if (!isRatedByUser) {
+                    ratings.add(new Rating(username, rate, id));
                 }
             }
-
-            if (!isRatedByUser) {
-                ratings.add(new Rating(username, rate, id));
-            }
+        }else{
+            throw new IllegalArgumentException("The selected rating is out of bounds");
         }
     }
 
@@ -156,25 +160,57 @@ public class Book {
      * sets the id
      * @param id id
      */
-    public void setId(String id){ this.id = id;}
+    public void setId(String id){
+
+        if(id!=null &&  !id.equals("")){
+            Pattern patternId= Pattern.compile("[^0-9 ]");
+            if(patternId.matcher(id).find()){
+                throw  new IllegalArgumentException("Book ID contains characters or symbols.");
+            }
+            this.id = id;
+        }else{
+            throw new IllegalArgumentException("Book id is left empty.");
+        }
+    }
 
     /**
      * sets the title
      * @param title title
      */
-    public void setTitle(String title) {this.title = title;}
+    public void setTitle(String title) {
+       if(title!=null && !title.equals("")) {
+            this.title = title;
+        }else {
+           throw new IllegalArgumentException("Title is empty.");
+       }
+    }
 
     /**
      * sets the author
      * @param author author
      */
-    public void setAuthor(String author) {this.author = author;}
+    public void setAuthor(String author) {
+        if (author!=null && !author.equals("")){
+            Pattern patternAuthor = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
+            if (patternAuthor.matcher(author).find()) {
+                throw new IllegalArgumentException("Author name contains numbers or symbols.");
+            }
+            this.author = author;
+        }else {
+        throw new IllegalArgumentException("Author field is left empty");}
+    }
 
     /**
      * sets the description
      * @param description description
      */
-    public void setDescription(String description) {this.description = description;}
+    public void setDescription(String description) {
+        if(description!=null && !description.equals("")){
+            this.description = description;
+        }else {
+            throw  new IllegalArgumentException("Description is empty.");
+        }
+    }
 
     /**
      * Sets a borrowing date for a book

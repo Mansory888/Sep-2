@@ -27,6 +27,7 @@ public class EditBookViewController {
     @FXML private TextArea DescriptionTextArea;
     @FXML private ComboBox<Integer> RatingBox;
     private ObservableList<Integer> choiceList;
+    @FXML private Label errorLabel;
 
 
 
@@ -78,6 +79,7 @@ public class EditBookViewController {
      */
     public void reset(){
         editBookViewModel.clear(viewState.getSelectedBook());
+        errorLabel.setText("");
     }
 
     /**
@@ -95,10 +97,14 @@ public class EditBookViewController {
      * Edit book button
      */
     @FXML private void EditButton(){
-        if (RatingBox.getValue() != null) {
-            editBookViewModel.rateBook(viewState.getSelectedBook(), RatingBox.getValue());
+        try {
+            if (RatingBox.getValue() != null) {
+                editBookViewModel.rateBook(viewState.getSelectedBook(), RatingBox.getValue());
+            }
+            editBookViewModel.editBook(viewState.getSelectedBook());
+            viewHandler.openView("main");
+        }catch (IllegalArgumentException e){
+                errorLabel.setText(e.getMessage());
         }
-        editBookViewModel.editBook(viewState.getSelectedBook());
-        viewHandler.openView("main");
     }
 }

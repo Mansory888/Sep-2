@@ -120,6 +120,11 @@
             </ComboBox>
          </children>
       </HBox>
+      <Label fx:id="errorLabel" text="errorLabel" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
       <HBox prefHeight="60.0" prefWidth="428.0" spacing="40.0">
          <children>
             <Button mnemonicParsing="false" onAction="#CancelButton" prefHeight="39.0" prefWidth="122.0" text="Cancel">

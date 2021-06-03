@@ -123,26 +123,26 @@ public class UserListViewController
   /**
    * Button to go to the main window
    */
-  @FXML public void home_button(){
+  @FXML private void home_button(){
     viewHandler.openView("main");
   }
 
   /**
    * Button to go to profile window
    */
-  @FXML public void Profile_button(){viewHandler.openView("profile");}
+  @FXML private void Profile_button(){viewHandler.openView("profile");}
 
 
 
-  public void createUser()
+  @FXML private void createUser()
   {
   }
 
-  public void changeUserRole()
+  @FXML private void changeUserRole()
   {
   }
 
-  public void deleteUser()
+  @FXML private void deleteUser()
   {
   }
 }
